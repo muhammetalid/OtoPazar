@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OtoPazar - İkinci El Araç Satış Platformu</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2ECC71',secondary:'#1E2A38'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', Arial, sans-serif;
+color: #1E1E1E;
+background-color: #F9F9F9;
+}
+.hero-section {
+background-image: linear-gradient(rgba(30, 42, 56, 0.7), rgba(30, 42, 56, 0.7)), url('https://readdy.ai/api/search-image?query=modern%20luxury%20cars%20parked%20in%20showroom%20with%20soft%20lighting%2C%20professional%20photography%2C%20high-end%20automobile%20dealership%2C%20premium%20vehicles%20on%20display%2C%20elegant%20atmosphere%2C%20high%20resolution%2C%20realistic%2C%20detailed&width=1920&height=600&seq=1&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.search-input:focus {
+outline: none;
+box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+}
+.car-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.car-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.cta-banner {
+background-image: linear-gradient(90deg, rgba(30, 42, 56, 0.9), rgba(30, 42, 56, 0.8)), url('https://readdy.ai/api/search-image?query=car%20keys%20and%20contract%20papers%20on%20desk%2C%20car%20dealership%20office%2C%20professional%20lighting%2C%20business%20transaction%2C%20selling%20car%20concept%2C%20realistic%2C%20detailed&width=1200&height=300&seq=2&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #2ECC71;
+cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #2ECC71;
+cursor: pointer;
+border: none;
+}
+input[type="checkbox"] {
+display: none;
+}
+.custom-checkbox {
+width: 20px;
+height: 20px;
+border: 2px solid #1E2A38;
+border-radius: 4px;
+display: inline-block;
+position: relative;
+cursor: pointer;
+}
+input[type="checkbox"]:checked + .custom-checkbox:after {
+content: "";
+position: absolute;
+width: 12px;
+height: 12px;
+background-color: #2ECC71;
+border-radius: 2px;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.tab-active {
+background-color: #2ECC71;
+color: white;
+}
+.carousel-container {
+scroll-behavior: smooth;
+}
+.scroll-button {
+opacity: 0.8;
+transition: opacity 0.3s ease;
+}
+.scroll-button:hover {
+opacity: 1;
+}
+.favorite-button {
+transition: transform 0.2s ease;
+}
+.favorite-button:hover {
+transform: scale(1.2);
+}
+.favorite-button.active {
+color: #e74c3c;
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<a href="#" class="text-primary font-['Pacifico'] text-3xl">OtoPazar</a>
+<div class="hidden md:flex relative flex-1 mx-8">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="search-input w-full py-2 pl-10 pr-4 border border-gray-300 rounded-button bg-gray-50 text-sm" placeholder="Marka, model veya şehir ara...">
+</div>
+<div class="flex items-center gap-3">
+<a href="#" class="hidden md:block text-secondary hover:text-primary transition-colors whitespace-nowrap">İlan Ver</a>
+<a href="#" class="hidden md:block text-secondary hover:text-primary transition-colors whitespace-nowrap">Favorilerim</a>
+<button class="bg-white border border-secondary text-secondary hover:bg-gray-50 px-4 py-2 rounded-button transition-colors whitespace-nowrap !rounded-button">Giriş Yap</button>
+<button class="bg-primary text-white hover:bg-opacity-90 px-4 py-2 rounded-button transition-colors whitespace-nowrap !rounded-button">Kayıt Ol</button>
+</div>
+</div>
+<!-- Mobile Search -->
+<div class="md:hidden px-4 pb-3">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="search-input w-full py-2 pl-10 pr-4 border border-gray-300 rounded-button bg-gray-50 text-sm" placeholder="Marka, model veya şehir ara...">
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section py-16 md:py-24">
+<div class="container mx-auto px-4 text-center">
+<h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Hayalinizdeki Araca Kavuşun</h1>
+<p class="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">Türkiye'nin en güvenilir ikinci el araç platformunda binlerce seçenek sizi bekliyor.</p>
+<div class="bg-white p-4 rounded-lg shadow-lg max-w-3xl mx-auto">
+<div class="flex flex-col md:flex-row gap-3">
+<div class="flex-1">
+<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
+<option value="">Marka Seçiniz</option>
+<option value="audi">Audi</option>
+<option value="bmw">BMW</option>
+<option value="mercedes">Mercedes</option>
+<option value="volkswagen">Volkswagen</option>
+<option value="toyota">Toyota</option>
+<option value="honda">Honda</option>
+</select>
+</div>
+<div class="flex-1">
+<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
+<option value="">Model Seçiniz</option>
+</select>
+</div>
+<div class="flex-1">
+<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
+<option value="">Şehir Seçiniz</option>
+<option value="istanbul">İstanbul</option>
+<option value="ankara">Ankara</option>
+<option value="izmir">İzmir</option>
+<option value="antalya">Antalya</option>
+<option value="bursa">Bursa</option>
+</select>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap !rounded-button">
+<span class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-search-line"></i>
+</div>
+Ara
+</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Listings -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary">Öne Çıkan İlanlar</h2>
+<a href="#" class="text-primary hover:underline flex items-center">
+Tümünü Gör
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+<div class="relative">
+<div class="carousel-container flex overflow-x-auto gap-6 pb-4 hide-scrollbar">
+<!-- Car Card 1 -->
+<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2020%20BMW%203%20Series%20sedan%20in%20metallic%20blue%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=3&orientation=landscape" alt="BMW 3 Serisi" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">BMW 3 Serisi 320i</h3>
+<span class="text-primary font-bold">₺1.750.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2020
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+45.000 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Benzin
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İstanbul
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 2 -->
+<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2021%20Mercedes-Benz%20E-Class%20sedan%20in%20silver%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=4&orientation=landscape" alt="Mercedes E Serisi" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Mercedes E 200d</h3>
+<span class="text-primary font-bold">₺2.450.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2021
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+32.500 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Ankara
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 3 -->
+<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2022%20Audi%20A6%20sedan%20in%20black%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=5&orientation=landscape" alt="Audi A6" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Audi A6 2.0 TDI</h3>
+<span class="text-primary font-bold">₺2.850.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2022
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+18.700 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İzmir
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 4 -->
+<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2019%20Volkswagen%20Passat%20sedan%20in%20white%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=6&orientation=landscape" alt="Volkswagen Passat" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">VW Passat 1.6 TDI</h3>
+<span class="text-primary font-bold">₺1.350.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2019
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+68.500 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Bursa
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 5 -->
+<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2020%20Toyota%20Corolla%20sedan%20in%20red%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=7&orientation=landscape" alt="Toyota Corolla" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Toyota Corolla 1.6</h3>
+<span class="text-primary font-bold">₺1.150.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2020
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+52.300 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Benzin
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Antalya
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Scroll Buttons -->
+<button class="scroll-button absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hidden md:block">
+<div class="w-5 h-5 flex items-center justify-center text-secondary">
+<i class="ri-arrow-left-s-line"></i>
+</div>
+</button>
+<button class="scroll-button absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hidden md:block">
+<div class="w-5 h-5 flex items-center justify-center text-secondary">
+<i class="ri-arrow-right-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="cta-banner py-12 md:py-16">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-2xl md:text-4xl font-bold text-white mb-4">Aracınızı Hızlıca Satın</h2>
+<p class="text-lg text-white mb-8 max-w-2xl mx-auto">Sadece 30 saniye içinde ilan verin, binlerce potansiyel alıcıya ulaşın.</p>
+<button class="bg-primary text-white px-8 py-4 rounded-button text-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg whitespace-nowrap !rounded-button">
+<span class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-add-line"></i>
+</div>
+30 Saniyede İlan Ver
+</span>
+</button>
+</div>
+</section>
+<!-- Popular Categories -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Popüler Kategoriler</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<!-- Category 1 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-sedan-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">Sedan</h3>
+<p class="text-sm text-gray-500">1.245 araç</p>
+</a>
+<!-- Category 2 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-roadster-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">SUV</h3>
+<p class="text-sm text-gray-500">987 araç</p>
+</a>
+<!-- Category 3 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-taxi-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">Hatchback</h3>
+<p class="text-sm text-gray-500">865 araç</p>
+</a>
+<!-- Category 4 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-truck-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">Ticari</h3>
+<p class="text-sm text-gray-500">543 araç</p>
+</a>
+<!-- Category 5 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-car-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">Spor</h3>
+<p class="text-sm text-gray-500">234 araç</p>
+</a>
+<!-- Category 6 -->
+<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-motorbike-line"></i>
+</div>
+</div>
+<h3 class="font-semibold">Motosiklet</h3>
+<p class="text-sm text-gray-500">412 araç</p>
+</a>
+</div>
+</div>
+</section>
+<!-- Popular Brands -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Popüler Markalar</h2>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-6">
+<!-- Brand 1 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-bmw-fill text-3xl"></i>
+</div>
+<span class="font-medium">BMW</span>
+</a>
+<!-- Brand 2 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-mercedes-fill text-3xl"></i>
+</div>
+<span class="font-medium">Mercedes</span>
+</a>
+<!-- Brand 3 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-volkswagen-fill text-3xl"></i>
+</div>
+<span class="font-medium">Volkswagen</span>
+</a>
+<!-- Brand 4 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-car-fill text-3xl"></i>
+</div>
+<span class="font-medium">Audi</span>
+</a>
+<!-- Brand 5 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-car-fill text-3xl"></i>
+</div>
+<span class="font-medium">Toyota</span>
+</a>
+<!-- Brand 6 -->
+<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-car-fill text-3xl"></i>
+</div>
+<span class="font-medium">Renault</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Latest Listings Grid -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary">Son Eklenen İlanlar</h2>
+<a href="#" class="text-primary hover:underline flex items-center">
+Tümünü Gör
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Car Card 1 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2021%20Honda%20Civic%20sedan%20in%20dark%20gray%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=8&orientation=landscape" alt="Honda Civic" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Honda Civic 1.6i VTEC</h3>
+<span class="text-primary font-bold">₺1.250.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2021
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+28.600 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Benzin
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İstanbul
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 2 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2020%20Hyundai%20Tucson%20SUV%20in%20white%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=9&orientation=landscape" alt="Hyundai Tucson" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Hyundai Tucson 1.6 CRDi</h3>
+<span class="text-primary font-bold">₺1.480.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2020
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+42.800 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Ankara
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 3 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2019%20Ford%20Focus%20hatchback%20in%20blue%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=10&orientation=landscape" alt="Ford Focus" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Ford Focus 1.5 TDCi</h3>
+<span class="text-primary font-bold">₺980.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2019
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+76.400 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İzmir
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 4 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2022%20Kia%20Sportage%20SUV%20in%20red%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=11&orientation=landscape" alt="Kia Sportage" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Kia Sportage 1.6 CRDi</h3>
+<span class="text-primary font-bold">₺1.650.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2022
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+15.200 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Antalya
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 5 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2018%20Nissan%20Qashqai%20SUV%20in%20silver%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=12&orientation=landscape" alt="Nissan Qashqai" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Nissan Qashqai 1.5 dCi</h3>
+<span class="text-primary font-bold">₺1.050.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2018
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+92.700 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Bursa
+</span>
+</div>
+</div>
+</div>
+<!-- Car Card 6 -->
+<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=2021%20Peugeot%203008%20SUV%20in%20green%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=13&orientation=landscape" alt="Peugeot 3008" class="w-full h-full object-cover object-top">
+<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
+<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold mb-1">Peugeot 3008 1.5 BlueHDi</h3>
+<span class="text-primary font-bold">₺1.580.000</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2021
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-road-map-line"></i>
+</div>
+35.800 km
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-gas-station-line"></i>
+</div>
+Dizel
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Adana
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Müşteri Yorumları</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<div class="flex">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"OtoPazar sayesinde aracımı çok hızlı ve güvenli bir şekilde sattım. İlan verme süreci çok kolaydı ve birçok potansiyel alıcıya ulaştım. Kesinlikle tavsiye ederim!"</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-3-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Ahmet Yılmaz</h4>
+<p class="text-sm text-gray-500">İstanbul</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<div class="flex">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Hayalimdeki arabayı OtoPazar'da buldum. Filtreleme seçenekleri çok detaylı ve kullanışlı. Satıcıyla iletişime geçmek de çok kolaydı. Teşekkürler OtoPazar!"</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-3-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Ayşe Demir</h4>
+<p class="text-sm text-gray-500">Ankara</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<div class="flex">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Diğer platformlarla karşılaştırdığımda OtoPazar'ın kullanıcı dostu arayüzü ve güvenlik önlemleri gerçekten fark yaratıyor. İkinci el araç alım-satımı için en iyi platform."</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-3-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Mehmet Kaya</h4>
+<p class="text-sm text-gray-500">İzmir</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- App Download -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-8 md:mb-0">
+<h2 class="text-2xl md:text-4xl font-bold text-secondary mb-4">OtoPazar Mobil Uygulaması</h2>
+<p class="text-lg text-gray-700 mb-6">Araç alım-satım işlemlerinizi her an, her yerden yapabilmeniz için OtoPazar mobil uygulamasını hemen indirin.</p>
+<ul class="mb-8">
+<li class="flex items-center mb-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span>Anlık bildirimlerle yeni ilanlardan haberdar olun</span>
+</li>
+<li class="flex items-center mb-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span>Hızlı ve kolay ilan verme imkanı</span>
+</li>
+<li class="flex items-center mb-3">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span>Gelişmiş arama ve filtreleme özellikleri</span>
+</li>
+<li class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span>Satıcılarla anında mesajlaşma</span>
+</li>
+</ul>
+<div class="flex flex-wrap gap-4">
+<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded-button hover:bg-opacity-80 transition-colors !rounded-button">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-apple-fill text-2xl"></i>
+</div>
+<div>
+<div class="text-xs">İndir</div>
+<div class="text-sm font-semibold">App Store</div>
+</div>
+</a>
+<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded-button hover:bg-opacity-80 transition-colors !rounded-button">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-google-play-fill text-2xl"></i>
+</div>
+<div>
+<div class="text-xs">İndir</div>
+<div class="text-sm font-semibold">Google Play</div>
+</div>
+</a>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<img src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20car%20listing%20app%20interface%2C%20modern%20UI%20design%2C%20clean%20interface%2C%20car%20marketplace%20mobile%20application%2C%20high%20resolution%2C%20realistic&width=400&height=600&seq=14&orientation=portrait" alt="OtoPazar Mobil Uygulaması" class="max-w-full h-auto rounded-xl shadow-xl">
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="py-12 bg-secondary">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Yeni İlanlardan Haberdar Olun</h2>
+<p class="text-gray-200 mb-8 max-w-2xl mx-auto">E-posta adresinizi bırakın, size özel fırsatları ve yeni ilanları ilk siz görün.</p>
+<form class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+<input type="email" placeholder="E-posta adresiniz" class="flex-1 px-4 py-3 rounded-button border-none text-gray-800" required>
+<button type="submit" class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap !rounded-button">Abone Ol</button>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-100 pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<!-- Column 1 -->
+<div>
+<a href="#" class="text-primary font-['Pacifico'] text-3xl mb-4 inline-block">OtoPazar</a>
+<p class="text-gray-600 mb-4">Türkiye'nin en güvenilir ikinci el araç alım-satım platformu. 2023'den beri hizmetinizdeyiz.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-twitter-x-fill"></i>
+</div>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-youtube-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Column 2 -->
+<div>
+<h3 class="text-lg font-semibold mb-4">Hızlı Bağlantılar</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Ana Sayfa</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Araç Arama</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">İlan Ver</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Favorilerim</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Sıkça Sorulan Sorular</a></li>
+</ul>
+</div>
+<!-- Column 3 -->
+<div>
+<h3 class="text-lg font-semibold mb-4">Kategoriler</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Sedan</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">SUV</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Hatchback</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Ticari Araçlar</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Spor Araçlar</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Motosikletler</a></li>
+</ul>
+</div>
+<!-- Column 4 -->
+<div>
+<h3 class="text-lg font-semibold mb-4">İletişim</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-600">Bağdat Caddesi No:123, Kadıköy, İstanbul</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-600">+90 (212) 456 78 90</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-600">info@otopazar.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-600">Pazartesi - Cuma: 09:00 - 18:00</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-600 text-sm mb-4 md:mb-0">&copy; 2025 OtoPazar. Tüm hakları saklıdır.</p>
+<div class="flex flex-wrap gap-4 text-sm">
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Kullanım Koşulları</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Gizlilik Politikası</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">KVKK</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Çerez Politikası</a>
+</div>
+</div>
+</div>
+</footer>
+<script id="carouselScript">
+document.addEventListener('DOMContentLoaded', function() {
+const carousel = document.querySelector('.carousel-container');
+const scrollButtons = document.querySelectorAll('.scroll-button');
+if (carousel && scrollButtons.length === 2) {
+const leftButton = scrollButtons[0];
+const rightButton = scrollButtons[1];
+leftButton.addEventListener('click', function() {
+carousel.scrollBy({ left: -300, behavior: 'smooth' });
+});
+rightButton.addEventListener('click', function() {
+carousel.scrollBy({ left: 300, behavior: 'smooth' });
+});
+}
+});
+</script>
+<script id="favoriteScript">
+document.addEventListener('DOMContentLoaded', function() {
+const favoriteButtons = document.querySelectorAll('.favorite-button');
+favoriteButtons.forEach(button => {
+button.addEventListener('click', function() {
+const icon = this.querySelector('i');
+if (icon.classList.contains('ri-heart-line')) {
+icon.classList.remove('ri-heart-line');
+icon.classList.add('ri-heart-fill');
+this.classList.add('active');
+this.querySelector('div').classList.add('text-red-500');
+} else {
+icon.classList.remove('ri-heart-fill');
+icon.classList.add('ri-heart-line');
+this.classList.remove('active');
+this.querySelector('div').classList.remove('text-red-500');
+}
+});
+});
+});
+</script>
+</body>
+</html>

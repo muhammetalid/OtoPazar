@@ -1228,49 +1228,70 @@ Adana
     </div>
     
     <!-- Register Form -->
-    <div id="registerForm" class="hidden">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-secondary">Üye Ol</h2>
-        <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
-          <i class="ri-close-line text-2xl"></i>
-        </button>
-      </div>
-<form action="https://formsubmit.co/otopazar01@gmail.com" method="POST" class="space-y-4">
-  <!-- Ad -->
-  <input type="text"  name="ad"      placeholder="Adınız"      required
-         class="w-full p-3 border border-gray-300 rounded-button">
-  <!-- Soyad -->
-  <input type="text"  name="soyad"   placeholder="Soyadınız"   required
-         class="w-full p-3 border border-gray-300 rounded-button">
-  <!-- E-posta -->
-  <input type="email" name="email"   placeholder="E-posta"     required
-         class="w-full p-3 border border-gray-300 rounded-button">
-  <!-- Telefon -->
-  <input type="tel"   name="telefon" placeholder="Telefon"     required
-         class="w-full p-3 border border-gray-300 rounded-button">
-  <!-- Şifre -->
-  <input type="password" name="sifre" placeholder="Şifre" required
-         class="w-full p-3 border border-gray-300 rounded-button">
-  <!-- Şifre Tekrar -->
-  <input type="password" name="sifre_tekrar" placeholder="Şifre Tekrar" required
-         class="w-full p-3 border border-gray-300 rounded-button">
+<div id="registerForm" class="hidden">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-secondary">Üye Ol</h2>
+    <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+  </div>
 
-  <!-- Gelişmiş (isteğe bağlı) -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next"
-         value="https://muhammetalid.github.io/OtoPazar/tesekkur.html">
+  <!-- Eski form (Formsubmit ile çalışan) -->
+  <form action="https://formsubmit.co/otopazar01@gmail.com" method="POST" class="space-y-4">
+    <!-- Ad -->
+    <input type="text" name="ad" placeholder="Adınız" required
+      class="w-full p-3 border border-gray-300 rounded-button">
+    <!-- Soyad -->
+    <input type="text" name="soyad" placeholder="Soyadınız" required
+      class="w-full p-3 border border-gray-300 rounded-button">
+    <!-- E-posta -->
+    <input type="email" name="email" placeholder="E-posta" required
+      class="w-full p-3 border border-gray-300 rounded-button">
+    <!-- Telefon -->
+    <input type="tel" name="telefon" placeholder="Telefon" required
+      class="w-full p-3 border border-gray-300 rounded-button">
+    <!-- Şifre -->
+    <input type="password" name="sifre" placeholder="Şifre" required
+      class="w-full p-3 border border-gray-300 rounded-button">
+    <!-- Şifre Tekrar -->
+    <input type="password" name="sifre_tekrar" placeholder="Şifre Tekrar" required
+      class="w-full p-3 border border-gray-300 rounded-button">
 
-  <button type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-    Üye Ol
-  </button>
-</form>
-          
-      <div class="mt-6 text-center text-gray-600">
-        Zaten üye misiniz? 
-        <button onclick="switchAuthForm('login')" class="text-primary hover:underline">Giriş Yap</button>
-      </div>
-    </div>
+    <!-- Gelişmiş (isteğe bağlı) -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://muhammetalid.github.io/OtoPazar/tesekkur.html">
+
+    <button type="submit"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Üye Ol
+    </button>
+  </form>
+
+  <!-- Buraya Tally form embed iframe kodu -->
+  <div class="mt-6">
+    <iframe data-tally-src="https://tally.so/embed/nGVRR2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+      loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" 
+      title="Üye Ol Formu"></iframe>
+    <script>
+      var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+        if(typeof Tally !== "undefined"){
+          Tally.loadEmbeds();
+        } else {
+          d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc});
+        }
+      };
+      if(typeof Tally !== "undefined") v();
+      else if(d.querySelector('script[src="'+w+'"]')===null){
+        var s=d.createElement("script"); s.src=w; s.onload=v; s.onerror=v; d.body.appendChild(s);
+      }
+    </script>
+  </div>
+
+  <div class="mt-6 text-center text-gray-600">
+    Zaten üye misiniz? 
+    <button onclick="switchAuthForm('login')" class="text-primary hover:underline">Giriş Yap</button>
+  </div>
+</div>
   </div>
 </div>
 <script id="carouselScript">

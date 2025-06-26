@@ -106,33 +106,51 @@ color: #e74c3c;
 </head>
 <body>
 <!-- Header -->
-<header class="sticky top-0 z-50 bg-white shadow-md">
-<div class="container mx-auto px-4 py-3 flex items-center justify-between">
-<a href="#" class="text-primary font-['Pacifico'] text-3xl">OtoPazar</a>
-<div class="hidden md:flex relative flex-1 mx-8">
-<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-<div class="w-5 h-5 flex items-center justify-center text-gray-400">
-<i class="ri-search-line"></i>
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<a href="/" class="text-primary font-['Pacifico'] text-2xl">Araç.com</a>
+<!-- Navigation -->
+<nav class="hidden md:flex items-center space-x-6">
+<a href="/search" class="text-secondary hover:text-primary transition-colors">Araç Ara</a>
+<a href="/new-listing" class="text-secondary hover:text-primary transition-colors">İlan Ver</a>
+<a href="/how-it-works" class="text-secondary hover:text-primary transition-colors">Nasıl Çalışır?</a>
+<a href="/blog" class="text-secondary hover:text-primary transition-colors">Blog</a>
+</nav>
+<!-- User Actions -->
+<div class="flex items-center space-x-4">
+<button id="searchTrigger" class="md:hidden w-10 h-10 flex items-center justify-center text-secondary hover:text-primary transition-colors">
+<i class="ri-search-line text-xl"></i>
+</button>
+<a href="/favorites" class="hidden md:flex items-center text-secondary hover:text-primary transition-colors">
+<i class="ri-heart-line mr-2"></i>
+<span>Favoriler</span>
+</a>
+<div class="relative" id="userMenu">
+<button onclick="toggleAuthModal('login')" class="flex items-center space-x-2 text-secondary hover:text-primary transition-colors">
+<i class="ri-user-line text-xl"></i>
+<span class="hidden md:inline">Giriş Yap</span>
+</button>
+</div>
+<button onclick="toggleAuthModal('register')" class="hidden md:flex items-center text-secondary hover:text-primary transition-colors ml-4">
+<i class="ri-user-add-line mr-2"></i>
+<span>Üye Ol</span>
+</button>
+<a href="/new-listing" class="hidden md:inline-flex items-center bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors">
+<i class="ri-add-line mr-2"></i>
+<span>İlan Ver</span>
+</a>
 </div>
 </div>
-<input type="text" class="search-input w-full py-2 pl-10 pr-4 border border-gray-300 rounded-button bg-gray-50 text-sm" placeholder="Marka, model veya şehir ara...">
-</div>
-<div class="flex items-center gap-3">
-<a href="#" class="hidden md:block text-secondary hover:text-primary transition-colors whitespace-nowrap">İlan Ver</a>
-<a href="#" class="hidden md:block text-secondary hover:text-primary transition-colors whitespace-nowrap">Favorilerim</a>
-<button class="bg-white border border-secondary text-secondary hover:bg-gray-50 px-4 py-2 rounded-button transition-colors whitespace-nowrap !rounded-button">Giriş Yap</button>
-<button class="bg-primary text-white hover:bg-opacity-90 px-4 py-2 rounded-button transition-colors whitespace-nowrap !rounded-button">Kayıt Ol</button>
-</div>
-</div>
-<!-- Mobile Search -->
-<div class="md:hidden px-4 pb-3">
+<!-- Mobile Search Bar (Hidden by default) -->
+<div id="mobileSearch" class="hidden md:hidden py-4">
 <div class="relative">
-<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-<div class="w-5 h-5 flex items-center justify-center text-gray-400">
-<i class="ri-search-line"></i>
+<input type="text"
+placeholder="Marka, model veya anahtar kelime..."
+class="w-full pl-10 pr-4 py-2 rounded-button border border-gray-200 focus:border-primary transition-colors">
+<i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
 </div>
-</div>
-<input type="text" class="search-input w-full py-2 pl-10 pr-4 border border-gray-300 rounded-button bg-gray-50 text-sm" placeholder="Marka, model veya şehir ara...">
 </div>
 </div>
 </header>
@@ -144,18 +162,76 @@ color: #e74c3c;
 <div class="bg-white p-4 rounded-lg shadow-lg max-w-3xl mx-auto">
 <div class="flex flex-col md:flex-row gap-3">
 <div class="flex-1">
-<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
+<select id="brandSelect" class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
 <option value="">Marka Seçiniz</option>
 <option value="audi">Audi</option>
 <option value="bmw">BMW</option>
-<option value="mercedes">Mercedes</option>
+<option value="mercedes">Mercedes-Benz</option>
 <option value="volkswagen">Volkswagen</option>
 <option value="toyota">Toyota</option>
 <option value="honda">Honda</option>
+<option value="ford">Ford</option>
+<option value="hyundai">Hyundai</option>
+<option value="kia">Kia</option>
+<option value="renault">Renault</option>
+<option value="peugeot">Peugeot</option>
+<option value="citroen">Citroën</option>
+<option value="fiat">Fiat</option>
+<option value="opel">Opel</option>
+<option value="nissan">Nissan</option>
+<option value="mazda">Mazda</option>
+<option value="volvo">Volvo</option>
+<option value="seat">Seat</option>
+<option value="skoda">Škoda</option>
+<option value="mini">Mini</option>
+<option value="land_rover">Land Rover</option>
+<option value="jeep">Jeep</option>
+<option value="porsche">Porsche</option>
+<option value="mitsubishi">Mitsubishi</option>
+<option value="subaru">Subaru</option>
+<option value="tesla">Tesla</option>
+<option value="lexus">Lexus</option>
+<option value="alfa_romeo">Alfa Romeo</option>
+<option value="chevrolet">Chevrolet</option>
+<option value="dacia">Dacia</option>
+<option value="suzuki">Suzuki</option>
+<option value="cadillac">Cadillac</option>
+<option value="dodge">Dodge</option>
+<option value="chrysler">Chrysler</option>
+<option value="smart">Smart</option>
+<option value="bentley">Bentley</option>
+<option value="infiniti">Infiniti</option>
+<option value="jaguar">Jaguar</option>
+<option value="lancia">Lancia</option>
+<option value="maserati">Maserati</option>
+<option value="rolls_royce">Rolls-Royce</option>
+<option value="ferrari">Ferrari</option>
+<option value="lamborghini">Lamborghini</option>
+<option value="aston_martin">Aston Martin</option>
+<option value="bugatti">Bugatti</option>
+<option value="mclaren">McLaren</option>
+<option value="pagani">Pagani</option>
+<option value="acura">Acura</option>
+<option value="genesis">Genesis</option>
+<option value="karma">Karma</option>
+<option value="lynk">Lynk & Co</option>
+<option value="polestar">Polestar</option>
+<option value="rivian">Rivian</option>
+<option value="lucid">Lucid</option>
+<option value="nio">NIO</option>
+<option value="saic">SAIC</option>
+<option value="lotus">Lotus</option>
+<option value="cupra">Cupra</option>
+<option value="ds">DS</option>
+<option value="alpine">Alpine</option>
+<option value="borgward">Borgward</option>
+<option value="fisker">Fisker</option>
+<option value="byd">BYD</option>
+<option value="xpeng">XPeng</option>
 </select>
 </div>
 <div class="flex-1">
-<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
+<select id="modelSelect" class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
 <option value="">Model Seçiniz</option>
 </select>
 </div>
@@ -1116,6 +1192,92 @@ Adana
 </div>
 </div>
 </footer>
+<!-- Auth Modal -->
+<div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+    <!-- Login Form -->
+    <div id="loginForm" class="hidden">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-secondary">Giriş Yap</h2>
+        <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+      </div>
+      <form onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 mb-2" for="loginEmail">E-posta</label>
+          <input type="email" id="loginEmail" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2" for="loginPassword">Şifre</label>
+          <input type="password" id="loginPassword" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="flex items-center">
+            <input type="checkbox" class="mr-2">
+            <span class="text-sm text-gray-600">Beni hatırla</span>
+          </label>
+          <a href="#" class="text-sm text-primary hover:underline">Şifremi unuttum</a>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition-colors !rounded-button">Giriş Yap</button>
+      </form>
+      <div class="mt-6 text-center text-gray-600">
+        Hesabınız yok mu? 
+        <button onclick="switchAuthForm('register')" class="text-primary hover:underline">Üye Ol</button>
+      </div>
+    </div>
+    
+    <!-- Register Form -->
+    <div id="registerForm" class="hidden">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-secondary">Üye Ol</h2>
+        <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+      </div>
+      <form onsubmit="handleRegister(event)" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-2" for="firstName">Ad</label>
+            <input type="text" id="firstName" class="w-full p-3 border border-gray-300 rounded-button" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2" for="lastName">Soyad</label>
+            <input type="text" id="lastName" class="w-full p-3 border border-gray-300 rounded-button" required>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2" for="registerEmail">E-posta</label>
+          <input type="email" id="registerEmail" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2" for="phone">Telefon</label>
+          <input type="tel" id="phone" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2" for="registerPassword">Şifre</label>
+          <input type="password" id="registerPassword" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2" for="confirmPassword">Şifre Tekrar</label>
+          <input type="password" id="confirmPassword" class="w-full p-3 border border-gray-300 rounded-button" required>
+        </div>
+        <div class="flex items-start">
+          <input type="checkbox" id="terms" class="mt-1 mr-2" required>
+          <label for="terms" class="text-sm text-gray-600">
+            <a href="#" class="text-primary hover:underline">Kullanım koşullarını</a> ve 
+            <a href="#" class="text-primary hover:underline">Gizlilik politikasını</a> kabul ediyorum
+          </label>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition-colors !rounded-button">Üye Ol</button>
+      </form>
+      <div class="mt-6 text-center text-gray-600">
+        Zaten üye misiniz? 
+        <button onclick="switchAuthForm('login')" class="text-primary hover:underline">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script id="carouselScript">
 document.addEventListener('DOMContentLoaded', function() {
 const carousel = document.querySelector('.carousel-container');
@@ -1130,6 +1292,91 @@ rightButton.addEventListener('click', function() {
 carousel.scrollBy({ left: 300, behavior: 'smooth' });
 });
 }
+});
+</script>
+<script id="brandModelScript">
+document.addEventListener('DOMContentLoaded', function() {
+const carModels = {
+  audi: ["A1", "A3", "A4", "A5", "A6", "A7", "A8", "Q2", "Q3", "Q5", "Q7", "Q8", "e-tron", "TT", "R8"],
+  bmw: ["1 Serisi", "2 Serisi", "3 Serisi", "4 Serisi", "5 Serisi", "6 Serisi", "7 Serisi", "8 Serisi", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4", "i3", "i4", "i8", "iX"],
+  mercedes: ["A-Class", "B-Class", "C-Class", "CLA", "CLS", "E-Class", "S-Class", "GLA", "GLB", "GLC", "GLE", "GLS", "G-Class", "EQA", "EQB", "EQC", "EQS"],
+  volkswagen: ["Polo", "Golf", "ID.3", "ID.4", "Passat", "Arteon", "T-Cross", "T-Roc", "Tiguan", "Touareg", "Caddy", "Transporter"],
+  toyota: ["Yaris", "Corolla", "Camry", "C-HR", "RAV4", "Land Cruiser", "Hilux", "Proace", "Supra", "Mirai"],
+  honda: ["Jazz", "Civic", "Accord", "HR-V", "CR-V", "e"],
+  ford: ["Fiesta", "Focus", "Mondeo", "Puma", "Kuga", "Explorer", "Ranger", "Transit", "Mustang", "GT"],
+  hyundai: ["i10", "i20", "i30", "Elantra", "i40", "Kona", "Tucson", "Santa Fe", "IONIQ", "NEXO"],
+  kia: ["Picanto", "Rio", "Ceed", "Proceed", "Stonic", "Niro", "Sportage", "Sorento", "EV6", "Stinger"],
+  renault: ["Clio", "Captur", "Megane", "Arkana", "Kadjar", "Koleos", "Espace", "Zoe", "Twingo", "Talisman"]
+};
+const brandSelect = document.getElementById('brandSelect');
+const modelSelect = document.getElementById('modelSelect');
+brandSelect.addEventListener('change', function() {
+  const selectedBrand = this.value;
+  modelSelect.innerHTML = '<option value="">Model Seçiniz</option>';
+  
+  if (selectedBrand && carModels[selectedBrand]) {
+    carModels[selectedBrand].forEach(model => {
+      const option = document.createElement('option');
+      option.value = model.toLowerCase().replace(/\s+/g, '_');
+      option.textContent = model;
+      modelSelect.appendChild(option);
+    });
+  }
+});
+});
+</script>
+<script id="authScript">
+function toggleAuthModal(type) {
+  const modal = document.getElementById('authModal');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  
+  if (type === 'login') {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+  } else {
+    registerForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+  }
+}
+function closeAuthModal() {
+  const modal = document.getElementById('authModal');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  
+  modal.classList.remove('flex');
+  modal.classList.add('hidden');
+  loginForm.classList.add('hidden');
+  registerForm.classList.add('hidden');
+}
+function switchAuthForm(type) {
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  
+  if (type === 'login') {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+  } else {
+    registerForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+  }
+}
+function handleLogin(event) {
+  event.preventDefault();
+  // Handle login logic here
+}
+function handleRegister(event) {
+  event.preventDefault();
+  // Handle registration logic here
+}
+// Close modal when clicking outside
+document.getElementById('authModal').addEventListener('click', function(event) {
+  if (event.target === this) {
+    closeAuthModal();
+  }
 });
 </script>
 <script id="favoriteScript">

@@ -1694,15 +1694,31 @@ visitorsChart.resize();
 }
 });
 </script>
-<!-- Admin paneli #admin hash'iyle aç -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function showAdminPanel() {
+    document.querySelectorAll('.admin-content').forEach(el => {
+      el.classList.remove('hidden');
+      el.style.display = ''; // style display'ini sıfırla, varsa inline engellemesini kaldırır
+    });
+  }
+
+  function hideAdminPanel() {
+    document.querySelectorAll('.admin-content').forEach(el => {
+      el.classList.add('hidden');
+      el.style.display = 'none'; // inline stil ile de gizle
+    });
+  }
+
+  function toggleAdminPanel() {
     if (location.hash === '#admin') {
-      document.querySelectorAll('.admin-content').forEach(el =>
-        el.classList.remove('hidden')
-      );
+      showAdminPanel();
+    } else {
+      hideAdminPanel();
     }
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', toggleAdminPanel);
+  window.addEventListener('hashchange', toggleAdminPanel);
 </script>
 </body>
 </html>

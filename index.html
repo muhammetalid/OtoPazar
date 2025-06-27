@@ -3,1414 +3,837 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OtoPazar - İkinci El Araç Satış Platformu</title>
+<title>OtoPazar - İkinci El Araç Platformu</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#2ECC71',secondary:'#1E2A38'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#22c55e',secondary:'#f97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
-font-family: 'Inter', Arial, sans-serif;
-color: #1E1E1E;
-background-color: #F9F9F9;
+font-family: 'Inter', sans-serif;
 }
 .hero-section {
-background-image: linear-gradient(rgba(30, 42, 56, 0.7), rgba(30, 42, 56, 0.7)), url('https://readdy.ai/api/search-image?query=modern%20luxury%20cars%20parked%20in%20showroom%20with%20soft%20lighting%2C%20professional%20photography%2C%20high-end%20automobile%20dealership%2C%20premium%20vehicles%20on%20display%2C%20elegant%20atmosphere%2C%20high%20resolution%2C%20realistic%2C%20detailed&width=1920&height=600&seq=1&orientation=landscape');
+background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20modern%20car%20showroom%20with%20luxury%20cars%20on%20display%2C%20soft%20lighting%2C%20clean%20environment%2C%20high-end%20automobiles%20showcased%20in%20a%20spacious%20dealership%20with%20glass%20walls%2C%20polished%20floors%2C%20and%20a%20professional%20atmosphere%2C%20gradient%20from%20light%20to%20transparent%20on%20the%20left%20side%20for%20text%20overlay&width=1920&height=600&seq=1&orientation=landscape');
 background-size: cover;
 background-position: center;
 }
-.search-input:focus {
+.search-box:focus {
 outline: none;
-box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
-.car-card {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+.custom-select {
+appearance: none;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 0.5rem center;
+background-size: 1.5em 1.5em;
 }
 .car-card:hover {
 transform: translateY(-5px);
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-.cta-banner {
-background-image: linear-gradient(90deg, rgba(30, 42, 56, 0.9), rgba(30, 42, 56, 0.8)), url('https://readdy.ai/api/search-image?query=car%20keys%20and%20contract%20papers%20on%20desk%2C%20car%20dealership%20office%2C%20professional%20lighting%2C%20business%20transaction%2C%20selling%20car%20concept%2C%20realistic%2C%20detailed&width=1200&height=300&seq=2&orientation=landscape');
-background-size: cover;
-background-position: center;
-}
-input[type="range"]::-webkit-slider-thumb {
--webkit-appearance: none;
-appearance: none;
-width: 20px;
-height: 20px;
-border-radius: 50%;
-background: #2ECC71;
-cursor: pointer;
-}
-input[type="range"]::-moz-range-thumb {
-width: 20px;
-height: 20px;
-border-radius: 50%;
-background: #2ECC71;
-cursor: pointer;
-border: none;
-}
-input[type="checkbox"] {
-display: none;
-}
-.custom-checkbox {
-width: 20px;
-height: 20px;
-border: 2px solid #1E2A38;
-border-radius: 4px;
-display: inline-block;
-position: relative;
-cursor: pointer;
-}
-input[type="checkbox"]:checked + .custom-checkbox:after {
-content: "";
-position: absolute;
-width: 12px;
-height: 12px;
-background-color: #2ECC71;
-border-radius: 2px;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-}
-.tab-active {
-background-color: #2ECC71;
-color: white;
-}
-.carousel-container {
-scroll-behavior: smooth;
-}
-.scroll-button {
-opacity: 0.8;
-transition: opacity 0.3s ease;
-}
-.scroll-button:hover {
-opacity: 1;
-}
-.favorite-button {
-transition: transform 0.2s ease;
-}
-.favorite-button:hover {
-transform: scale(1.2);
-}
-.favorite-button.active {
-color: #e74c3c;
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 </style>
 </head>
-<body>
-<!-- Header -->
-<header class="sticky top-0 z-50 bg-white shadow-sm">
-<div class="container mx-auto px-4">
-<div class="flex items-center justify-between h-16">
-<!-- Logo -->
-<a href="/" class="text-primary font-['Pacifico'] text-2xl">OtoPazar</a>
-<!-- Navigation -->
-<nav class="hidden md:flex items-center space-x-6">
-<a href="/search" class="text-secondary hover:text-primary transition-colors">Araç Ara</a>
-<a href="/new-listing" class="text-secondary hover:text-primary transition-colors">İlan Ver</a>
-<a href="/how-it-works" class="text-secondary hover:text-primary transition-colors">Nasıl Çalışır?</a>
-<a href="/blog" class="text-secondary hover:text-primary transition-colors">Blog</a>
-</nav>
-<!-- User Actions -->
+<body class="bg-gray-50">
+<!-- Navbar -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a href="#" class="text-primary text-2xl font-['Pacifico']">OtoPazar</a>
+<div class="hidden md:ml-10 md:flex md:space-x-8">
+<a href="#" class="text-primary border-b-2 border-primary px-1 pt-1 font-medium">Ana Sayfa</a>
+<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">İlanlar</a>
+<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">Nasıl Çalışır</a>
+<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">Blog</a>
+<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">İletişim</a>
+</div>
+</div>
 <div class="flex items-center space-x-4">
-<button id="searchTrigger" class="md:hidden w-10 h-10 flex items-center justify-center text-secondary hover:text-primary transition-colors">
-<i class="ri-search-line text-xl"></i>
+<button id="favoritesBtn" class="text-gray-500 hover:text-primary p-2 rounded-full">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-heart-line ri-lg"></i>
+</div>
 </button>
-<a href="/favorites" class="hidden md:flex items-center text-secondary hover:text-primary transition-colors">
-<i class="ri-heart-line mr-2"></i>
-<span>Favoriler</span>
-</a>
-<div class="relative" id="userMenu">
-<button onclick="toggleAuthModal('login')" class="flex items-center space-x-2 text-secondary hover:text-primary transition-colors">
-<i class="ri-user-line text-xl"></i>
-<span class="hidden md:inline">Giriş Yap</span>
+<button id="postAdBtn" class="bg-secondary text-white px-4 py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+İlan Ver
+</button>
+<button id="loginBtn" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+Giriş Yap
+</button>
+<button id="mobileMenuBtn" class="md:hidden text-gray-500 p-2 rounded-full">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
 </button>
 </div>
-<button onclick="toggleAuthModal('register')" class="hidden md:flex items-center text-secondary hover:text-primary transition-colors ml-4">
-<i class="ri-user-add-line mr-2"></i>
-<span>Üye Ol</span>
-</button>
-<a href="/new-listing" class="hidden md:inline-flex items-center bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors">
-<i class="ri-add-line mr-2"></i>
-<span>İlan Ver</span>
-</a>
 </div>
 </div>
-<!-- Mobile Search Bar (Hidden by default) -->
-<div id="mobileSearch" class="hidden md:hidden py-4">
+<!-- Mobile menu -->
+<div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="#" class="text-primary block px-3 py-2 rounded-md font-medium">Ana Sayfa</a>
+<a href="#" class="text-gray-500 hover:text-primary block px-3 py-2 rounded-md font-medium">İlanlar</a>
+<a href="#" class="text-gray-500 hover:text-primary block px-3 py-2 rounded-md font-medium">Nasıl Çalışır</a>
+<a href="#" class="text-gray-500 hover:text-primary block px-3 py-2 rounded-md font-medium">Blog</a>
+<a href="#" class="text-gray-500 hover:text-primary block px-3 py-2 rounded-md font-medium">İletişim</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section with Search -->
+<section class="hero-section relative">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+<div class="w-full md:w-1/2">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Hayalinizdeki Araca Kavuşun</h1>
+<p class="text-lg text-gray-700 mb-8">Türkiye'nin en güvenilir ikinci el araç platformunda binlerce araç ilanı arasından size uygun olanı bulun.</p>
+<!-- Search Box -->
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label for="brand" class="block text-sm font-medium text-gray-700 mb-1">Marka</label>
 <div class="relative">
-<input type="text"
-placeholder="Marka, model veya anahtar kelime..."
-class="w-full pl-10 pr-4 py-2 rounded-button border border-gray-200 focus:border-primary transition-colors">
-<i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-</div>
-</div>
-</div>
-</header>
-<!-- Hero Section -->
-<section class="hero-section py-16 md:py-24">
-<div class="container mx-auto px-4 text-center">
-<h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Hayalinizdeki Araca Kavuşun</h1>
-<p class="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">Türkiye'nin en güvenilir ikinci el araç platformunda binlerce seçenek sizi bekliyor.</p>
-<div class="bg-white p-4 rounded-lg shadow-lg max-w-3xl mx-auto">
-<div class="flex flex-col md:flex-row gap-3">
-<div class="flex-1">
-<select id="brandSelect" class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
-<option value="">Marka Seçiniz</option>
+<select id="brand" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
+<option value="">Tüm Markalar</option>
 <option value="audi">Audi</option>
 <option value="bmw">BMW</option>
-<option value="mercedes">Mercedes-Benz</option>
+<option value="mercedes">Mercedes</option>
 <option value="volkswagen">Volkswagen</option>
-<option value="toyota">Toyota</option>
-<option value="honda">Honda</option>
-<option value="ford">Ford</option>
-<option value="hyundai">Hyundai</option>
-<option value="alfa romeo">Kia</option>
-<option value="renault KELL">Renault KELL</option>
-<option value="peugeot">Peugeot</option>
-<option value="citroen">Citroën</option>
-<option value="fiat">Fiat</option>
-<option value="opel">Opel</option>
-<option value="nissan">Nissan</option>
-<option value="mazda">Mazda</option>
-<option value="volvo">Volvo</option>
-<option value="seat">Seat</option>
-<option value="skoda">Škoda</option>
-<option value="mini">Mini</option>
-<option value="land_rover">Land Rover</option>
-<option value="jeep">Jeep</option>
-<option value="porsche">Porsche</option>
-<option value="mitsubishi">Mitsubishi</option>
-<option value="subaru">Subaru</option>
-<option value="tesla">Tesla</option>
-<option value="lexus">Lexus</option>
-<option value="alfa_romeo">Alfa Romeo</option>
-<option value="chevrolet">Chevrolet</option>
-<option value="dacia">Dacia</option>
-<option value="suzuki">Suzuki</option>
-<option value="cadillac">Cadillac</option>
-<option value="dodge">Dodge</option>
-<option value="chrysler">Chrysler</option>
-<option value="smart">Smart</option>
-<option value="bentley">Bentley</option>
-<option value="infiniti">Infiniti</option>
-<option value="jaguar">Jaguar</option>
-<option value="lancia">Lancia</option>
-<option value="maserati">Maserati</option>
-<option value="rolls_royce">Rolls-Royce</option>
-<option value="ferrari">Ferrari</option>
-<option value="lamborghini">Lamborghini</option>
-<option value="aston_martin">Aston Martin</option>
-<option value="bugatti">Bugatti</option>
-<option value="mclaren">McLaren</option>
-<option value="pagani">Pagani</option>
-<option value="acura">Acura</option>
-<option value="genesis">Genesis</option>
-<option value="karma">Karma</option>
-<option value="lynk">Lynk & Co</option>
-<option value="polestar">Polestar</option>
-<option value="rivian">Rivian</option>
-<option value="lucid">Lucid</option>
-<option value="nio">NIO</option>
-<option value="saic">SAIC</option>
-<option value="lotus">Lotus</option>
-<option value="cupra">Cupra</option>
-<option value="ds">DS</option>
-<option value="alpine">Alpine</option>
-<option value="borgward">Borgward</option>
-<option value="fisker">Fisker</option>
-<option value="byd">BYD</option>
-<option value="xpeng">XPeng</option>
+<option value="renault">Renault</option>
 </select>
 </div>
-<div class="flex-1">
-<select id="modelSelect" class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
-<option value="">Model Seçiniz</option>
+</div>
+<div>
+<label for="model" class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+<div class="relative">
+<select id="model" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
+<option value="">Tüm Modeller</option>
 </select>
 </div>
-<div class="flex-1">
-<select class="w-full p-3 border border-gray-300 rounded-button text-gray-700 bg-white pr-8">
-<option value="">Şehir Seçiniz</option>
+</div>
+<div>
+<label for="city" class="block text-sm font-medium text-gray-700 mb-1">Şehir</label>
+<div class="relative">
+<select id="city" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
+<option value="">Tüm Şehirler</option>
 <option value="istanbul">İstanbul</option>
 <option value="ankara">Ankara</option>
 <option value="izmir">İzmir</option>
-<option value="antalya">Antalya</option>
 <option value="bursa">Bursa</option>
+<option value="antalya">Antalya</option>
 </select>
 </div>
-<button class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap !rounded-button">
-<span class="flex items-center">
+</div>
+<div>
+<label for="price" class="block text-sm font-medium text-gray-700 mb-1">Fiyat Aralığı</label>
+<div class="relative">
+<select id="price" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
+<option value="">Tüm Fiyatlar</option>
+<option value="0-250000">0 - 250.000 ₺</option>
+<option value="250000-500000">250.000 - 500.000 ₺</option>
+<option value="500000-750000">500.000 - 750.000 ₺</option>
+<option value="750000-1000000">750.000 - 1.000.000 ₺</option>
+<option value="1000000+">1.000.000 ₺ ve üzeri</option>
+</select>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition flex items-center justify-center">
 <div class="w-5 h-5 flex items-center justify-center mr-2">
 <i class="ri-search-line"></i>
 </div>
-Ara
-</span>
+Araç Ara
 </button>
 </div>
 </div>
 </div>
 </section>
-<!-- Featured Listings -->
+<!-- Category Grid -->
 <section class="py-12 bg-white">
-<div class="container mx-auto px-4">
-<div class="flex justify-between items-center mb-8">
-<h2 class="text-2xl md:text-3xl font-bold text-secondary">Öne Çıkan İlanlar</h2>
-<a href="#" class="text-primary hover:underline flex items-center">
-Tümünü Gör
-<div class="w-5 h-5 flex items-center justify-center ml-1">
-<i class="ri-arrow-right-line"></i>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Kategorilere Göre Araçlar</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<a href="#" class="group">
+<div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
+<div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+<i class="ri-sedan-line ri-3x"></i>
+</div>
+<h3 class="text-lg font-medium text-gray-900">Sedan</h3>
+<p class="text-sm text-gray-500 mt-1">1.245 araç</p>
 </div>
 </a>
+<a href="#" class="group">
+<div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
+<div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+<i class="ri-car-line ri-3x"></i>
 </div>
-<div class="relative">
-<div class="carousel-container flex overflow-x-auto gap-6 pb-4 hide-scrollbar">
-<!-- Car Card 1 -->
-<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2020%20BMW%203%20Series%20sedan%20in%20metallic%20blue%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=3&orientation=landscape" alt="BMW 3 Serisi" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
+<h3 class="text-lg font-medium text-gray-900">Hatchback</h3>
+<p class="text-sm text-gray-500 mt-1">987 araç</p>
 </div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">BMW 3 Serisi 320i</h3>
-<span class="text-primary font-bold">₺1.750.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2020
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-45.000 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Benzin
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-İstanbul
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 2 -->
-<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2021%20Mercedes-Benz%20E-Class%20sedan%20in%20silver%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=4&orientation=landscape" alt="Mercedes E Serisi" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Mercedes E 200d</h3>
-<span class="text-primary font-bold">₺2.450.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2021
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-32.500 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Ankara
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 3 -->
-<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2022%20Audi%20A6%20sedan%20in%20black%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=5&orientation=landscape" alt="Audi A6" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Audi A6 2.0 TDI</h3>
-<span class="text-primary font-bold">₺2.850.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2022
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-18.700 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-İzmir
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 4 -->
-<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2019%20Volkswagen%20Passat%20sedan%20in%20white%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=6&orientation=landscape" alt="Volkswagen Passat" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">VW Passat 1.6 TDI</h3>
-<span class="text-primary font-bold">₺1.350.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2019
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-68.500 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Bursa
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 5 -->
-<div class="car-card flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2020%20Toyota%20Corolla%20sedan%20in%20red%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=7&orientation=landscape" alt="Toyota Corolla" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Toyota Corolla 1.6</h3>
-<span class="text-primary font-bold">₺1.150.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2020
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-52.300 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Benzin
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Antalya
-</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Scroll Buttons -->
-<button class="scroll-button absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hidden md:block">
-<div class="w-5 h-5 flex items-center justify-center text-secondary">
-<i class="ri-arrow-left-s-line"></i>
-</div>
-</button>
-<button class="scroll-button absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hidden md:block">
-<div class="w-5 h-5 flex items-center justify-center text-secondary">
-<i class="ri-arrow-right-s-line"></i>
-</div>
-</button>
-</div>
-</div>
-</section>
-<!-- CTA Banner -->
-<section class="cta-banner py-12 md:py-16">
-<div class="container mx-auto px-4 text-center">
-<h2 class="text-2xl md:text-4xl font-bold text-white mb-4">Aracınızı Hızlıca Satın</h2>
-<p class="text-lg text-white mb-8 max-w-2xl mx-auto">Sadece 30 saniye içinde ilan verin, binlerce potansiyel alıcıya ulaşın.</p>
-<button class="bg-primary text-white px-8 py-4 rounded-button text-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg whitespace-nowrap !rounded-button">
-<span class="flex items-center">
-<div class="w-6 h-6 flex items-center justify-center mr-2">
-<i class="ri-add-line"></i>
-</div>
-30 Saniyede İlan Ver
-</span>
-</button>
-</div>
-</section>
-<!-- Popular Categories -->
-<section class="py-12 bg-white">
-<div class="container mx-auto px-4">
-<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Popüler Kategoriler</h2>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-<!-- Category 1 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-sedan-line"></i>
-</div>
-</div>
-<h3 class="font-semibold">Sedan</h3>
-<p class="text-sm text-gray-500">1.245 araç</p>
 </a>
-<!-- Category 2 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-roadster-line"></i>
+<a href="#" class="group">
+<div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
+<div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+<i class="ri-jeep-line ri-3x"></i>
 </div>
+<h3 class="text-lg font-medium text-gray-900">SUV</h3>
+<p class="text-sm text-gray-500 mt-1">1.578 araç</p>
 </div>
-<h3 class="font-semibold">SUV</h3>
-<p class="text-sm text-gray-500">987 araç</p>
 </a>
-<!-- Category 3 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-taxi-line"></i>
+<a href="#" class="group">
+<div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
+<div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+<i class="ri-roadster-line ri-3x"></i>
 </div>
+<h3 class="text-lg font-medium text-gray-900">Spor</h3>
+<p class="text-sm text-gray-500 mt-1">324 araç</p>
 </div>
-<h3 class="font-semibold">Hatchback</h3>
-<p class="text-sm text-gray-500">865 araç</p>
-</a>
-<!-- Category 4 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-truck-line"></i>
-</div>
-</div>
-<h3 class="font-semibold">Ticari</h3>
-<p class="text-sm text-gray-500">543 araç</p>
-</a>
-<!-- Category 5 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-car-line"></i>
-</div>
-</div>
-<h3 class="font-semibold">Spor</h3>
-<p class="text-sm text-gray-500">234 araç</p>
-</a>
-<!-- Category 6 -->
-<a href="#" class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center mx-auto mb-3 bg-primary bg-opacity-10 rounded-full">
-<div class="w-8 h-8 flex items-center justify-center text-primary">
-<i class="ri-motorbike-line"></i>
-</div>
-</div>
-<h3 class="font-semibold">Motosiklet</h3>
-<p class="text-sm text-gray-500">412 araç</p>
 </a>
 </div>
 </div>
 </section>
 <!-- Popular Brands -->
 <section class="py-12 bg-gray-50">
-<div class="container mx-auto px-4">
-<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Popüler Markalar</h2>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Popüler Markalar</h2>
 <div class="grid grid-cols-3 md:grid-cols-6 gap-6">
-<!-- Brand 1 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-bmw-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">BMW</span>
+<span class="text-sm font-medium text-gray-900">BMW</span>
 </a>
-<!-- Brand 2 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-mercedes-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">Mercedes</span>
+<span class="text-sm font-medium text-gray-900">Audi</span>
 </a>
-<!-- Brand 3 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-volkswagen-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">Volkswagen</span>
+<span class="text-sm font-medium text-gray-900">Mercedes</span>
 </a>
-<!-- Brand 4 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-car-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">Audi</span>
+<span class="text-sm font-medium text-gray-900">Volkswagen</span>
 </a>
-<!-- Brand 5 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-car-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">Toyota</span>
+<span class="text-sm font-medium text-gray-900">Renault</span>
 </a>
-<!-- Brand 6 -->
-<a href="#" class="bg-white rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow">
-<div class="w-12 h-12 flex items-center justify-center mb-2">
-<i class="ri-car-fill text-3xl"></i>
+<a href="#" class="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center hover:shadow-md transition-all">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-2">
+<i class="ri-car-line ri-2x"></i>
 </div>
-<span class="font-medium">Renault</span>
+<span class="text-sm font-medium text-gray-900">Toyota</span>
 </a>
 </div>
 </div>
 </section>
-<!-- Latest Listings Grid -->
+<!-- Recent Listings -->
 <section class="py-12 bg-white">
-<div class="container mx-auto px-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between items-center mb-8">
-<h2 class="text-2xl md:text-3xl font-bold text-secondary">Son Eklenen İlanlar</h2>
-<a href="#" class="text-primary hover:underline flex items-center">
+<h2 class="text-3xl font-bold text-gray-900">Son İlanlar</h2>
+<a href="#" class="text-primary hover:text-primary-dark font-medium flex items-center">
 Tümünü Gör
 <div class="w-5 h-5 flex items-center justify-center ml-1">
 <i class="ri-arrow-right-line"></i>
 </div>
 </a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Car Card 1 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2021%20Honda%20Civic%20sedan%20in%20dark%20gray%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=8&orientation=landscape" alt="Honda Civic" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20silver%20BMW%203%20Series%20sedan%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=2&orientation=landscape" alt="BMW 3.20i" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
 <i class="ri-heart-line"></i>
 </div>
 </button>
+<div class="absolute bottom-3 left-3 bg-primary text-white px-2 py-1 rounded text-sm font-medium">
+3 ay kaldı
+</div>
 </div>
 <div class="p-4">
 <div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Honda Civic 1.6i VTEC</h3>
-<span class="text-primary font-bold">₺1.250.000</span>
+<h3 class="text-lg font-semibold text-gray-900 mb-1">BMW 3.20i M Sport</h3>
+<p class="text-lg font-bold text-primary">875.000 ₺</p>
 </div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2021
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-28.600 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Benzin
-</span>
-<span class="flex items-center">
+<p class="text-sm text-gray-500 mb-3">2020 • 45.000 km • Benzin • Otomatik</p>
+<div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
 </div>
-İstanbul
-</span>
+İstanbul, Kadıköy
 </div>
 </div>
 </div>
 <!-- Car Card 2 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2020%20Hyundai%20Tucson%20SUV%20in%20white%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=9&orientation=landscape" alt="Hyundai Tucson" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20white%20Audi%20A4%20sedan%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=3&orientation=landscape" alt="Audi A4" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
 <i class="ri-heart-line"></i>
 </div>
 </button>
+<div class="absolute bottom-3 left-3 bg-primary text-white px-2 py-1 rounded text-sm font-medium">
+2 ay kaldı
+</div>
 </div>
 <div class="p-4">
 <div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Hyundai Tucson 1.6 CRDi</h3>
-<span class="text-primary font-bold">₺1.480.000</span>
+<h3 class="text-lg font-semibold text-gray-900 mb-1">Audi A4 2.0 TDI</h3>
+<p class="text-lg font-bold text-primary">950.000 ₺</p>
 </div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2020
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-42.800 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
+<p class="text-sm text-gray-500 mb-3">2021 • 32.500 km • Dizel • Otomatik</p>
+<div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
 </div>
-Ankara
-</span>
+Ankara, Çankaya
 </div>
 </div>
 </div>
 <!-- Car Card 3 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2019%20Ford%20Focus%20hatchback%20in%20blue%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=10&orientation=landscape" alt="Ford Focus" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20black%20Mercedes%20C-Class%20sedan%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=4&orientation=landscape" alt="Mercedes C180" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
 <i class="ri-heart-line"></i>
 </div>
 </button>
+<div class="absolute bottom-3 left-3 bg-primary text-white px-2 py-1 rounded text-sm font-medium">
+1 ay kaldı
+</div>
 </div>
 <div class="p-4">
 <div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Ford Focus 1.5 TDCi</h3>
-<span class="text-primary font-bold">₺980.000</span>
+<h3 class="text-lg font-semibold text-gray-900 mb-1">Mercedes C180 AMG</h3>
+<p class="text-lg font-bold text-primary">1.250.000 ₺</p>
 </div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2019
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-76.400 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
+<p class="text-sm text-gray-500 mb-3">2022 • 18.000 km • Benzin • Otomatik</p>
+<div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
 </div>
-İzmir
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 4 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2022%20Kia%20Sportage%20SUV%20in%20red%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=11&orientation=landscape" alt="Kia Sportage" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Kia Sportage 1.6 CRDi</h3>
-<span class="text-primary font-bold">₺1.650.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2022
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-15.200 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Antalya
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 5 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2018%20Nissan%20Qashqai%20SUV%20in%20silver%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=12&orientation=landscape" alt="Nissan Qashqai" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Nissan Qashqai 1.5 dCi</h3>
-<span class="text-primary font-bold">₺1.050.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2018
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-92.700 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Bursa
-</span>
-</div>
-</div>
-</div>
-<!-- Car Card 6 -->
-<div class="car-card bg-white rounded-lg shadow-md overflow-hidden">
-<div class="relative h-48">
-<img src="https://readdy.ai/api/search-image?query=2021%20Peugeot%203008%20SUV%20in%20green%20color%2C%20professional%20car%20photography%2C%20showroom%20quality%2C%20clean%20background%2C%20high%20resolution%2C%20realistic&width=400&height=300&seq=13&orientation=landscape" alt="Peugeot 3008" class="w-full h-full object-cover object-top">
-<button class="favorite-button absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-heart-line"></i>
-</div>
-</button>
-</div>
-<div class="p-4">
-<div class="flex justify-between items-start">
-<h3 class="text-lg font-semibold mb-1">Peugeot 3008 1.5 BlueHDi</h3>
-<span class="text-primary font-bold">₺1.580.000</span>
-</div>
-<div class="flex flex-wrap gap-2 mt-2 text-sm text-gray-600">
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-calendar-line"></i>
-</div>
-2021
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-road-map-line"></i>
-</div>
-35.800 km
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-gas-station-line"></i>
-</div>
-Dizel
-</span>
-<span class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-1">
-<i class="ri-map-pin-line"></i>
-</div>
-Adana
-</span>
+İzmir, Karşıyaka
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Testimonials -->
+<!-- How It Works -->
 <section class="py-12 bg-gray-50">
-<div class="container mx-auto px-4">
-<h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8 text-center">Müşteri Yorumları</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Testimonial 1 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="text-primary">
-<div class="flex">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Nasıl Çalışır?</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-search-line ri-2x"></i>
 </div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Ara</h3>
+<p class="text-gray-600">Binlerce ilan arasından filtreleme seçenekleriyle size en uygun aracı bulun.</p>
 </div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
+<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-user-add-line ri-2x"></i>
 </div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Üye Ol</h3>
+<p class="text-gray-600">Hızlıca üye olun, satıcılarla mesajlaşın ve favori ilanlarınızı kaydedin.</p>
 </div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
+<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-add-circle-line ri-2x"></i>
 </div>
-</div>
-</div>
-</div>
-<p class="text-gray-700 mb-4">"OtoPazar sayesinde aracımı çok hızlı ve güvenli bir şekilde sattım. İlan verme süreci çok kolaydı ve birçok potansiyel alıcıya ulaştım. Kesinlikle tavsiye ederim!"</p>
-<div class="flex items-center">
-<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-user-3-line"></i>
-</div>
-</div>
-<div>
-<h4 class="font-semibold">ÖMER ARIK</h4>
-<p class="text-sm text-gray-500">BİNGÖL</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 2 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="text-primary">
-<div class="flex">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-half-fill"></i>
-</div>
-</div>
-</div>
-</div>
-<p class="text-gray-700 mb-4">"Hayalimdeki arabayı OtoPazar'da buldum. Filtreleme seçenekleri çok detaylı ve kullanışlı. Satıcıyla iletişime geçmek de çok kolaydı. Teşekkürler OtoPazar!"</p>
-<div class="flex items-center">
-<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-user-3-line"></i>
-</div>
-</div>
-<div>
-<h4 class="font-semibold">MUHAMMET DEMİREL</h4>
-<p class="text-sm text-gray-500">ADANA</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 3 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="text-primary">
-<div class="flex">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-star-fill"></i>
-</div>
-</div>
-</div>
-</div>
-<p class="text-gray-700 mb-4">"Diğer platformlarla karşılaştırdığımda OtoPazar'ın kullanıcı dostu arayüzü ve güvenlik önlemleri gerçekten fark yaratıyor. İkinci el araç alım-satımı için en iyi platform."</p>
-<div class="flex items-center">
-<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 mr-3">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-user-3-line"></i>
-</div>
-</div>
-<div>
-<h4 class="font-semibold">SAMET KILIÇ</h4>
-<p class="text-sm text-gray-500">DİYARBAKIR</p>
-</div>
-</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">İlan Ver</h3>
+<p class="text-gray-600">Aracınızı satmak için hemen ücretsiz ilan verin. İlk 3 ay tamamen ücretsiz!</p>
 </div>
 </div>
 </div>
 </section>
-<!-- App Download -->
+<!-- Blog Section -->
 <section class="py-12 bg-white">
-<div class="container mx-auto px-4">
-<div class="flex flex-col md:flex-row items-center">
-<div class="md:w-1/2 mb-8 md:mb-0">
-<h2 class="text-2xl md:text-4xl font-bold text-secondary mb-4">OtoPazar Mobil Uygulaması</h2>
-<p class="text-lg text-gray-700 mb-6">Araç alım-satım işlemlerinizi her an, her yerden yapabilmeniz için OtoPazar mobil uygulamasını hemen indirin.</p>
-<ul class="mb-8">
-<li class="flex items-center mb-3">
-<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>Anlık bildirimlerle yeni ilanlardan haberdar olun</span>
-</li>
-<li class="flex items-center mb-3">
-<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>Hızlı ve kolay ilan verme imkanı</span>
-</li>
-<li class="flex items-center mb-3">
-<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>Gelişmiş arama ve filtreleme özellikleri</span>
-</li>
-<li class="flex items-center">
-<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>Satıcılarla anında mesajlaşma</span>
-</li>
-</ul>
-<div class="flex flex-wrap gap-4">
-<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded-button hover:bg-opacity-80 transition-colors !rounded-button">
-<div class="w-8 h-8 flex items-center justify-center mr-2">
-<i class="ri-apple-fill text-2xl"></i>
-</div>
-<div>
-<div class="text-xs">İndir</div>
-<div class="text-sm font-semibold">App Store</div>
-</div>
-</a>
-<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded-button hover:bg-opacity-80 transition-colors !rounded-button">
-<div class="w-8 h-8 flex items-center justify-center mr-2">
-<i class="ri-google-play-fill text-2xl"></i>
-</div>
-<div>
-<div class="text-xs">İndir</div>
-<div class="text-sm font-semibold">Google Play</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-3xl font-bold text-gray-900">Blog</h2>
+<a href="#" class="text-primary hover:text-primary-dark font-medium flex items-center">
+Tümünü Gör
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
 </div>
 </a>
 </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20showing%20a%20mechanic%20inspecting%20a%20car%20engine%2C%20well-lit%20garage%20environment%2C%20focus%20on%20hands%20checking%20components%2C%20automotive%20maintenance%20scene%2C%20realistic%2C%20detailed&width=600&height=300&seq=5&orientation=landscape" alt="Araç Bakımı" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<div class="text-sm text-gray-500 mb-2">27 Haziran 2025</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">İkinci El Araç Alırken Dikkat Edilmesi Gerekenler</h3>
+<p class="text-gray-600 text-sm mb-4">İkinci el araç alırken nelere dikkat etmelisiniz? Uzmanından püf noktaları ve öneriler...</p>
+<a href="#" class="text-primary font-medium hover:underline">Devamını Oku</a>
 </div>
-<div class="md:w-1/2 flex justify-center">
-<img src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20car%20listing%20app%20interface%2C%20modern%20UI%20design%2C%20clean%20interface%2C%20car%20marketplace%20mobile%20application%2C%20high%20resolution%2C%20realistic&width=400&height=600&seq=14&orientation=portrait" alt="OtoPazar Mobil Uygulaması" class="max-w-full h-auto rounded-xl shadow-xl">
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20showing%20car%20financing%20documents%2C%20calculator%2C%20keys%20and%20a%20pen%20on%20a%20desk%2C%20business%20setting%2C%20financial%20planning%20for%20vehicle%20purchase%2C%20realistic%2C%20detailed&width=600&height=300&seq=6&orientation=landscape" alt="Araç Finansmanı" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<div class="text-sm text-gray-500 mb-2">25 Haziran 2025</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Araç Kredisi Almanın En Avantajlı Yolları</h3>
+<p class="text-gray-600 text-sm mb-4">Araç kredisi çekerken faiz oranlarını nasıl düşürebilirsiniz? En uygun kredi seçenekleri...</p>
+<a href="#" class="text-primary font-medium hover:underline">Devamını Oku</a>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20showing%20a%20person%20cleaning%20and%20detailing%20a%20car%20interior%2C%20focus%20on%20dashboard%20cleaning%2C%20car%20maintenance%2C%20interior%20care%2C%20realistic%2C%20detailed&width=600&height=300&seq=7&orientation=landscape" alt="Araç Bakımı" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<div class="text-sm text-gray-500 mb-2">22 Haziran 2025</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Aracınızın Değerini Korumak İçin 10 İpucu</h3>
+<p class="text-gray-600 text-sm mb-4">Aracınızın ikinci el değerini maksimumda tutmak için yapmanız gerekenler...</p>
+<a href="#" class="text-primary font-medium hover:underline">Devamını Oku</a>
+</div>
 </div>
 </div>
 </div>
 </section>
-<!-- Newsletter -->
-<section class="py-12 bg-secondary">
-<div class="container mx-auto px-4 text-center">
-<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Yeni İlanlardan Haberdar Olun</h2>
-<p class="text-gray-200 mb-8 max-w-2xl mx-auto">E-posta adresinizi bırakın, size özel fırsatları ve yeni ilanları ilk siz görün.</p>
-<form class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
-<input type="email" placeholder="E-posta adresiniz" class="flex-1 px-4 py-3 rounded-button border-none text-gray-800" required>
-<button type="submit" class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap !rounded-button">Abone Ol</button>
-</form>
+<!-- Call to Action -->
+<section class="py-16 bg-primary">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl font-bold text-white mb-4">Aracınızı Hemen Satışa Çıkarın</h2>
+<p class="text-white text-lg mb-8 max-w-2xl mx-auto">İlk 3 ay tamamen ücretsiz! Binlerce potansiyel alıcıya ulaşın ve aracınızı hızlıca satın.</p>
+<button id="ctaPostAdBtn" class="bg-white text-primary px-6 py-3 rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition">
+Hemen İlan Ver
+</button>
 </div>
 </section>
 <!-- Footer -->
-<footer class="bg-gray-100 pt-12 pb-6">
-<div class="container mx-auto px-4">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-<!-- Column 1 -->
+<footer class="bg-gray-900 text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div>
-<a href="#" class="text-primary font-['Pacifico'] text-3xl mb-4 inline-block">OtoPazar</a>
-<p class="text-gray-600 mb-4">Türkiye'nin en güvenilir ikinci el araç alım-satım platformu. 2020'den beri hizmetinizdeyiz.</p>
+<a href="#" class="text-white text-2xl font-['Pacifico'] mb-4 block">OtoPazar</a>
+<p class="text-gray-400 mb-4">Türkiye'nin en güvenilir ikinci el araç platformu.</p>
 <div class="flex space-x-4">
-<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
-<div class="w-5 h-5 flex items-center justify-center">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
 <i class="ri-facebook-fill"></i>
 </div>
 </a>
-<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-twitter-x-fill"></i>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
 </div>
 </a>
-<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
-<div class="w-5 h-5 flex items-center justify-center">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
 <i class="ri-instagram-fill"></i>
 </div>
 </a>
-<a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary transition-colors">
-<div class="w-5 h-5 flex items-center justify-center">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
 <i class="ri-youtube-fill"></i>
 </div>
 </a>
 </div>
 </div>
-<!-- Column 2 -->
 <div>
-<h3 class="text-lg font-semibold mb-4">Hızlı Bağlantılar</h3>
+<h3 class="text-lg font-semibold mb-4">Hızlı Erişim</h3>
 <ul class="space-y-2">
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Ana Sayfa</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Araç Arama</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">İlan Ver</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Favorilerim</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Blog</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Sıkça Sorulan Sorular</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Ana Sayfa</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">İlanlar</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Nasıl Çalışır</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">İletişim</a></li>
 </ul>
 </div>
-<!-- Column 3 -->
 <div>
 <h3 class="text-lg font-semibold mb-4">Kategoriler</h3>
 <ul class="space-y-2">
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Sedan</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">SUV</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Hatchback</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Ticari Araçlar</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Spor Araçlar</a></li>
-<li><a href="#" class="text-gray-600 hover:text-primary transition-colors">Motosikletler</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Sedan</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Hatchback</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">SUV</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Spor</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Tüm Kategoriler</a></li>
 </ul>
 </div>
-<!-- Column 4 -->
 <div>
 <h3 class="text-lg font-semibold mb-4">İletişim</h3>
-<ul class="space-y-3">
+<ul class="space-y-2">
 <li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-1">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2 mt-0.5">
 <i class="ri-map-pin-line"></i>
 </div>
-<span class="text-gray-600">ÇAMLIBEL MAHALLESİ SK:2935, Yüreğir / ADANA</span>
+<span class="text-gray-400">Bağdat Caddesi No:123, Kadıköy, İstanbul</span>
 </li>
 <li class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
 <i class="ri-phone-line"></i>
 </div>
-<span class="text-gray-600">+90 (535) 027 45 12</span>
+<span class="text-gray-400">+90 (212) 456 78 90</span>
 </li>
 <li class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
 <i class="ri-mail-line"></i>
 </div>
-<span class="text-gray-600">info@otopazar.com</span>
-</li>
-<li class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
-<i class="ri-time-line"></i>
-</div>
-<span class="text-gray-600">Pazartesi - Cuma: 09:00 - 18:00</span>
+<span class="text-gray-400">info@otopazar.com</span>
 </li>
 </ul>
 </div>
 </div>
-<div class="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
-<p class="text-gray-600 text-sm mb-4 md:mb-0">&copy; 2025 OtoPazar. Tüm hakları saklıdır.</p>
-<div class="flex flex-wrap gap-4 text-sm">
-<a href="#" class="text-gray-600 hover:text-primary transition-colors">Kullanım Koşulları</a>
-<a href="#" class="text-gray-600 hover:text-primary transition-colors">Gizlilik Politikası</a>
-<a href="#" class="text-gray-600 hover:text-primary transition-colors">KVKK</a>
-<a href="#" class="text-gray-600 hover:text-primary transition-colors">Çerez Politikası</a>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 OtoPazar. Tüm hakları saklıdır.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white text-sm">Gizlilik Politikası</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">Kullanım Koşulları</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">KVKK</a>
 </div>
 </div>
 </div>
 </footer>
-<!-- Auth Modal -->
-<div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-    <!-- Login Form -->
-    <div id="loginForm" class="hidden">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-secondary">Giriş Yap</h2>
-        <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
-          <i class="ri-close-line text-2xl"></i>
-        </button>
-      </div>
-      <form onsubmit="handleLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-gray-700 mb-2" for="loginEmail">E-posta</label>
-          <input type="email" id="loginEmail" class="w-full p-3 border border-gray-300 rounded-button" required>
-        </div>
-        <div>
-          <label class="block text-gray-700 mb-2" for="loginPassword">Şifre</label>
-          <input type="password" id="loginPassword" class="w-full p-3 border border-gray-300 rounded-button" required>
-        </div>
-        <div class="flex items-center justify-between">
-          <label class="flex items-center">
-            <input type="checkbox" class="mr-2">
-            <span class="text-sm text-gray-600">Beni hatırla</span>
-          </label>
-          <a href="#" class="text-sm text-primary hover:underline">Şifremi unuttum</a>
-        </div>
-        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition-colors !rounded-button">Giriş Yap</button>
-      </form>
-      <div class="mt-6 text-center text-gray-600">
-        Hesabınız yok mu? 
-        <button onclick="switchAuthForm('register')" class="text-primary hover:underline">Üye Ol</button>
-      </div>
-    </div>
-    
-    <!-- Register Form -->
-<div id="registerForm" class="hidden">
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="text-2xl font-bold text-secondary">Üye Ol</h2>
-    <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
-      <i class="ri-close-line text-2xl"></i>
-    </button>
-  </div>
-
-  <!-- Eski form (Formsubmit ile çalışan) -->
-  <form action="https://formsubmit.co/otopazar01@gmail.com" method="POST" class="space-y-4">
-    <!-- Ad -->
-    <input type="text" name="ad" placeholder="Adınız" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-    <!-- Soyad -->
-    <input type="text" name="soyad" placeholder="Soyadınız" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-    <!-- E-posta -->
-    <input type="email" name="email" placeholder="E-posta" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-    <!-- Telefon -->
-    <input type="tel" name="telefon" placeholder="Telefon" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-    <!-- Şifre -->
-    <input type="password" name="sifre" placeholder="Şifre" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-    <!-- Şifre Tekrar -->
-    <input type="password" name="sifre_tekrar" placeholder="Şifre Tekrar" required
-      class="w-full p-3 border border-gray-300 rounded-button">
-
-    <!-- Gelişmiş (isteğe bağlı) -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://muhammetalid.github.io/OtoPazar/tesekkur.html">
-
-    <button type="submit"
-      class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-      Üye Ol
-    </button>
-  </form>
-
-  <!-- Buraya Tally form embed iframe kodu -->
-  <div class="mt-6">
-    <iframe data-tally-src="https://tally.so/embed/nGVRR2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-      loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" 
-      title="Üye Ol Formu"></iframe>
-    <script>
-      var d=document,w="https://tally.so/widgets/embed.js",v=function(){
-        if(typeof Tally !== "undefined"){
-          Tally.loadEmbeds();
-        } else {
-          d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc});
-        }
-      };
-      if(typeof Tally !== "undefined") v();
-      else if(d.querySelector('script[src="'+w+'"]')===null){
-        var s=d.createElement("script"); s.src=w; s.onload=v; s.onerror=v; d.body.appendChild(s);
-      }
-    </script>
-  </div>
-
-  <div class="mt-6 text-center text-gray-600">
-    Zaten üye misiniz? 
-    <button onclick="switchAuthForm('login')" class="text-primary hover:underline">Giriş Yap</button>
-  </div>
+<!-- Login Modal -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+<button id="closeLoginModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
 </div>
-  </div>
+</button>
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Giriş Yap</h2>
+<form>
+<div class="mb-4">
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-posta</label>
+<input type="email" id="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="ornek@mail.com" required>
 </div>
-<script id="carouselScript">
+<div class="mb-6">
+<label for="password" class="block text-sm font-medium text-gray-700 mb-1">Şifre</label>
+<input type="password" id="password" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="••••••••" required>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">Giriş Yap</button>
+</form>
+<div class="mt-4 text-center">
+<a href="#" class="text-sm text-primary hover:underline">Şifremi Unuttum</a>
+</div>
+<div class="mt-6 text-center">
+<p class="text-sm text-gray-600">Hesabınız yok mu? <button id="showRegisterModal" class="text-primary hover:underline font-medium">Üye Ol</button></p>
+</div>
+</div>
+</div>
+<!-- Register Modal -->
+<div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+<button id="closeRegisterModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Üye Ol</h2>
+<form action="https://formsubmit.co/otopazar01@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="/tesekkur">
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Ad</label>
+<input type="text" id="firstName" name="firstName" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Soyad</label>
+<input type="text" id="lastName" name="lastName" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+</div>
+<div class="mb-4">
+<label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-1">E-posta</label>
+<input type="email" id="registerEmail" name="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-4">
+<label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+<input type="tel" id="phone" name="phone" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-4">
+<label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-1">Şifre</label>
+<input type="password" id="registerPassword" name="password" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-6">
+<label for="passwordConfirm" class="block text-sm font-medium text-gray-700 mb-1">Şifre Tekrar</label>
+<input type="password" id="passwordConfirm" name="passwordConfirm" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-6">
+<label class="flex items-start">
+<input type="checkbox" class="mt-1 mr-2" required>
+<span class="text-sm text-gray-600">
+<a href="#" class="text-primary hover:underline">Kullanım Koşulları</a> ve
+<a href="#" class="text-primary hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
+</span>
+</label>
+</div>
+<button type="submit" id="registerButton" class="w-full bg-primary text-white py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition" disabled>Üye Ol</button>
+</form>
+<div class="mt-6 text-center">
+<p class="text-sm text-gray-600">Zaten üye misiniz? <button id="showLoginModal" class="text-primary hover:underline font-medium">Giriş Yap</button></p>
+</div>
+</div>
+</div>
+<!-- Post Ad Modal -->
+<div id="postAdModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white rounded-lg max-w-3xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
+<button id="closePostAdModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+<h2 class="text-2xl font-bold text-gray-900 mb-6">İlan Ver</h2>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="md:col-span-2">
+<label for="adTitle" class="block text-sm font-medium text-gray-700 mb-1">İlan Başlığı</label>
+<input type="text" id="adTitle" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="md:col-span-2">
+<label for="adDescription" class="block text-sm font-medium text-gray-700 mb-1">Açıklama</label>
+<textarea id="adDescription" rows="4" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+</div>
+<div>
+<label for="adBrand" class="block text-sm font-medium text-gray-700 mb-1">Marka</label>
+<select id="adBrand" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
+<option value="">Seçiniz</option>
+<option value="audi">Audi</option>
+<option value="bmw">BMW</option>
+<option value="mercedes">Mercedes</option>
+<option value="volkswagen">Volkswagen</option>
+<option value="renault">Renault</option>
+</select>
+</div>
+<div>
+<label for="adModel" class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+<select id="adModel" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
+<option value="">Seçiniz</option>
+</select>
+</div>
+<div>
+<label for="adYear" class="block text-sm font-medium text-gray-700 mb-1">Yıl</label>
+<select id="adYear" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
+<option value="">Seçiniz</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+</select>
+</div>
+<div>
+<label for="adKm" class="block text-sm font-medium text-gray-700 mb-1">Kilometre</label>
+<input type="number" id="adKm" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label for="adFuel" class="block text-sm font-medium text-gray-700 mb-1">Yakıt Tipi</label>
+<select id="adFuel" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
+<option value="">Seçiniz</option>
+<option value="benzin">Benzin</option>
+<option value="dizel">Dizel</option>
+<option value="lpg">LPG</option>
+<option value="hibrit">Hibrit</option>
+<option value="elektrik">Elektrik</option>
+</select>
+</div>
+<div>
+<label for="adPrice" class="block text-sm font-medium text-gray-700 mb-1">Fiyat (₺)</label>
+<input type="number" id="adPrice" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label for="adCity" class="block text-sm font-medium text-gray-700 mb-1">Şehir</label>
+<select id="adCity" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
+<option value="">Seçiniz</option>
+<option value="istanbul">İstanbul</option>
+<option value="ankara">Ankara</option>
+<option value="izmir">İzmir</option>
+<option value="bursa">Bursa</option>
+<option value="antalya">Antalya</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-2">Fotoğraflar (Maksimum 5 adet)</label>
+<div class="grid grid-cols-5 gap-2">
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-add-line ri-lg"></i>
+</div>
+<span class="text-xs text-gray-500 mt-1">Ekle</span>
+</div>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-add-line ri-lg"></i>
+</div>
+<span class="text-xs text-gray-500 mt-1">Ekle</span>
+</div>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-add-line ri-lg"></i>
+</div>
+<span class="text-xs text-gray-500 mt-1">Ekle</span>
+</div>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-add-line ri-lg"></i>
+</div>
+<span class="text-xs text-gray-500 mt-1">Ekle</span>
+</div>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary cursor-pointer">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-add-line ri-lg"></i>
+</div>
+<span class="text-xs text-gray-500 mt-1">Ekle</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg mb-6">
+<h3 class="text-lg font-medium text-gray-900 mb-2">İlan Kuralları</h3>
+<ul class="text-sm text-gray-600 space-y-1 list-disc pl-5">
+<li>Bir kullanıcı en fazla 2 ilan verebilir.</li>
+<li>İlk ilan 3 ay, ikinci ilan 2 ay ücretsiz yayında kalır.</li>
+<li>Süre bitiminde yıllık ilan ücreti 250 ₺'dir.</li>
+<li>Gerçek ve güncel bilgiler kullanılmalıdır.</li>
+<li>Uygunsuz içerik ve küfür içeren ilanlar yayınlanmaz.</li>
+</ul>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">İlanı Yayınla</button>
+</form>
+</div>
+</div>
+<script id="navbarScript">
 document.addEventListener('DOMContentLoaded', function() {
-const carousel = document.querySelector('.carousel-container');
-const scrollButtons = document.querySelectorAll('.scroll-button');
-if (carousel && scrollButtons.length === 2) {
-const leftButton = scrollButtons[0];
-const rightButton = scrollButtons[1];
-leftButton.addEventListener('click', function() {
-carousel.scrollBy({ left: -300, behavior: 'smooth' });
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
 });
-rightButton.addEventListener('click', function() {
-carousel.scrollBy({ left: 300, behavior: 'smooth' });
-});
-}
 });
 </script>
-<script id="brandModelScript">
+<script id="modalScript">
 document.addEventListener('DOMContentLoaded', function() {
-const carModels = {
-  audi: ["A1", "A3", "A4", "A5", "A6", "A7", "A8", "Q2", "Q3", "Q5", "Q7", "Q8", "e-tron", "TT", "R8"],
-  bmw: ["1 Serisi", "2 Serisi", "3 Serisi", "4 Serisi", "5 Serisi", "6 Serisi", "7 Serisi", "8 Serisi", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4", "i3", "i4", "i8", "iX"],
-  mercedes: ["A-Class", "B-Class", "C-Class", "CLA", "CLS", "E-Class", "S-Class", "GLA", "GLB", "GLC", "GLE", "GLS", "G-Class", "EQA", "EQB", "EQC", "EQS"],
-  volkswagen: ["Polo", "Golf", "ID.3", "ID.4", "Passat", "Arteon", "T-Cross", "T-Roc", "Tiguan", "Touareg", "Caddy", "Transporter"],
-  toyota: ["Yaris", "Corolla", "Camry", "C-HR", "RAV4", "Land Cruiser", "Hilux", "Proace", "Supra", "Mirai"],
-  honda: ["Jazz", "Civic", "Accord", "HR-V", "CR-V", "e"],
-  ford: ["Fiesta", "Focus", "Mondeo", "Puma", "Kuga", "Explorer", "Ranger", "Transit", "Mustang", "GT"],
-  hyundai: ["i10", "i20", "i30", "Elantra", "i40", "Kona", "Tucson", "Santa Fe", "IONIQ", "NEXO"],
-  kia: ["Picanto", "Rio", "Ceed", "Proceed", "Stonic", "Niro", "Sportage", "Sorento", "EV6", "Stinger"],
-  renault: ["Clio", "Captur", "Megane", "Arkana", "Kadjar", "Koleos", "Espace", "Zoe", "Twingo", "Talisman"]
+// Login Modal
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeLoginModal = document.getElementById('closeLoginModal');
+const showRegisterModal = document.getElementById('showRegisterModal');
+// Register Modal
+const registerModal = document.getElementById('registerModal');
+const closeRegisterModal = document.getElementById('closeRegisterModal');
+const showLoginModal = document.getElementById('showLoginModal');
+// Post Ad Modal
+const postAdBtn = document.getElementById('postAdBtn');
+const ctaPostAdBtn = document.getElementById('ctaPostAdBtn');
+const postAdModal = document.getElementById('postAdModal');
+const closePostAdModal = document.getElementById('closePostAdModal');
+// Login Modal Functions
+loginBtn.addEventListener('click', function() {
+loginModal.classList.remove('hidden');
+});
+closeLoginModal.addEventListener('click', function() {
+loginModal.classList.add('hidden');
+});
+showRegisterModal.addEventListener('click', function() {
+loginModal.classList.add('hidden');
+registerModal.classList.remove('hidden');
+});
+// Register Modal Functions
+closeRegisterModal.addEventListener('click', function() {
+registerModal.classList.add('hidden');
+});
+showLoginModal.addEventListener('click', function() {
+registerModal.classList.add('hidden');
+loginModal.classList.remove('hidden');
+});
+// Post Ad Modal Functions
+postAdBtn.addEventListener('click', function() {
+postAdModal.classList.remove('hidden');
+});
+ctaPostAdBtn.addEventListener('click', function() {
+postAdModal.classList.remove('hidden');
+});
+closePostAdModal.addEventListener('click', function() {
+postAdModal.classList.add('hidden');
+});
+// Close modals when clicking outside
+window.addEventListener('click', function(event) {
+if (event.target === loginModal) {
+loginModal.classList.add('hidden');
+}
+if (event.target === registerModal) {
+registerModal.classList.add('hidden');
+}
+if (event.target === postAdModal) {
+postAdModal.classList.add('hidden');
+}
+});
+});
+</script>
+<script id="formValidationScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Register form validation
+const registerForm = document.querySelector('#registerModal form');
+const registerButton = document.getElementById('registerButton');
+const passwordInput = document.getElementById('registerPassword');
+const passwordConfirmInput = document.getElementById('passwordConfirm');
+const termsCheckbox = document.querySelector('#registerModal input[type="checkbox"]');
+function validateRegisterForm() {
+const passwordsMatch = passwordInput.value === passwordConfirmInput.value;
+const termsAccepted = termsCheckbox.checked;
+const allFieldsFilled = Array.from(registerForm.querySelectorAll('input[required]')).every(input => input.value.trim() !== '');
+registerButton.disabled = !(passwordsMatch && termsAccepted && allFieldsFilled);
+}
+registerForm.addEventListener('input', validateRegisterForm);
+// Brand-Model relationship for search and post ad forms
+const brandSelects = document.querySelectorAll('#brand, #adBrand');
+const modelSelects = document.querySelectorAll('#model, #adModel');
+const modelsByBrand = {
+'audi': ['A3', 'A4', 'A6', 'Q5', 'Q7'],
+'bmw': ['1 Serisi', '3 Serisi', '5 Serisi', 'X3', 'X5'],
+'mercedes': ['A Serisi', 'C Serisi', 'E Serisi', 'GLC', 'GLE'],
+'volkswagen': ['Golf', 'Passat', 'Tiguan', 'Polo', 'Arteon'],
+'renault': ['Clio', 'Megane', 'Kadjar', 'Captur', 'Talisman']
 };
-const brandSelect = document.getElementById('brandSelect');
-const modelSelect = document.getElementById('modelSelect');
+brandSelects.forEach((brandSelect, index) => {
 brandSelect.addEventListener('change', function() {
-  const selectedBrand = this.value;
-  modelSelect.innerHTML = '<option value="">Model Seçiniz</option>';
-  
-  if (selectedBrand && carModels[selectedBrand]) {
-    carModels[selectedBrand].forEach(model => {
-      const option = document.createElement('option');
-      option.value = model.toLowerCase().replace(/\s+/g, '_');
-      option.textContent = model;
-      modelSelect.appendChild(option);
-    });
-  }
+const selectedBrand = this.value;
+const modelSelect = modelSelects[index];
+// Clear current options
+modelSelect.innerHTML = '<option value="">Tüm Modeller</option>';
+if (selectedBrand && modelsByBrand[selectedBrand]) {
+modelsByBrand[selectedBrand].forEach(model => {
+const option = document.createElement('option');
+option.value = model.toLowerCase().replace(' ', '-');
+option.textContent = model;
+modelSelect.appendChild(option);
+});
+}
 });
 });
-</script>
-<script id="authScript">
-function toggleAuthModal(type) {
-  const modal = document.getElementById('authModal');
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  
-  if (type === 'login') {
-    loginForm.classList.remove('hidden');
-    registerForm.classList.add('hidden');
-  } else {
-    registerForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
-  }
-}
-function closeAuthModal() {
-  const modal = document.getElementById('authModal');
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  
-  modal.classList.remove('flex');
-  modal.classList.add('hidden');
-  loginForm.classList.add('hidden');
-  registerForm.classList.add('hidden');
-}
-function switchAuthForm(type) {
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  
-  if (type === 'login') {
-    loginForm.classList.remove('hidden');
-    registerForm.classList.add('hidden');
-  } else {
-    registerForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
-  }
-}
-function handleLogin(event) {
-  event.preventDefault();
-  // Handle login logic here
-}
-function handleRegister(event) {
-  event.preventDefault();
-  // Handle registration logic here
-}
-// Close modal when clicking outside
-document.getElementById('authModal').addEventListener('click', function(event) {
-  if (event.target === this) {
-    closeAuthModal();
-  }
-});
-</script>
-<script id="favoriteScript">
-document.addEventListener('DOMContentLoaded', function() {
-const favoriteButtons = document.querySelectorAll('.favorite-button');
+// Favorite buttons
+const favoriteButtons = document.querySelectorAll('.favorite-btn');
 favoriteButtons.forEach(button => {
-button.addEventListener('click', function() {
+button.addEventListener('click', function(e) {
+e.preventDefault();
 const icon = this.querySelector('i');
 if (icon.classList.contains('ri-heart-line')) {
 icon.classList.remove('ri-heart-line');
 icon.classList.add('ri-heart-fill');
-this.classList.add('active');
-this.querySelector('div').classList.add('text-red-500');
+icon.classList.add('text-red-500');
 } else {
 icon.classList.remove('ri-heart-fill');
+icon.classList.remove('text-red-500');
 icon.classList.add('ri-heart-line');
-this.classList.remove('active');
-this.querySelector('div').classList.remove('text-red-500');
 }
 });
 });

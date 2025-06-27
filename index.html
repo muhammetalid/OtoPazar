@@ -1695,14 +1695,14 @@ visitorsChart.resize();
 });
 </script>
 <!-- Admin paneli #admin hash'iyle aç -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (location.hash === '#admin') {
-        document.querySelectorAll('.admin-content').forEach(el =>
-          el.classList.remove('hidden')
-        );
-      }
-    });
-  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (location.hash === '#admin') {
+      document.querySelectorAll('.admin-content').forEach(el =>
+        el.classList.remove('hidden')
+      );
+    }
+  });
+</script>
 </body>
 </html>

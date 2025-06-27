@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OtoPazar - İkinci El Araç Platformu</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#22c55e',secondary:'#f97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#dc2626',secondary:'#16a34a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -39,17 +39,17 @@ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 
 </head>
 <body class="bg-gray-50">
 <!-- Navbar -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="bg-black shadow-sm sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
 <div class="flex items-center">
 <a href="#" class="text-primary text-2xl font-['Pacifico']">OtoPazar</a>
 <div class="hidden md:ml-10 md:flex md:space-x-8">
-<a href="#" class="text-primary border-b-2 border-primary px-1 pt-1 font-medium">Ana Sayfa</a>
-<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">İlanlar</a>
-<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">Nasıl Çalışır</a>
-<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">Blog</a>
-<a href="#" class="text-gray-500 hover:text-primary px-1 pt-1 font-medium">İletişim</a>
+<a href="/" class="text-secondary border-b-2 border-secondary px-1 pt-1 font-medium">Ana Sayfa</a>
+<a href="/ilanlar" class="text-white hover:text-primary px-1 pt-1 font-medium">İlanlar</a>
+<a href="#" id="adminPanelBtn" class="text-white hover:text-primary px-1 pt-1 font-medium">Admin Panel</a>
+<a href="/blog" class="text-white hover:text-primary px-1 pt-1 font-medium">Blog</a>
+<a href="/iletisim" class="text-white hover:text-primary px-1 pt-1 font-medium">İletişim</a>
 </div>
 </div>
 <div class="flex items-center space-x-4">
@@ -98,84 +98,11 @@ Giriş Yap
 <div class="relative">
 <select id="brand" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
 <option value="">Tüm Markalar</option>
-<option value="acura">Acura</option>
-<option value="aiways">Aiways</option>
-<option value="alfa-romeo">Alfa Romeo</option>
-<option value="anadol">Anadol</option>
-<option value="arcfox">Arcfox</option>
 <option value="audi">Audi</option>
-<option value="baic">BAIC</option>
-<option value="bentley">Bentley</option>
 <option value="bmw">BMW</option>
-<option value="bugatti">Bugatti</option>
-<option value="byd">BYD</option>
-<option value="cadillac">Cadillac</option>
-<option value="chery">Chery</option>
-<option value="chevrolet">Chevrolet</option>
-<option value="chrysler">Chrysler</option>
-<option value="citroen">Citroën</option>
-<option value="cupra">Cupra</option>
-<option value="dacia">Dacia</option>
-<option value="daewoo">Daewoo</option>
-<option value="daihatsu">Daihatsu</option>
-<option value="dodge">Dodge</option>
-<option value="ds">DS</option>
-<option value="ferrari">Ferrari</option>
-<option value="fiat">Fiat</option>
-<option value="ford">Ford</option>
-<option value="geely">Geely</option>
-<option value="genesis">Genesis</option>
-<option value="gmc">GMC</option> <!-- SUV ve pick-up da var ama bazı sedan modelleri de olduğu için eklendi -->
-<option value="honda">Honda</option>
-<option value="hyundai">Hyundai</option>
-<option value="infiniti">Infiniti</option>
-<option value="isuzu">Isuzu</option> <!-- Binek modelleri Türkiye’de çok az da olsa bulunduğu dönemler oldu -->
-<option value="jaguar">Jaguar</option>
-<option value="jeep">Jeep</option> <!-- SUV olsa da tamamen binek kullanıma yönelik olduğu için eklendi -->
-<option value="kia">Kia</option>
-<option value="lada">Lada</option>
-<option value="lamborghini">Lamborghini</option>
-<option value="lancia">Lancia</option>
-<option value="land-rover">Land Rover</option>
-<option value="lexus">Lexus</option>
-<option value="maserati">Maserati</option>
-<option value="mazda">Mazda</option>
-<option value="mclaren">McLaren</option>
 <option value="mercedes">Mercedes</option>
-<option value="mg">MG</option>
-<option value="mini">Mini</option>
-<option value="mitsubishi">Mitsubishi</option>
-<option value="nio">NIO</option>
-<option value="nissan">Nissan</option>
-<option value="opel">Opel</option>
-<option value="peugeot">Peugeot</option>
-<option value="plymouth">Plymouth</option>
-<option value="polestar">Polestar</option>
-<option value="pontiac">Pontiac</option>
-<option value="porsche">Porsche</option>
-<option value="proton">Proton</option>
 <option value="renault">Renault</option>
-<option value="rivian">Rivian</option>
-<option value="rolls-royce">Rolls-Royce</option>
-<option value="rover">Rover</option>
-<option value="saab">Saab</option>
-<option value="seat">SEAT</option>
-<option value="seres">Seres</option>
-<option value="skoda">Skoda</option>
-<option value="smart">Smart</option>
-<option value="ssangyong">SsangYong</option>
-<option value="subaru">Subaru</option>
-<option value="suzuki">Suzuki</option>
-<option value="tata">Tata</option>
-<option value="tesla">Tesla</option>
-<option value="tofaş">Tofaş</option>
-<option value="togg">Togg</option>
-<option value="toyota">Toyota</option>
 <option value="volkswagen">Volkswagen</option>
-<option value="volvo">Volvo</option>
-<option value="vinfast">VinFast</option>
-<option value="zaz">ZAZ</option>
-<option value="zastava">Zastava</option>
 </select>
 </div>
 </div>
@@ -184,1046 +111,6 @@ Giriş Yap
 <div class="relative">
 <select id="model" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
 <option value="">Tüm Modeller</option>
-<optgroup label="Acura">
-  <option value="nsx">NSX</option>
-  <option value="integra">Integra</option>
-  <option value="legend">Legend</option>
-  <option value="vigor">Vigor</option>
-  <option value="cl">CL</option>
-  <option value="tl">TL</option>
-  <option value="tlx">TLX</option>
-  <option value="rl">RL</option>
-  <option value="rlx">RLX</option>
-  <option value="rsx">RSX</option>
-  <option value="tsx">TSX</option>
-  <option value="ilx">ILX</option>
-  <option value="el">EL</option>
-  <option value="csx">CSX</option>
-  <option value="slx">SLX</option>
-  <option value="mdx">MDX</option>
-  <option value="rdx">RDX</option>
-  <option value="zdx">ZDX</option>
-  <option value="cdx">CDX</option>
-</optgroup>
-
-<optgroup label="Aiways">
-  <option value="u5">U5</option>
-  <option value="u6">U6</option>
-  <option value="u7">U7</option>
-</optgroup>
-
-<optgroup label="Alfa Romeo">
-  <option value="6c">6C</option>
-  <option value="8c">8C</option>
-  <option value="33">33</option>
-  <option value="75">75</option>
-  <option value="90">90</option>
-  <option value="145">145</option>
-  <option value="146">146</option>
-  <option value="147">147</option>
-  <option value="155">155</option>
-  <option value="156">156</option>
-  <option value="159">159</option>
-  <option value="164">164</option>
-  <option value="166">166</option>
-  <option value="1750">1750</option>
-  <option value="1900">1900</option>
-  <option value="2000">2000</option>
-  <option value="2600">2600</option>
-  <option value="alfasud">Alfasud</option>
-  <option value="alfetta">Alfetta</option>
-  <option value="brera">Brera</option>
-  <option value="giulia">Giulia</option>
-  <option value="giulietta">Giulietta</option>
-  <option value="gt">GT</option>
-  <option value="gta">GTA</option>
-  <option value="mito">MiTo</option>
-  <option value="montreal">Montreal</option>
-  <option value="rz">RZ</option>
-  <option value="sz">SZ</option>
-  <option value="spider">Spider</option>
-  <option value="stelvio">Stelvio</option>
-  <option value="tonale">Tonale</option>
-  <option value="sprint">Sprint</option>
-</optgroup>
-
-<optgroup label="Anadol">
-  <option value="a1">A1</option>
-  <option value="a2">A2</option>
-  <option value="a4">A4</option>
-  <option value="a5">A5</option>
-  <option value="bocek">Böcek</option>
-  <option value="stc-16">STC-16</option>
-  <option value="otosan-500-pickup">Otosan 500 Pickup</option>
-</optgroup>
-
-<optgroup label="Arcfox">
-  <option value="lite">LITE</option>
-  <option value="alpha-t">Alpha T</option>
-  <option value="alpha-s">Alpha S</option>
-  <option value="alpha-s-hi">Alpha S HI</option>
-  <option value="kaola">Kaola</option>
-</optgroup>
-
-  <optgroup label="Audi">
-  <option value="50">50</option>
-  <option value="60">60</option>
-  <option value="80">80</option>
-  <option value="90">90</option>
-  <option value="100">100</option>
-  <option value="200">200</option>
-  <option value="a1">A1</option>
-  <option value="a2">A2</option>
-  <option value="a3">A3</option>
-  <option value="a4">A4</option>
-  <option value="a5">A5</option>
-  <option value="a6">A6</option>
-  <option value="a7">A7</option>
-  <option value="a8">A8</option>
-  <option value="allroad">Allroad</option>
-  <option value="q2">Q2</option>
-  <option value="q3">Q3</option>
-  <option value="q4-e-tron">Q4 e-tron</option>
-  <option value="q5">Q5</option>
-  <option value="q7">Q7</option>
-  <option value="q8">Q8</option>
-  <option value="tt">TT</option>
-  <option value="r8">R8</option>
-  <option value="rs3">RS3</option>
-  <option value="rs4">RS4</option>
-  <option value="rs5">RS5</option>
-  <option value="rs6">RS6</option>
-  <option value="rs7">RS7</option>
-  <option value="rsq3">RS Q3</option>
-  <option value="rsq8">RS Q8</option>
-  <option value="s3">S3</option>
-  <option value="s4">S4</option>
-  <option value="s5">S5</option>
-  <option value="s6">S6</option>
-  <option value="s7">S7</option>
-  <option value="s8">S8</option>
-  <option value="sq2">SQ2</option>
-  <option value="sq5">SQ5</option>
-  <option value="sq7">SQ7</option>
-  <option value="sq8">SQ8</option>
-  <option value="e-tron">e-tron</option>
-  <option value="e-tron-sportback">e-tron Sportback</option>
-  <option value="e-tron-gt">e-tron GT</option>
-</optgroup>
-
-<optgroup label="BAIC">
-  <option value="bj20">BJ20</option>
-  <option value="bj40">BJ40</option>
-  <option value="bj80">BJ80</option>
-  <option value="x25">X25</option>
-  <option value="x35">X35</option>
-  <option value="x55">X55</option>
-  <option value="senova-d50">Senova D50</option>
-  <option value="senova-d70">Senova D70</option>
-  <option value="ec3">EC3</option>
-  <option value="eu5">EU5</option>
-  <option value="arcfox-lite">Arcfox Lite</option>
-</optgroup>
-
-<optgroup label="Bentley">
-  <option value="arnage">Arnage</option>
-  <option value="azure">Azure</option>
-  <option value="bentayga">Bentayga</option>
-  <option value="brooklands">Brooklands</option>
-  <option value="continental-flying-spur">Continental Flying Spur</option>
-  <option value="continental-gt">Continental GT</option>
-  <option value="continental-gtc">Continental GTC</option>
-  <option value="mulsanne">Mulsanne</option>
-  <option value="turbo-r">Turbo R</option>
-</optgroup>
-
-<optgroup label="BMW">
-  <option value="1-series">1 Series</option>
-  <option value="2-series">2 Series</option>
-  <option value="3-series">3 Series</option>
-  <option value="4-series">4 Series</option>
-  <option value="5-series">5 Series</option>
-  <option value="6-series">6 Series</option>
-  <option value="7-series">7 Series</option>
-  <option value="8-series">8 Series</option>
-  <option value="i3">i3</option>
-  <option value="i4">i4</option>
-  <option value="i5">i5</option>
-  <option value="i7">i7</option>
-  <option value="i8">i8</option>
-  <option value="ix">iX</option>
-  <option value="ix1">iX1</option>
-  <option value="ix3">iX3</option>
-  <option value="x1">X1</option>
-  <option value="x2">X2</option>
-  <option value="x3">X3</option>
-  <option value="x4">X4</option>
-  <option value="x5">X5</option>
-  <option value="x6">X6</option>
-  <option value="x7">X7</option>
-  <option value="z3">Z3</option>
-  <option value="z4">Z4</option>
-  <option value="m2">M2</option>
-  <option value="m3">M3</option>
-  <option value="m4">M4</option>
-  <option value="m5">M5</option>
-  <option value="m6">M6</option>
-  <option value="m8">M8</option>
-</optgroup>
-
-<optgroup label="Bugatti">
-  <option value="veyron">Veyron</option>
-  <option value="chiron">Chiron</option>
-  <option value="divo">Divo</option>
-  <option value="centodieci">Centodieci</option>
-  <option value="bolide">Bolide</option>
-  <option value="mistral">Mistral</option>
-  <option value="eb110">EB110</option>
-  <option value="type-35">Type 35</option>
-  <option value="type-41">Type 41 Royale</option>
-  <option value="type-57">Type 57</option>
-</optgroup>
-
-  <optgroup label="BYD">
-  <option value="dolphin">Dolphin</option>
-  <option value="seal">Seal</option>
-  <option value="han">Han</option>
-  <option value="tang">Tang</option>
-  <option value="yuan-plus">Yuan Plus</option>
-  <option value="song">Song</option>
-  <option value="qin">Qin</option>
-  <option value="e2">e2</option>
-  <option value="e3">e3</option>
-  <option value="e5">e5</option>
-  <option value="f3">F3</option>
-  <option value="g3">G3</option>
-  <option value="g6">G6</option>
-  <option value="g5">G5</option>
-  <option value="s6">S6</option>
-  <option value="s7">S7</option>
-</optgroup>
-
-<optgroup label="Chrysler">
-  <option value="300">300</option>
-  <option value="300c">300C</option>
-  <option value="aspen">Aspen</option>
-  <option value="cirrus">Cirrus</option>
-  <option value="concorde">Concorde</option>
-  <option value="crossfire">Crossfire</option>
-  <option value="lhs">LHS</option>
-  <option value="neon">Neon</option>
-  <option value="new-yorker">New Yorker</option>
-  <option value="pacifica">Pacifica</option>
-  <option value="pt-cruiser">PT Cruiser</option>
-  <option value="sebring">Sebring</option>
-  <option value="stratus">Stratus</option>
-  <option value="voyager">Voyager</option>
-</optgroup>
-
-<optgroup label="Citroën">
-  <option value="ami">Ami</option>
-  <option value="ax">AX</option>
-  <option value="berlingo">Berlingo</option>
-  <option value="bx">BX</option>
-  <option value="c1">C1</option>
-  <option value="c2">C2</option>
-  <option value="c3">C3</option>
-  <option value="c3-aircross">C3 Aircross</option>
-  <option value="c3-pluriel">C3 Pluriel</option>
-  <option value="c4">C4</option>
-  <option value="c4-cactus">C4 Cactus</option>
-  <option value="c4-picasso">C4 Picasso</option>
-  <option value="c4-space-tourer">C4 SpaceTourer</option>
-  <option value="c5">C5</option>
-  <option value="c5-aircross">C5 Aircross</option>
-  <option value="c6">C6</option>
-  <option value="c8">C8</option>
-  <option value="ds3">DS3</option>
-  <option value="ds4">DS4</option>
-  <option value="ds5">DS5</option>
-  <option value="e-c3">ë-C3</option>
-  <option value="e-c4">ë-C4</option>
-  <option value="evasion">Evasion</option>
-  <option value="gs">GS</option>
-  <option value="saxo">Saxo</option>
-  <option value="visa">Visa</option>
-  <option value="xm">XM</option>
-  <option value="xsara">Xsara</option>
-  <option value="xsara-picasso">Xsara Picasso</option>
-  <option value="zx">ZX</option>
-</optgroup>
-
-<optgroup label="Cupra">
-  <option value="ateca">Ateca</option>
-  <option value="born">Born</option>
-  <option value="formentor">Formentor</option>
-  <option value="leon">Leon</option>
-  <option value="tavascan">Tavascan</option>
-</optgroup>
-
-<optgroup label="Dacia">
-  <option value="1300">1300</option>
-  <option value="dokker">Dokker</option>
-  <option value="duster">Duster</option>
-  <option value="jogger">Jogger</option>
-  <option value="lodgy">Lodgy</option>
-  <option value="logan">Logan</option>
-  <option value="nova">Nova</option>
-  <option value="sandero">Sandero</option>
-  <option value="solenza">Solenza</option>
-  <option value="spring">Spring</option>
-</optgroup>
-
-  <optgroup label="Daewoo">
-  <option value="arcadia">Arcadia</option>
-  <option value="brougham">Brougham</option>
-  <option value="chairman">Chairman</option>
-  <option value="espero">Espero</option>
-  <option value="evanda">Evanda</option>
-  <option value="gentra">Gentra</option>
-  <option value="korando">Korando</option>
-  <option value="lacetti">Lacetti</option>
-  <option value="labo">Labo</option>
-  <option value="leganza">Leganza</option>
-  <option value="lublin">Lublin</option>
-  <option value="matiz">Matiz</option>
-  <option value="musso">Musso</option>
-  <option value="nubira">Nubira</option>
-  <option value="prince">Prince</option>
-  <option value="racer">Racer</option>
-  <option value="rezzo">Rezzo</option>
-  <option value="royale">Royale</option>
-  <option value="tacuma">Tacuma</option>
-  <option value="tico">Tico</option>
-</optgroup>
-
-<optgroup label="Daihatsu">
-  <option value="applause">Applause</option>
-  <option value="ayla">Ayla</option>
-  <option value="be-go">Be-go</option>
-  <option value="boon">Boon</option>
-  <option value="charade">Charade</option>
-  <option value="copen">Copen</option>
-  <option value="cuore">Cuore</option>
-  <option value="feroza">Feroza</option>
-  <option value="hijet">Hijet</option>
-  <option value="materia">Materia</option>
-  <option value="mira">Mira</option>
-  <option value="move">Move</option>
-  <option value="rocky">Rocky</option>
-  <option value="sirion">Sirion</option>
-  <option value="storia">Storia</option>
-  <option value="terios">Terios</option>
-  <option value="trevis">Trevis</option>
-  <option value="yrv">YRV</option>
-</optgroup>
-
-<optgroup label="Dodge">
-  <option value="avenger">Avenger</option>
-  <option value="caliber">Caliber</option>
-  <option value="challenger">Challenger</option>
-  <option value="charger">Charger</option>
-  <option value="dart">Dart</option>
-  <option value="daytona">Daytona</option>
-  <option value="dynasty">Dynasty</option>
-  <option value="intrepid">Intrepid</option>
-  <option value="magnum">Magnum</option>
-  <option value="monaco">Monaco</option>
-  <option value="neon">Neon</option>
-  <option value="omni">Omni</option>
-  <option value="shadow">Shadow</option>
-  <option value="spirit">Spirit</option>
-  <option value="stratus">Stratus</option>
-  <option value="viper">Viper</option>
-</optgroup>
-
-<optgroup label="DS">
-  <option value="ds3">DS 3</option>
-  <option value="ds3-crossback">DS 3 Crossback</option>
-  <option value="ds4">DS 4</option>
-  <option value="ds5">DS 5</option>
-  <option value="ds7-crossback">DS 7 Crossback</option>
-  <option value="ds9">DS 9</option>
-</optgroup>
-
-<optgroup label="Ferrari">
-  <option value="208">208</option>
-  <option value="246-dino">246 Dino</option>
-  <option value="250">250</option>
-  <option value="275">275</option>
-  <option value="288-gto">288 GTO</option>
-  <option value="308">308</option>
-  <option value="328">328</option>
-  <option value="330">330</option>
-  <option value="348">348</option>
-  <option value="360">360 Modena</option>
-  <option value="365">365</option>
-  <option value="400">400</option>
-  <option value="412">412</option>
-  <option value="456">456 GT</option>
-  <option value="458">458 Italia</option>
-  <option value="488">488 GTB</option>
-  <option value="512">512 TR</option>
-  <option value="550">550 Maranello</option>
-  <option value="575">575M</option>
-  <option value="599">599 GTB</option>
-  <option value="612">612 Scaglietti</option>
-  <option value="812">812 Superfast</option>
-  <option value="california">California</option>
-  <option value="f12">F12 Berlinetta</option>
-  <option value="f355">F355</option>
-  <option value="f40">F40</option>
-  <option value="f430">F430</option>
-  <option value="f50">F50</option>
-  <option value="f8">F8 Tributo</option>
-  <option value="gtc4lusso">GTC4Lusso</option>
-  <option value="laferrari">LaFerrari</option>
-  <option value="mondial">Mondial</option>
-  <option value="portofino">Portofino</option>
-  <option value="roma">Roma</option>
-  <option value="sf90">SF90 Stradale</option>
-</optgroup>
-
-  <optgroup label="Fiat">
-  <option value="124">124</option>
-  <option value="125">125</option>
-  <option value="126">126</option>
-  <option value="127">127</option>
-  <option value="128">128</option>
-  <option value="131">131</option>
-  <option value="132">132</option>
-  <option value="500">500</option>
-  <option value="500c">500C</option>
-  <option value="500e">500e</option>
-  <option value="500l">500L</option>
-  <option value="500x">500X</option>
-  <option value="600">600</option>
-  <option value="850">850</option>
-  <option value="barchetta">Barchetta</option>
-  <option value="brava">Brava</option>
-  <option value="bravo">Bravo</option>
-  <option value="croma">Croma</option>
-  <option value="doblo">Doblo</option>
-  <option value="fiorino">Fiorino</option>
-  <option value="freemont">Freemont</option>
-  <option value="idea">Idea</option>
-  <option value="linea">Linea</option>
-  <option value="marea">Marea</option>
-  <option value="multipla">Multipla</option>
-  <option value="palio">Palio</option>
-  <option value="panda">Panda</option>
-  <option value="punto">Punto</option>
-  <option value="qubo">Qubo</option>
-  <option value="regata">Regata</option>
-  <option value="ritmo">Ritmo</option>
-  <option value="sedici">Sedici</option>
-  <option value="seicento">Seicento</option>
-  <option value="siena">Siena</option>
-  <option value="stilo">Stilo</option>
-  <option value="tempra">Tempra</option>
-  <option value="tipo">Tipo</option>
-  <option value="ulysse">Ulysse</option>
-  <option value="uno">Uno</option>
-</optgroup>
-
-<optgroup label="Ford">
-  <option value="b-max">B-MAX</option>
-  <option value="c-max">C-MAX</option>
-  <option value="capri">Capri</option>
-  <option value="consul">Consul</option>
-  <option value="cortina">Cortina</option>
-  <option value="cougar">Cougar</option>
-  <option value="ecosport">EcoSport</option>
-  <option value="edge">Edge</option>
-  <option value="escape">Escape</option>
-  <option value="escort">Escort</option>
-  <option value="everest">Everest</option>
-  <option value="explorer">Explorer</option>
-  <option value="f150">F-150</option>
-  <option value="fiesta">Fiesta</option>
-  <option value="focus">Focus</option>
-  <option value="fusion">Fusion</option>
-  <option value="galaxy">Galaxy</option>
-  <option value="granada">Granada</option>
-  <option value="ka">Ka</option>
-  <option value="kuga">Kuga</option>
-  <option value="maverick">Maverick</option>
-  <option value="mondeo">Mondeo</option>
-  <option value="mustang">Mustang</option>
-  <option value="orion">Orion</option>
-  <option value="puma">Puma</option>
-  <option value="s-max">S-MAX</option>
-  <option value="scorpio">Scorpio</option>
-  <option value="sierra">Sierra</option>
-  <option value="taunus">Taunus</option>
-  <option value="tourneo-connect">Tourneo Connect</option>
-  <option value="tourneo-courier">Tourneo Courier</option>
-  <option value="tourneo-custom">Tourneo Custom</option>
-  <option value="transit-connect">Transit Connect</option>
-  <option value="transit-courier">Transit Courier</option>
-  <option value="transit-custom">Transit Custom</option>
-  <option value="transit">Transit</option>
-</optgroup>
-
-<optgroup label="Geely">
-  <option value="binrui">Binrui</option>
-  <option value="binyue">Binyue</option>
-  <option value="coolray">Coolray</option>
-  <option value="emgrand">Emgrand</option>
-  <option value="geometry-a">Geometry A</option>
-  <option value="geometry-c">Geometry C</option>
-  <option value="geometry-e">Geometry E</option>
-  <option value="icon">Icon</option>
-  <option value="monjaro">Monjaro</option>
-  <option value="okavango">Okavango</option>
-  <option value="panda">Panda</option>
-  <option value="preface">Preface</option>
-  <option value="tugella">Tugella</option>
-  <option value="xingyue">Xingyue</option>
-  <option value="xingyue-l">Xingyue L</option>
-</optgroup>
-
-<optgroup label="Genesis">
-  <option value="g70">G70</option>
-  <option value="g80">G80</option>
-  <option value="g90">G90</option>
-  <option value="gv60">GV60</option>
-  <option value="gv70">GV70</option>
-  <option value="gv80">GV80</option>
-</optgroup>
-
-<optgroup label="Isuzu">
-  <option value="asaka">Asaka</option>
-  <option value="ascender">Ascender</option>
-  <option value="axiom">Axiom</option>
-  <option value="bellett">Bellett</option>
-  <option value="florian">Florian</option>
-  <option value="gemini">Gemini</option>
-  <option value="impulse">Impulse</option>
-  <option value="piazza">Piazza</option>
-  <option value="stylus">Stylus</option>
-  <option value="trooper">Trooper</option>
-  <option value="vehi-cross">VehiCROSS</option>
-</optgroup>
-
-  <optgroup label="Jaguar">
-  <option value="e-pace">E-Pace</option>
-  <option value="f-type">F-Type</option>
-  <option value="i-pace">I-Pace</option>
-  <option value="s-type">S-Type</option>
-  <option value="xe">XE</option>
-  <option value="xf">XF</option>
-  <option value="xj">XJ</option>
-  <option value="xk">XK</option>
-</optgroup>
-
-<optgroup label="Jeep">
-  <option value="cherokee">Cherokee</option>
-  <option value="compass">Compass</option>
-  <option value="grand-cherokee">Grand Cherokee</option>
-  <option value="gladiator">Gladiator</option>
-  <option value="liberty">Liberty</option>
-  <option value="patriot">Patriot</option>
-  <option value="renegade">Renegade</option>
-  <option value="wrangler">Wrangler</option>
-</optgroup>
-
-<optgroup label="Kia">
-  <option value="carnival">Carnival</option>
-  <option value="ceed">Ceed</option>
-  <option value="cerato">Cerato</option>
-  <option value="k5">K5</option>
-  <option value="mohave">Mohave</option>
-  <option value="niro">Niro</option>
-  <option value="optima">Optima</option>
-  <option value="picanto">Picanto</option>
-  <option value="rio">Rio</option>
-  <option value="seltos">Seltos</option>
-  <option value="sorento">Sorento</option>
-  <option value="sportage">Sportage</option>
-  <option value="stinger">Stinger</option>
-  <option value="telluride">Telluride</option>
-  <option value="sonet">Sonet</option>
-  <option value="k900">K900</option>
-</optgroup>
-
-<optgroup label="Lada">
-  <option value="niva">Niva</option>
-  <option value="granta">Granta</option>
-  <option value="vesta">Vesta</option>
-  <option value="xray">XRAY</option>
-  <option value="largus">Largus</option>
-</optgroup>
-
-<optgroup label="Lamborghini">
-  <option value="aventador">Aventador</option>
-  <option value="countach">Countach</option>
-  <option value="huracan">Huracan</option>
-  <option value="gallardo">Gallardo</option>
-  <option value="urus">Urus</option>
-  <option value="veneno">Veneno</option>
-  <option value="sian">Sian</option>
-  <option value="estoque">Estoques</option>
-</optgroup>
-
-  <optgroup label="Lancia">
-  <option value="beta">Beta</option>
-  <option value="dedra">Dedra</option>
-  <option value="delta">Delta</option>
-  <option value="flavia">Flavia</option>
-  <option value="fulvia">Fulvia</option>
-  <option value="kappa">Kappa</option>
-  <option value="lybra">Lybra</option>
-  <option value="musa">Musa</option>
-  <option value="thema">Thema</option>
-  <option value="ypsilon">Ypsilon</option>
-</optgroup>
-
-<optgroup label="Land Rover">
-  <option value="defender">Defender</option>
-  <option value="discovery">Discovery</option>
-  <option value="discovery-sport">Discovery Sport</option>
-  <option value="range-rover">Range Rover</option>
-  <option value="range-rover-evoque">Range Rover Evoque</option>
-  <option value="range-rover-sport">Range Rover Sport</option>
-  <option value="range-rover-velar">Range Rover Velar</option>
-</optgroup>
-
-<optgroup label="Lexus">
-  <option value="ct">CT</option>
-  <option value="es">ES</option>
-  <option value="gx">GX</option>
-  <option value="is">IS</option>
-  <option value="lc">LC</option>
-  <option value="lx">LX</option>
-  <option value="nx">NX</option>
-  <option value="rc">RC</option>
-  <option value="rx">RX</option>
-  <option value="ux">UX</option>
-</optgroup>
-
-<optgroup label="Maserati">
-  <option value="ghibli">Ghibli</option>
-  <option value="gran-cabrio">GranCabrio</option>
-  <option value="gran-turismo">GranTurismo</option>
-  <option value="levante">Levante</option>
-  <option value="mc20">MC20</option>
-</optgroup>
-
-<optgroup label="Mazda">
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="cx-3">CX-3</option>
-  <option value="cx-30">CX-30</option>
-  <option value="cx-5">CX-5</option>
-  <option value="cx-60">CX-60</option>
-  <option value="cx-7">CX-7</option>
-  <option value="cx-9">CX-9</option>
-  <option value="mx-5">MX-5</option>
-  <option value="rx-7">RX-7</option>
-  <option value="rx-8">RX-8</option>
-</optgroup>
-
-  <optgroup label="McLaren">
-  <option value="540c">540C</option>
-  <option value="570s">570S</option>
-  <option value="600lt">600LT</option>
-  <option value="620r">620R</option>
-  <option value="675lt">675LT</option>
-  <option value="720s">720S</option>
-  <option value="artura">Artura</option>
-  <option value="elva">Elva</option>
-  <option value="p1">P1</option>
-  <option value="senna">Senna</option>
-  <option value="speedtail">Speedtail</option>
-</optgroup>
-
-<optgroup label="Mercedes">
-  <option value="a-class">A-Class</option>
-  <option value="b-class">B-Class</option>
-  <option value="c-class">C-Class</option>
-  <option value="cla">CLA</option>
-  <option value="cls">CLS</option>
-  <option value="e-class">E-Class</option>
-  <option value="eqb">EQB</option>
-  <option value="eqc">EQC</option>
-  <option value="eqe">EQE</option>
-  <option value="eqs">EQS</option>
-  <option value="glc">GLC</option>
-  <option value="gle">GLE</option>
-  <option value="gls">GLS</option>
-  <option value="g-class">G-Class</option>
-  <option value="s-class">S-Class</option>
-  <option value="sl">SL</option>
-  <option value="slc">SLC</option>
-  <option value="sprinter">Sprinter</option>
-  <option value="v-class">V-Class</option>
-</optgroup>
-
-<optgroup label="MG">
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="hs">HS</option>
-  <option value="zs">ZS</option>
-  <option value="zs-ev">ZS EV</option>
-  <option value="ehs">EHS</option>
-</optgroup>
-
-<optgroup label="Mini">
-  <option value="clubman">Clubman</option>
-  <option value="cooper">Cooper</option>
-  <option value="countryman">Countryman</option>
-  <option value="john-cooper-works">John Cooper Works</option>
-  <option value="paceman">Paceman</option>
-  <option value="one">One</option>
-  <option value="roadster">Roadster</option>
-</optgroup>
-
-<optgroup label="Mitsubishi">
-  <option value="asx">ASX</option>
-  <option value="eclipse-cross">Eclipse Cross</option>
-  <option value="galant">Galant</option>
-  <option value="lancer">Lancer</option>
-  <option value="mirage">Mirage</option>
-  <option value="outlander">Outlander</option>
-  <option value="pajero">Pajero</option>
-  <option value="space-star">Space Star</option>
-  <option value="triton">Triton</option>
-</optgroup>
-
-  <optgroup label="NIO">
-  <option value="es6">ES6</option>
-  <option value="es8">ES8</option>
-  <option value="et5">ET5</option>
-  <option value="et7">ET7</option>
-</optgroup>
-
-<optgroup label="Nissan">
-  <option value="200sx">200SX</option>
-  <option value="240sx">240SX</option>
-  <option value="300zx">300ZX</option>
-  <option value="370z">370Z</option>
-  <option value="altima">Altima</option>
-  <option value="armada">Armada</option>
-  <option value="juke">Juke</option>
-  <option value="kicks">Kicks</option>
-  <option value="leaf">Leaf</option>
-  <option value="maxima">Maxima</option>
-  <option value="micra">Micra</option>
-  <option value="murano">Murano</option>
-  <option value="pathfinder">Pathfinder</option>
-  <option value="pixxo">Pixxo</option>
-  <option value="primera">Primera</option>
-  <option value="qashqai">Qashqai</option>
-  <option value="rogue">Rogue</option>
-  <option value="sentra">Sentra</option>
-  <option value="skyline">Skyline</option>
-  <option value="versa">Versa</option>
-  <option value="x-trail">X-Trail</option>
-</optgroup>
-
-<optgroup label="Opel">
-  <option value="adam">Adam</option>
-  <option value="antara">Antara</option>
-  <option value="astra">Astra</option>
-  <option value="calibra">Calibra</option>
-  <option value="corsa">Corsa</option>
-  <option value="crossland">Crossland</option>
-  <option value="frontera">Frontera</option>
-  <option value="insignia">Insignia</option>
-  <option value="meriva">Meriva</option>
-  <option value="mokka">Mokka</option>
-  <option value="mokkam-e">Mokka-e</option>
-  <option value="vectra">Vectra</option>
-  <option value="zafira">Zafira</option>
-</optgroup>
-
-<optgroup label="Peugeot">
-  <option value="1007">1007</option>
-  <option value="106">106</option>
-  <option value="107">107</option>
-  <option value="108">108</option>
-  <option value="2008">2008</option>
-  <option value="205">205</option>
-  <option value="206">206</option>
-  <option value="207">207</option>
-  <option value="208">208</option>
-  <option value="3008">3008</option>
-  <option value="306">306</option>
-  <option value="307">307</option>
-  <option value="308">308</option>
-  <option value="405">405</option>
-  <option value="406">406</option>
-  <option value="407">407</option>
-  <option value="508">508</option>
-  <option value="5008">5008</option>
-  <option value="expert">Expert</option>
-  <option value="partner">Partner</option>
-  <option value="rcz">RCZ</option>
-</optgroup>
-
-<optgroup label="Plymouth">
-  <option value="barracuda">Barracuda</option>
-  <option value="belvedere">Belvedere</option>
-  <option value="bird">Bird</option>
-  <option value="breeze">Breeze</option>
-  <option value="cruiser">Cruiser</option>
-  <option value="fury">Fury</option>
-  <option value="grand-fury">Grand Fury</option>
-  <option value="horizon">Horizon</option>
-  <option value="neon">Neon</option>
-  <option value="prowler">Prowler</option>
-  <option value="sundance">Sundance</option>
-  <option value="valiant">Valiant</option>
-  <option value="voyager">Voyager</option>
-</optgroup>
-
-  <optgroup label="Polestar">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="precept">Precept</option>
-</optgroup>
-
-<optgroup label="Pontiac">
-  <option value="aztek">Aztek</option>
-  <option value="bonneville">Bonneville</option>
-  <option value="firebird">Firebird</option>
-  <option value="g6">G6</option>
-  <option value="gto">GTO</option>
-  <option value="grand-am">Grand Am</option>
-  <option value="grand-prix">Grand Prix</option>
-  <option value="lemans">LeMans</option>
-  <option value="montana">Montana</option>
-  <option value="solstice">Solstice</option>
-  <option value="sunfire">Sunfire</option>
-  <option value="trans-am">Trans Am</option>
-</optgroup>
-
-<optgroup label="Porsche">
-  <option value="718-cayman">718 Cayman</option>
-  <option value="718-boxster">718 Boxster</option>
-  <option value="911">911</option>
-  <option value="924">924</option>
-  <option value="928">928</option>
-  <option value="944">944</option>
-  <option value="959">959</option>
-  <option value="968">968</option>
-  <option value="cayenne">Cayenne</option>
-  <option value="macan">Macan</option>
-  <option value="panamera">Panamera</option>
-  <option value="taycan">Taycan</option>
-</optgroup>
-
-<optgroup label="Proton">
-  <option value="persona">Persona</option>
-  <option value="saga">Saga</option>
-  <option value="x70">X70</option>
-</optgroup>
-
-<optgroup label="Renault">
-  <option value="clio">Clio</option>
-  <option value="duster">Duster</option>
-  <option value="elogue">Elogue</option>
-  <option value="kangoo">Kangoo</option>
-  <option value="captur">Captur</option>
-  <option value="megane">Megane</option>
-  <option value="trafic">Trafic</option>
-  <option value="twingo">Twingo</option>
-  <option value="zoe">Zoe</option>
-  <option value="laguna">Laguna</option>
-  <option value="scenic">Scenic</option>
-</optgroup>
-
-  <optgroup label="Rivian">
-  <option value="r1t">R1T</option>
-  <option value="r1s">R1S</option>
-</optgroup>
-
-<optgroup label="Rolls-Royce">
-  <option value="phantom">Phantom</option>
-  <option value="ghost">Ghost</option>
-  <option value="wraith">Wraith</option>
-  <option value="dawn">Dawn</option>
-  <option value="cullinan">Cullinan</option>
-  <option value="spectre">Spectre</option>
-</optgroup>
-
-<optgroup label="Rover">
-  <option value="25">25</option>
-  <option value="45">45</option>
-  <option value="75">75</option>
-  <option value="200">200</option>
-  <option value="400">400</option>
-  <option value="600">600</option>
-  <option value="800">800</option>
-  <option value="streetwise">Streetwise</option>
-</optgroup>
-
-<optgroup label="Saab">
-  <option value="9-3">9-3</option>
-  <option value="9-5">9-5</option>
-  <option value="900">900</option>
-  <option value="9000">9000</option>
-</optgroup>
-
-<optgroup label="SEAT">
-  <option value="arona">Arona</option>
-  <option value="ateca">Ateca</option>
-  <option value="ibiza">Ibiza</option>
-  <option value="leon">Leon</option>
-  <option value="mii">Mii</option>
-  <option value="tarraco">Tarraco</option>
-</optgroup>
-
-  <optgroup label="Seres">
-  <option value="seres-3">Seres 3</option>
-  <option value="seres-5">Seres 5</option>
-</optgroup>
-
-<optgroup label="Skoda">
-  <option value="fabia">Fabia</option>
-  <option value="kamiq">Kamiq</option>
-  <option value="karoq">Karoq</option>
-  <option value="kodiaq">Kodiaq</option>
-  <option value="octavia">Octavia</option>
-  <option value="rapid">Rapid</option>
-  <option value="roomster">Roomster</option>
-  <option value="superb">Superb</option>
-  <option value="yeti">Yeti</option>
-</optgroup>
-
-<optgroup label="Smart">
-  <option value="fortwo">Fortwo</option>
-  <option value="forfour">Forfour</option>
-  <option value="roadster">Roadster</option>
-</optgroup>
-
-<optgroup label="SsangYong">
-  <option value="actyon">Actyon</option>
-  <option value="korando">Korando</option>
-  <option value="musso">Musso</option>
-  <option value="tivoli">Tivoli</option>
-  <option value="rexton">Rexton</option>
-  <option value="stavic">Stavic</option>
-</optgroup>
-
-<optgroup label="Subaru">
-  <option value="ascent">Ascent</option>
-  <option value="brz">BRZ</option>
-  <option value="crosstrek">Crosstrek</option>
-  <option value="forester">Forester</option>
-  <option value="impreza">Impreza</option>
-  <option value="legacy">Legacy</option>
-  <option value="outback">Outback</option>
-  <option value="tribeca">Tribeca</option>
-  <option value="wrx">WRX</option>
-</optgroup>
-
-  
-<optgroup label="Suzuki">
-  <option value="alto">Alto</option>
-  <option value="baleno">Baleno</option>
-  <option value="cultus">Cultus</option>
-  <option value="ciaz">Ciaz</option>
-  <option value="ertiga">Ertiga</option>
-  <option value="jimny">Jimny</option>
-  <option value="kizashi">Kizashi</option>
-  <option value="swift">Swift</option>
-  <option value="vitara">Vitara</option>
-  <option value="wagon-r">Wagon R</option>
-</optgroup>
-
-<optgroup label="Tata">
-  <option value="nexon">Nexon</option>
-  <option value="harrier">Harrier</option>
-  <option value="altroz">Altroz</option>
-  <option value="tigor">Tigor</option>
-  <option value="punch">Punch</option>
-  <option value="indica">Indica</option>
-  <option value="safari">Safari</option>
-  <option value="bolt">Bolt</option>
-</optgroup>
-
-<optgroup label="Tesla">
-  <option value="model-s">Model S</option>
-  <option value="model-3">Model 3</option>
-  <option value="model-x">Model X</option>
-  <option value="model-y">Model Y</option>
-  <option value="roadster">Roadster</option>
-  <option value="cybertruck">Cybertruck</option>
-</optgroup>
-
-<optgroup label="Tofaş">
-  <option value="doğan">Doğan</option>
-  <option value="şahin">Şahin</option>
-  <option value="kartal">Kartal</option>
-  <option value="tempra">Tempra</option>
-  <option value="murat-131">Murat 131</option>
-  <option value="serçe">Serçe</option>
-</optgroup>
-
-<optgroup label="Togg">
-  <option value="t10x">T10X</option>
-</optgroup>
-
-  <optgroup label="Toyota">
-  <option value="auris">Auris</option>
-  <option value="c-hr">C-HR</option>
-  <option value="corolla">Corolla</option>
-  <option value="hilux">Hilux</option>
-  <option value="highlander">Highlander</option>
-  <option value="land-cruiser">Land Cruiser</option>
-  <option value="prius">Prius</option>
-  <option value="rav4">RAV4</option>
-  <option value="supra">Supra</option>
-  <option value="yaris">Yaris</option>
-  <option value="mirai">Mirai</option>
-</optgroup>
-
-<optgroup label="Volkswagen">
-  <option value="arteon">Arteon</option>
-  <option value="beetle">Beetle</option>
-  <option value="golf">Golf</option>
-  <option value="jetta">Jetta</option>
-  <option value="passat">Passat</option>
-  <option value="polo">Polo</option>
-  <option value="tiguan">Tiguan</option>
-  <option value="touareg">Touareg</option>
-  <option value="up">up!</option>
-</optgroup>
-
-<optgroup label="Volvo">
-  <option value="s60">S60</option>
-  <option value="s90">S90</option>
-  <option value="v40">V40</option>
-  <option value="v60">V60</option>
-  <option value="v90">V90</option>
-  <option value="xc40">XC40</option>
-  <option value="xc60">XC60</option>
-  <option value="xc90">XC90</option>
-</optgroup>
-
-<optgroup label="VinFast">
-  <option value="vf-e34">VF e34</option>
-  <option value="vf-8">VF 8</option>
-  <option value="vf-9">VF 9</option>
-</optgroup>
-
-<optgroup label="ZAZ">
-  <option value="vida">Vida</option>
-  <option value="sens">Sens</option>
-  <option value="forza">Forza</option>
-</optgroup>
-
-<optgroup label="Zastava">
-  <option value="101">101</option>
-  <option value="128">128</option>
-  <option value="yugo">Yugo</option>
-</optgroup>
 </select>
 </div>
 </div>
@@ -1231,87 +118,12 @@ Giriş Yap
 <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Şehir</label>
 <div class="relative">
 <select id="city" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8">
+<option value="">Tüm Şehirler</option>
 <option value="istanbul">İstanbul</option>
 <option value="ankara">Ankara</option>
 <option value="izmir">İzmir</option>
 <option value="bursa">Bursa</option>
 <option value="antalya">Antalya</option>
-<option value="adana">Adana</option>
-<option value="adiyaman">Adıyaman</option>
-<option value="afyonkarahisar">Afyonkarahisar</option>
-<option value="agri">Ağrı</option>
-<option value="aksaray">Aksaray</option>
-<option value="amasya">Amasya</option>
-<option value="ardahan">Ardahan</option>
-<option value="artvin">Artvin</option>
-<option value="aydin">Aydın</option>
-<option value="balikesir">Balıkesir</option>
-<option value="bartin">Bartın</option>
-<option value="batman">Batman</option>
-<option value="bayburt">Bayburt</option>
-<option value="bilecik">Bilecik</option>
-<option value="bingol">Bingöl</option>
-<option value="bitlis">Bitlis</option>
-<option value="bolu">Bolu</option>
-<option value="burdur">Burdur</option>
-<option value="canakkale">Çanakkale</option>
-<option value="cankiri">Çankırı</option>
-<option value="corum">Çorum</option>
-<option value="denizli">Denizli</option>
-<option value="diyarbakir">Diyarbakır</option>
-<option value="duzce">Düzce</option>
-<option value="edirne">Edirne</option>
-<option value="elazig">Elazığ</option>
-<option value="erzincan">Erzincan</option>
-<option value="erzurum">Erzurum</option>
-<option value="eskisehir">Eskişehir</option>
-<option value="gaziantep">Gaziantep</option>
-<option value="giresun">Giresun</option>
-<option value="gumushane">Gümüşhane</option>
-<option value="hakkari">Hakkâri</option>
-<option value="hatay">Hatay</option>
-<option value="igdir">Iğdır</option>
-<option value="isparta">Isparta</option>
-<option value="kahramanmaras">Kahramanmaraş</option>
-<option value="karabuk">Karabük</option>
-<option value="karaman">Karaman</option>
-<option value="kars">Kars</option>
-<option value="kastamonu">Kastamonu</option>
-<option value="kayseri">Kayseri</option>
-<option value="kirikkale">Kırıkkale</option>
-<option value="kirklareli">Kırklareli</option>
-<option value="kirsehir">Kırşehir</option>
-<option value="kilis">Kilis</option>
-<option value="kocaeli">Kocaeli</option>
-<option value="konya">Konya</option>
-<option value="kutahya">Kütahya</option>
-<option value="malatya">Malatya</option>
-<option value="manisa">Manisa</option>
-<option value="mardin">Mardin</option>
-<option value="mersin">Mersin</option>
-<option value="mugla">Muğla</option>
-<option value="mus">Muş</option>
-<option value="nevsehir">Nevşehir</option>
-<option value="nigde">Niğde</option>
-<option value="ordu">Ordu</option>
-<option value="osmaniye">Osmaniye</option>
-<option value="rize">Rize</option>
-<option value="sakarya">Sakarya</option>
-<option value="samsun">Samsun</option>
-<option value="siirt">Siirt</option>
-<option value="sinop">Sinop</option>
-<option value="sivas">Sivas</option>
-<option value="sanliurfa">Şanlıurfa</option>
-<option value="sirnak">Şırnak</option>
-<option value="tekirdag">Tekirdağ</option>
-<option value="tokat">Tokat</option>
-<option value="trabzon">Trabzon</option>
-<option value="tunceli">Tunceli</option>
-<option value="usak">Uşak</option>
-<option value="van">Van</option>
-<option value="yalova">Yalova</option>
-<option value="yozgat">Yozgat</option>
-<option value="zonguldak">Zonguldak</option>
 </select>
 </div>
 </div>
@@ -1343,7 +155,7 @@ Araç Ara
 <section class="py-12 bg-white">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Kategorilere Göre Araçlar</h2>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-6">
 <a href="#" class="group">
 <div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
 <div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
@@ -1351,6 +163,15 @@ Araç Ara
 </div>
 <h3 class="text-lg font-medium text-gray-900">Sedan</h3>
 <p class="text-sm text-gray-500 mt-1">1.245 araç</p>
+</div>
+</a>
+<a href="#" class="group">
+<div class="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-all duration-300 group-hover:bg-gray-200">
+<div class="w-16 h-16 flex items-center justify-center text-primary mb-4">
+<i class="ri-bike-line ri-3x"></i>
+</div>
+<h3 class="text-lg font-medium text-gray-900">Motosiklet</h3>
+<p class="text-sm text-gray-500 mt-1">856 araç</p>
 </div>
 </a>
 <a href="#" class="group">
@@ -1384,7 +205,7 @@ Araç Ara
 </div>
 </section>
 <!-- Popular Brands -->
-<section class="py-12 bg-gray-50">
+<section class="py-12 bg-black/5">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Popüler Markalar</h2>
 <div class="grid grid-cols-3 md:grid-cols-6 gap-6">
@@ -1440,6 +261,87 @@ Tümünü Gör
 </a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Car Card 1 - sahibinden.com -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20black%20Mercedes%20E-Class%20sedan%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=12&orientation=landscape" alt="Mercedes E200d" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold text-gray-900 mb-1">Mercedes E200d AMG</h3>
+<p class="text-lg font-bold text-primary">3.250.000 ₺</p>
+</div>
+<p class="text-sm text-gray-500 mb-3">2023 • 5.000 km • Dizel • Otomatik</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İstanbul, Beşiktaş
+</div>
+<a href="https://www.sahibinden.com" target="_blank" class="text-sm text-primary hover:underline">Yönlendirilmeli</a>
+</div>
+</div>
+</div>
+<!-- Car Card 2 - arabam.com -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20white%20Audi%20Q8%20SUV%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=13&orientation=landscape" alt="Audi Q8" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold text-gray-900 mb-1">Audi Q8 50 TDI</h3>
+<p class="text-lg font-bold text-primary">4.750.000 ₺</p>
+</div>
+<p class="text-sm text-gray-500 mb-3">2023 • 0 km • Dizel • Otomatik</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+Ankara, Çankaya
+</div>
+<a href="https://www.arabam.com" target="_blank" class="text-sm text-primary hover:underline">Yönlendirilmeli</a>
+</div>
+</div>
+</div>
+<!-- Car Card 3 - sahibinden.com -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20red%20BMW%20X5%20SUV%2C%20front%20three-quarter%20view%2C%20clean%20background%2C%20showroom%20quality%2C%20detailed%2C%20realistic%2C%20high%20resolution&width=600&height=400&seq=14&orientation=landscape" alt="BMW X5" class="w-full h-48 object-cover object-top">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 favorite-btn">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-red-500">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-semibold text-gray-900 mb-1">BMW X5 40d xDrive</h3>
+<p class="text-lg font-bold text-primary">5.150.000 ₺</p>
+</div>
+<p class="text-sm text-gray-500 mb-3">2023 • 8.500 km • Dizel • Otomatik</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+İzmir, Bornova
+</div>
+<a href="https://www.sahibinden.com" target="_blank" class="text-sm text-primary hover:underline">Yönlendirilmeli</a>
+</div>
+</div>
+</div>
 <!-- Car Card 1 -->
 <div class="bg-white rounded-lg shadow-sm overflow-hidden car-card transition-all duration-300">
 <div class="relative">
@@ -1456,14 +358,14 @@ Tümünü Gör
 <div class="p-4">
 <div class="flex justify-between items-start">
 <h3 class="text-lg font-semibold text-gray-900 mb-1">BMW 3.20i M Sport</h3>
-<p class="text-lg font-bold text-primary">2.450.000 ₺</p>
+<p class="text-lg font-bold text-primary">2.150.000 ₺</p>
 </div>
-<p class="text-sm text-gray-500 mb-3">2020 • 45.000 km • Benzin • Otomatik</p>
+<p class="text-sm text-gray-500 mb-3">2022 • 25.000 km • Benzin • Otomatik</p>
 <div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
 </div>
-DİYARBAKIR, BAĞLAR
+İstanbul, Kadıköy
 </div>
 </div>
 </div>
@@ -1483,14 +385,14 @@ DİYARBAKIR, BAĞLAR
 <div class="p-4">
 <div class="flex justify-between items-start">
 <h3 class="text-lg font-semibold text-gray-900 mb-1">Audi A4 2.0 TDI</h3>
-<p class="text-lg font-bold text-primary">2.000.000 ₺</p>
+<p class="text-lg font-bold text-primary">2.450.000 ₺</p>
 </div>
-<p class="text-sm text-gray-500 mb-3">2021 • 32.500 km • Dizel • Otomatik</p>
+<p class="text-sm text-gray-500 mb-3">2023 • 12.500 km • Dizel • Otomatik</p>
 <div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
 </div>
-ADANA, YÜREĞİR 
+Ankara, Çankaya
 </div>
 </div>
 </div>
@@ -1510,9 +412,9 @@ ADANA, YÜREĞİR
 <div class="p-4">
 <div class="flex justify-between items-start">
 <h3 class="text-lg font-semibold text-gray-900 mb-1">Mercedes C180 AMG</h3>
-<p class="text-lg font-bold text-primary">2.600.000 ₺</p>
+<p class="text-lg font-bold text-primary">2.850.000 ₺</p>
 </div>
-<p class="text-sm text-gray-500 mb-3">2022 • 18.000 km • Benzin • Otomatik</p>
+<p class="text-sm text-gray-500 mb-3">2023 • 8.000 km • Benzin • Otomatik</p>
 <div class="flex items-center text-sm text-gray-500">
 <div class="w-4 h-4 flex items-center justify-center mr-1">
 <i class="ri-map-pin-line"></i>
@@ -1527,28 +429,35 @@ ADANA, YÜREĞİR
 <!-- How It Works -->
 <section class="py-12 bg-gray-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Nasıl Çalışır?</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">PazarBot ile Akıllı Alım-Satım</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
 <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
-<i class="ri-search-line ri-2x"></i>
+<i class="ri-robot-line ri-2x"></i>
 </div>
-<h3 class="text-xl font-semibold text-gray-900 mb-2">Ara</h3>
-<p class="text-gray-600">Binlerce ilan arasından filtreleme seçenekleriyle size en uygun aracı bulun.</p>
-</div>
-<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
-<i class="ri-user-add-line ri-2x"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-2">Üye Ol</h3>
-<p class="text-gray-600">Hızlıca üye olun, satıcılarla mesajlaşın ve favori ilanlarınızı kaydedin.</p>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">PazarBot</h3>
+<p class="text-gray-600">7/24 aktif yapay zeka asistanımız ile anlık fiyat analizi ve pazar değerlendirmesi yapın.</p>
 </div>
 <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
 <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
-<i class="ri-add-circle-line ri-2x"></i>
+<i class="ri-shield-check-line ri-2x"></i>
 </div>
-<h3 class="text-xl font-semibold text-gray-900 mb-2">İlan Ver</h3>
-<p class="text-gray-600">Aracınızı satmak için hemen ücretsiz ilan verin. İlk 3 ay tamamen ücretsiz!</p>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Güvenli Sistem</h3>
+<p class="text-gray-600">Otomatik onaylama sistemi ile güvenilir alıcı ve satıcılarla işlem yapın.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-timer-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Hızlı İşlem</h3>
+<p class="text-gray-600">İlk 3 ay ücretsiz ilan ve 2 ay ek süre ile hızlı satış imkanı.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-line-chart-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Piyasa Takibi</h3>
+<p class="text-gray-600">Güncel piyasa analizi ve fiyat karşılaştırma raporları.</p>
 </div>
 </div>
 </div>
@@ -1597,11 +506,11 @@ Tümünü Gör
 </div>
 </section>
 <!-- Call to Action -->
-<section class="py-16 bg-primary">
+<section class="py-16 bg-black">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 <h2 class="text-3xl font-bold text-white mb-4">Aracınızı Hemen Satışa Çıkarın</h2>
 <p class="text-white text-lg mb-8 max-w-2xl mx-auto">İlk 3 ay tamamen ücretsiz! Binlerce potansiyel alıcıya ulaşın ve aracınızı hızlıca satın.</p>
-<button id="ctaPostAdBtn" class="bg-white text-primary px-6 py-3 rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition">
+<button id="ctaPostAdBtn" class="bg-secondary text-white px-6 py-3 rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition">
 Hemen İlan Ver
 </button>
 </div>
@@ -1611,7 +520,7 @@ Hemen İlan Ver
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div>
-<a href="#" class="text-white text-2xl font-['Pacifico'] mb-4 block">OtoPazar</a>
+<a href="#" class="text-secondary text-2xl font-['Pacifico'] mb-4 block">OtoPazar</a>
 <p class="text-gray-400 mb-4">Türkiye'nin en güvenilir ikinci el araç platformu.</p>
 <div class="flex space-x-4">
 <a href="#" class="text-gray-400 hover:text-white">
@@ -1663,13 +572,13 @@ Hemen İlan Ver
 <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2 mt-0.5">
 <i class="ri-map-pin-line"></i>
 </div>
-<span class="text-gray-400">ÇAMLIBEL MAHALLESİ SK:2935, YÜREĞİR, ADANA</span>
+<span class="text-gray-400">Bağdat Caddesi No:123, Kadıköy, İstanbul</span>
 </li>
 <li class="flex items-center">
 <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
 <i class="ri-phone-line"></i>
 </div>
-<span class="text-gray-400">+90 (535) 027 45 12</span>
+<span class="text-gray-400">+90 (212) 456 78 90</span>
 </li>
 <li class="flex items-center">
 <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
@@ -1795,1130 +704,18 @@ Hemen İlan Ver
 <label for="adBrand" class="block text-sm font-medium text-gray-700 mb-1">Marka</label>
 <select id="adBrand" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
 <option value="">Seçiniz</option>
-<option value="acura">Acura</option>
-<option value="aiways">Aiways</option>
-<option value="alfa-romeo">Alfa Romeo</option>
-<option value="anadol">Anadol</option>
-<option value="arcfox">Arcfox</option>
 <option value="audi">Audi</option>
-<option value="baic">BAIC</option>
-<option value="bentley">Bentley</option>
 <option value="bmw">BMW</option>
-<option value="bugatti">Bugatti</option>
-<option value="byd">BYD</option>
-<option value="cadillac">Cadillac</option>
-<option value="chery">Chery</option>
-<option value="chevrolet">Chevrolet</option>
-<option value="chrysler">Chrysler</option>
-<option value="citroen">Citroën</option>
-<option value="cupra">Cupra</option>
-<option value="dacia">Dacia</option>
-<option value="daewoo">Daewoo</option>
-<option value="daihatsu">Daihatsu</option>
-<option value="dodge">Dodge</option>
-<option value="ds">DS</option>
-<option value="ferrari">Ferrari</option>
-<option value="fiat">Fiat</option>
-<option value="ford">Ford</option>
-<option value="geely">Geely</option>
-<option value="genesis">Genesis</option>
-<option value="gmc">GMC</option> <!-- SUV ve pick-up da var ama bazı sedan modelleri de olduğu için eklendi -->
-<option value="honda">Honda</option>
-<option value="hyundai">Hyundai</option>
-<option value="infiniti">Infiniti</option>
-<option value="isuzu">Isuzu</option> <!-- Binek modelleri Türkiye’de çok az da olsa bulunduğu dönemler oldu -->
-<option value="jaguar">Jaguar</option>
-<option value="jeep">Jeep</option> <!-- SUV olsa da tamamen binek kullanıma yönelik olduğu için eklendi -->
-<option value="kia">Kia</option>
-<option value="lada">Lada</option>
-<option value="lamborghini">Lamborghini</option>
-<option value="lancia">Lancia</option>
-<option value="land-rover">Land Rover</option>
-<option value="lexus">Lexus</option>
-<option value="maserati">Maserati</option>
-<option value="mazda">Mazda</option>
-<option value="mclaren">McLaren</option>
 <option value="mercedes">Mercedes</option>
-<option value="mg">MG</option>
-<option value="mini">Mini</option>
-<option value="mitsubishi">Mitsubishi</option>
-<option value="nio">NIO</option>
-<option value="nissan">Nissan</option>
-<option value="opel">Opel</option>
-<option value="peugeot">Peugeot</option>
-<option value="plymouth">Plymouth</option>
-<option value="polestar">Polestar</option>
-<option value="pontiac">Pontiac</option>
-<option value="porsche">Porsche</option>
-<option value="proton">Proton</option>
 <option value="renault">Renault</option>
-<option value="rivian">Rivian</option>
-<option value="rolls-royce">Rolls-Royce</option>
-<option value="rover">Rover</option>
-<option value="saab">Saab</option>
-<option value="seat">SEAT</option>
-<option value="seres">Seres</option>
-<option value="skoda">Skoda</option>
-<option value="smart">Smart</option>
-<option value="ssangyong">SsangYong</option>
-<option value="subaru">Subaru</option>
-<option value="suzuki">Suzuki</option>
-<option value="tata">Tata</option>
-<option value="tesla">Tesla</option>
-<option value="tofaş">Tofaş</option>
-<option value="togg">Togg</option>
-<option value="toyota">Toyota</option>
 <option value="volkswagen">Volkswagen</option>
-<option value="volvo">Volvo</option>
-<option value="vinfast">VinFast</option>
-<option value="zaz">ZAZ</option>
-<option value="zastava">Zastava</option>
 </select>
 </div>
 <div>
 <label for="adModel" class="block text-sm font-medium text-gray-700 mb-1">Model</label>
 <select id="adModel" class="custom-select w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:border-primary focus:ring-primary pr-8" required>
 <option value="">Seçiniz</option>
-  <optgroup label="Acura">
-  <option value="nsx">NSX</option>
-  <option value="integra">Integra</option>
-  <option value="legend">Legend</option>
-  <option value="vigor">Vigor</option>
-  <option value="cl">CL</option>
-  <option value="tl">TL</option>
-  <option value="tlx">TLX</option>
-  <option value="rl">RL</option>
-  <option value="rlx">RLX</option>
-  <option value="rsx">RSX</option>
-  <option value="tsx">TSX</option>
-  <option value="ilx">ILX</option>
-  <option value="el">EL</option>
-  <option value="csx">CSX</option>
-  <option value="slx">SLX</option>
-  <option value="mdx">MDX</option>
-  <option value="rdx">RDX</option>
-  <option value="zdx">ZDX</option>
-  <option value="cdx">CDX</option>
-</optgroup>
-
-<optgroup label="Aiways">
-  <option value="u5">U5</option>
-  <option value="u6">U6</option>
-  <option value="u7">U7</option>
-</optgroup>
-
-<optgroup label="Alfa Romeo">
-  <option value="6c">6C</option>
-  <option value="8c">8C</option>
-  <option value="33">33</option>
-  <option value="75">75</option>
-  <option value="90">90</option>
-  <option value="145">145</option>
-  <option value="146">146</option>
-  <option value="147">147</option>
-  <option value="155">155</option>
-  <option value="156">156</option>
-  <option value="159">159</option>
-  <option value="164">164</option>
-  <option value="166">166</option>
-  <option value="1750">1750</option>
-  <option value="1900">1900</option>
-  <option value="2000">2000</option>
-  <option value="2600">2600</option>
-  <option value="alfasud">Alfasud</option>
-  <option value="alfetta">Alfetta</option>
-  <option value="brera">Brera</option>
-  <option value="giulia">Giulia</option>
-  <option value="giulietta">Giulietta</option>
-  <option value="gt">GT</option>
-  <option value="gta">GTA</option>
-  <option value="mito">MiTo</option>
-  <option value="montreal">Montreal</option>
-  <option value="rz">RZ</option>
-  <option value="sz">SZ</option>
-  <option value="spider">Spider</option>
-  <option value="stelvio">Stelvio</option>
-  <option value="tonale">Tonale</option>
-  <option value="sprint">Sprint</option>
-</optgroup>
-
-<optgroup label="Anadol">
-  <option value="a1">A1</option>
-  <option value="a2">A2</option>
-  <option value="a4">A4</option>
-  <option value="a5">A5</option>
-  <option value="bocek">Böcek</option>
-  <option value="stc-16">STC-16</option>
-  <option value="otosan-500-pickup">Otosan 500 Pickup</option>
-</optgroup>
-
-<optgroup label="Arcfox">
-  <option value="lite">LITE</option>
-  <option value="alpha-t">Alpha T</option>
-  <option value="alpha-s">Alpha S</option>
-  <option value="alpha-s-hi">Alpha S HI</option>
-  <option value="kaola">Kaola</option>
-
-</optgroup>
-  <optgroup label="Audi">
-  <option value="50">50</option>
-  <option value="60">60</option>
-  <option value="80">80</option>
-  <option value="90">90</option>
-  <option value="100">100</option>
-  <option value="200">200</option>
-  <option value="a1">A1</option>
-  <option value="a2">A2</option>
-  <option value="a3">A3</option>
-  <option value="a4">A4</option>
-  <option value="a5">A5</option>
-  <option value="a6">A6</option>
-  <option value="a7">A7</option>
-  <option value="a8">A8</option>
-  <option value="allroad">Allroad</option>
-  <option value="q2">Q2</option>
-  <option value="q3">Q3</option>
-  <option value="q4-e-tron">Q4 e-tron</option>
-  <option value="q5">Q5</option>
-  <option value="q7">Q7</option>
-  <option value="q8">Q8</option>
-  <option value="tt">TT</option>
-  <option value="r8">R8</option>
-  <option value="rs3">RS3</option>
-  <option value="rs4">RS4</option>
-  <option value="rs5">RS5</option>
-  <option value="rs6">RS6</option>
-  <option value="rs7">RS7</option>
-  <option value="rsq3">RS Q3</option>
-  <option value="rsq8">RS Q8</option>
-  <option value="s3">S3</option>
-  <option value="s4">S4</option>
-  <option value="s5">S5</option>
-  <option value="s6">S6</option>
-  <option value="s7">S7</option>
-  <option value="s8">S8</option>
-  <option value="sq2">SQ2</option>
-  <option value="sq5">SQ5</option>
-  <option value="sq7">SQ7</option>
-  <option value="sq8">SQ8</option>
-  <option value="e-tron">e-tron</option>
-  <option value="e-tron-sportback">e-tron Sportback</option>
-  <option value="e-tron-gt">e-tron GT</option>
-</optgroup>
-
-<optgroup label="BAIC">
-  <option value="bj20">BJ20</option>
-  <option value="bj40">BJ40</option>
-  <option value="bj80">BJ80</option>
-  <option value="x25">X25</option>
-  <option value="x35">X35</option>
-  <option value="x55">X55</option>
-  <option value="senova-d50">Senova D50</option>
-  <option value="senova-d70">Senova D70</option>
-  <option value="ec3">EC3</option>
-  <option value="eu5">EU5</option>
-  <option value="arcfox-lite">Arcfox Lite</option>
-</optgroup>
-
-<optgroup label="Bentley">
-  <option value="arnage">Arnage</option>
-  <option value="azure">Azure</option>
-  <option value="bentayga">Bentayga</option>
-  <option value="brooklands">Brooklands</option>
-  <option value="continental-flying-spur">Continental Flying Spur</option>
-  <option value="continental-gt">Continental GT</option>
-  <option value="continental-gtc">Continental GTC</option>
-  <option value="mulsanne">Mulsanne</option>
-  <option value="turbo-r">Turbo R</option>
-</optgroup>
-
-<optgroup label="BMW">
-  <option value="1-series">1 Series</option>
-  <option value="2-series">2 Series</option>
-  <option value="3-series">3 Series</option>
-  <option value="4-series">4 Series</option>
-  <option value="5-series">5 Series</option>
-  <option value="6-series">6 Series</option>
-  <option value="7-series">7 Series</option>
-  <option value="8-series">8 Series</option>
-  <option value="i3">i3</option>
-  <option value="i4">i4</option>
-  <option value="i5">i5</option>
-  <option value="i7">i7</option>
-  <option value="i8">i8</option>
-  <option value="ix">iX</option>
-  <option value="ix1">iX1</option>
-  <option value="ix3">iX3</option>
-  <option value="x1">X1</option>
-  <option value="x2">X2</option>
-  <option value="x3">X3</option>
-  <option value="x4">X4</option>
-  <option value="x5">X5</option>
-  <option value="x6">X6</option>
-  <option value="x7">X7</option>
-  <option value="z3">Z3</option>
-  <option value="z4">Z4</option>
-  <option value="m2">M2</option>
-  <option value="m3">M3</option>
-  <option value="m4">M4</option>
-  <option value="m5">M5</option>
-  <option value="m6">M6</option>
-  <option value="m8">M8</option>
-</optgroup>
-
-<optgroup label="Bugatti">
-  <option value="veyron">Veyron</option>
-  <option value="chiron">Chiron</option>
-  <option value="divo">Divo</option>
-  <option value="centodieci">Centodieci</option>
-  <option value="bolide">Bolide</option>
-  <option value="mistral">Mistral</option>
-  <option value="eb110">EB110</option>
-  <option value="type-35">Type 35</option>
-  <option value="type-41">Type 41 Royale</option>
-  <option value="type-57">Type 57</option>
-</optgroup>
-
-  <optgroup label="BYD">
-  <option value="dolphin">Dolphin</option>
-  <option value="seal">Seal</option>
-  <option value="han">Han</option>
-  <option value="tang">Tang</option>
-  <option value="yuan-plus">Yuan Plus</option>
-  <option value="song">Song</option>
-  <option value="qin">Qin</option>
-  <option value="e2">e2</option>
-  <option value="e3">e3</option>
-  <option value="e5">e5</option>
-  <option value="f3">F3</option>
-  <option value="g3">G3</option>
-  <option value="g6">G6</option>
-  <option value="g5">G5</option>
-  <option value="s6">S6</option>
-  <option value="s7">S7</option>
-</optgroup>
-
-<optgroup label="Chrysler">
-  <option value="300">300</option>
-  <option value="300c">300C</option>
-  <option value="aspen">Aspen</option>
-  <option value="cirrus">Cirrus</option>
-  <option value="concorde">Concorde</option>
-  <option value="crossfire">Crossfire</option>
-  <option value="lhs">LHS</option>
-  <option value="neon">Neon</option>
-  <option value="new-yorker">New Yorker</option>
-  <option value="pacifica">Pacifica</option>
-  <option value="pt-cruiser">PT Cruiser</option>
-  <option value="sebring">Sebring</option>
-  <option value="stratus">Stratus</option>
-  <option value="voyager">Voyager</option>
-</optgroup>
-
-<optgroup label="Citroën">
-  <option value="ami">Ami</option>
-  <option value="ax">AX</option>
-  <option value="berlingo">Berlingo</option>
-  <option value="bx">BX</option>
-  <option value="c1">C1</option>
-  <option value="c2">C2</option>
-  <option value="c3">C3</option>
-  <option value="c3-aircross">C3 Aircross</option>
-  <option value="c3-pluriel">C3 Pluriel</option>
-  <option value="c4">C4</option>
-  <option value="c4-cactus">C4 Cactus</option>
-  <option value="c4-picasso">C4 Picasso</option>
-  <option value="c4-space-tourer">C4 SpaceTourer</option>
-  <option value="c5">C5</option>
-  <option value="c5-aircross">C5 Aircross</option>
-  <option value="c6">C6</option>
-  <option value="c8">C8</option>
-  <option value="ds3">DS3</option>
-  <option value="ds4">DS4</option>
-  <option value="ds5">DS5</option>
-  <option value="e-c3">ë-C3</option>
-  <option value="e-c4">ë-C4</option>
-  <option value="evasion">Evasion</option>
-  <option value="gs">GS</option>
-  <option value="saxo">Saxo</option>
-  <option value="visa">Visa</option>
-  <option value="xm">XM</option>
-  <option value="xsara">Xsara</option>
-  <option value="xsara-picasso">Xsara Picasso</option>
-  <option value="zx">ZX</option>
-</optgroup>
-
-<optgroup label="Cupra">
-  <option value="ateca">Ateca</option>
-  <option value="born">Born</option>
-  <option value="formentor">Formentor</option>
-  <option value="leon">Leon</option>
-  <option value="tavascan">Tavascan</option>
-</optgroup>
-
-<optgroup label="Dacia">
-  <option value="1300">1300</option>
-  <option value="dokker">Dokker</option>
-  <option value="duster">Duster</option>
-  <option value="jogger">Jogger</option>
-  <option value="lodgy">Lodgy</option>
-  <option value="logan">Logan</option>
-  <option value="nova">Nova</option>
-  <option value="sandero">Sandero</option>
-  <option value="solenza">Solenza</option>
-  <option value="spring">Spring</option>
-</optgroup>
-
-  <optgroup label="Daewoo">
-  <option value="arcadia">Arcadia</option>
-  <option value="brougham">Brougham</option>
-  <option value="chairman">Chairman</option>
-  <option value="espero">Espero</option>
-  <option value="evanda">Evanda</option>
-  <option value="gentra">Gentra</option>
-  <option value="korando">Korando</option>
-  <option value="lacetti">Lacetti</option>
-  <option value="labo">Labo</option>
-  <option value="leganza">Leganza</option>
-  <option value="lublin">Lublin</option>
-  <option value="matiz">Matiz</option>
-  <option value="musso">Musso</option>
-  <option value="nubira">Nubira</option>
-  <option value="prince">Prince</option>
-  <option value="racer">Racer</option>
-  <option value="rezzo">Rezzo</option>
-  <option value="royale">Royale</option>
-  <option value="tacuma">Tacuma</option>
-  <option value="tico">Tico</option>
-</optgroup>
-
-<optgroup label="Daihatsu">
-  <option value="applause">Applause</option>
-  <option value="ayla">Ayla</option>
-  <option value="be-go">Be-go</option>
-  <option value="boon">Boon</option>
-  <option value="charade">Charade</option>
-  <option value="copen">Copen</option>
-  <option value="cuore">Cuore</option>
-  <option value="feroza">Feroza</option>
-  <option value="hijet">Hijet</option>
-  <option value="materia">Materia</option>
-  <option value="mira">Mira</option>
-  <option value="move">Move</option>
-  <option value="rocky">Rocky</option>
-  <option value="sirion">Sirion</option>
-  <option value="storia">Storia</option>
-  <option value="terios">Terios</option>
-  <option value="trevis">Trevis</option>
-  <option value="yrv">YRV</option>
-</optgroup>
-
-<optgroup label="Dodge">
-  <option value="avenger">Avenger</option>
-  <option value="caliber">Caliber</option>
-  <option value="challenger">Challenger</option>
-  <option value="charger">Charger</option>
-  <option value="dart">Dart</option>
-  <option value="daytona">Daytona</option>
-  <option value="dynasty">Dynasty</option>
-  <option value="intrepid">Intrepid</option>
-  <option value="magnum">Magnum</option>
-  <option value="monaco">Monaco</option>
-  <option value="neon">Neon</option>
-  <option value="omni">Omni</option>
-  <option value="shadow">Shadow</option>
-  <option value="spirit">Spirit</option>
-  <option value="stratus">Stratus</option>
-  <option value="viper">Viper</option>
-</optgroup>
-
-<optgroup label="DS">
-  <option value="ds3">DS 3</option>
-  <option value="ds3-crossback">DS 3 Crossback</option>
-  <option value="ds4">DS 4</option>
-  <option value="ds5">DS 5</option>
-  <option value="ds7-crossback">DS 7 Crossback</option>
-  <option value="ds9">DS 9</option>
-</optgroup>
-
-<optgroup label="Ferrari">
-  <option value="208">208</option>
-  <option value="246-dino">246 Dino</option>
-  <option value="250">250</option>
-  <option value="275">275</option>
-  <option value="288-gto">288 GTO</option>
-  <option value="308">308</option>
-  <option value="328">328</option>
-  <option value="330">330</option>
-  <option value="348">348</option>
-  <option value="360">360 Modena</option>
-  <option value="365">365</option>
-  <option value="400">400</option>
-  <option value="412">412</option>
-  <option value="456">456 GT</option>
-  <option value="458">458 Italia</option>
-  <option value="488">488 GTB</option>
-  <option value="512">512 TR</option>
-  <option value="550">550 Maranello</option>
-  <option value="575">575M</option>
-  <option value="599">599 GTB</option>
-  <option value="612">612 Scaglietti</option>
-  <option value="812">812 Superfast</option>
-  <option value="california">California</option>
-  <option value="f12">F12 Berlinetta</option>
-  <option value="f355">F355</option>
-  <option value="f40">F40</option>
-  <option value="f430">F430</option>
-  <option value="f50">F50</option>
-  <option value="f8">F8 Tributo</option>
-  <option value="gtc4lusso">GTC4Lusso</option>
-  <option value="laferrari">LaFerrari</option>
-  <option value="mondial">Mondial</option>
-  <option value="portofino">Portofino</option>
-  <option value="roma">Roma</option>
-  <option value="sf90">SF90 Stradale</option>
-</optgroup>
-
-  <optgroup label="Fiat">
-  <option value="124">124</option>
-  <option value="125">125</option>
-  <option value="126">126</option>
-  <option value="127">127</option>
-  <option value="128">128</option>
-  <option value="131">131</option>
-  <option value="132">132</option>
-  <option value="500">500</option>
-  <option value="500c">500C</option>
-  <option value="500e">500e</option>
-  <option value="500l">500L</option>
-  <option value="500x">500X</option>
-  <option value="600">600</option>
-  <option value="850">850</option>
-  <option value="barchetta">Barchetta</option>
-  <option value="brava">Brava</option>
-  <option value="bravo">Bravo</option>
-  <option value="croma">Croma</option>
-  <option value="doblo">Doblo</option>
-  <option value="fiorino">Fiorino</option>
-  <option value="freemont">Freemont</option>
-  <option value="idea">Idea</option>
-  <option value="linea">Linea</option>
-  <option value="marea">Marea</option>
-  <option value="multipla">Multipla</option>
-  <option value="palio">Palio</option>
-  <option value="panda">Panda</option>
-  <option value="punto">Punto</option>
-  <option value="qubo">Qubo</option>
-  <option value="regata">Regata</option>
-  <option value="ritmo">Ritmo</option>
-  <option value="sedici">Sedici</option>
-  <option value="seicento">Seicento</option>
-  <option value="siena">Siena</option>
-  <option value="stilo">Stilo</option>
-  <option value="tempra">Tempra</option>
-  <option value="tipo">Tipo</option>
-  <option value="ulysse">Ulysse</option>
-  <option value="uno">Uno</option>
-</optgroup>
-
-<optgroup label="Ford">
-  <option value="b-max">B-MAX</option>
-  <option value="c-max">C-MAX</option>
-  <option value="capri">Capri</option>
-  <option value="consul">Consul</option>
-  <option value="cortina">Cortina</option>
-  <option value="cougar">Cougar</option>
-  <option value="ecosport">EcoSport</option>
-  <option value="edge">Edge</option>
-  <option value="escape">Escape</option>
-  <option value="escort">Escort</option>
-  <option value="everest">Everest</option>
-  <option value="explorer">Explorer</option>
-  <option value="f150">F-150</option>
-  <option value="fiesta">Fiesta</option>
-  <option value="focus">Focus</option>
-  <option value="fusion">Fusion</option>
-  <option value="galaxy">Galaxy</option>
-  <option value="granada">Granada</option>
-  <option value="ka">Ka</option>
-  <option value="kuga">Kuga</option>
-  <option value="maverick">Maverick</option>
-  <option value="mondeo">Mondeo</option>
-  <option value="mustang">Mustang</option>
-  <option value="orion">Orion</option>
-  <option value="puma">Puma</option>
-  <option value="s-max">S-MAX</option>
-  <option value="scorpio">Scorpio</option>
-  <option value="sierra">Sierra</option>
-  <option value="taunus">Taunus</option>
-  <option value="tourneo-connect">Tourneo Connect</option>
-  <option value="tourneo-courier">Tourneo Courier</option>
-  <option value="tourneo-custom">Tourneo Custom</option>
-  <option value="transit-connect">Transit Connect</option>
-  <option value="transit-courier">Transit Courier</option>
-  <option value="transit-custom">Transit Custom</option>
-  <option value="transit">Transit</option>
-</optgroup>
-
-<optgroup label="Geely">
-  <option value="binrui">Binrui</option>
-  <option value="binyue">Binyue</option>
-  <option value="coolray">Coolray</option>
-  <option value="emgrand">Emgrand</option>
-  <option value="geometry-a">Geometry A</option>
-  <option value="geometry-c">Geometry C</option>
-  <option value="geometry-e">Geometry E</option>
-  <option value="icon">Icon</option>
-  <option value="monjaro">Monjaro</option>
-  <option value="okavango">Okavango</option>
-  <option value="panda">Panda</option>
-  <option value="preface">Preface</option>
-  <option value="tugella">Tugella</option>
-  <option value="xingyue">Xingyue</option>
-  <option value="xingyue-l">Xingyue L</option>
-</optgroup>
-
-<optgroup label="Genesis">
-  <option value="g70">G70</option>
-  <option value="g80">G80</option>
-  <option value="g90">G90</option>
-  <option value="gv60">GV60</option>
-  <option value="gv70">GV70</option>
-  <option value="gv80">GV80</option>
-</optgroup>
-
-<optgroup label="Isuzu">
-  <option value="asaka">Asaka</option>
-  <option value="ascender">Ascender</option>
-  <option value="axiom">Axiom</option>
-  <option value="bellett">Bellett</option>
-  <option value="florian">Florian</option>
-  <option value="gemini">Gemini</option>
-  <option value="impulse">Impulse</option>
-  <option value="piazza">Piazza</option>
-  <option value="stylus">Stylus</option>
-  <option value="trooper">Trooper</option>
-  <option value="vehi-cross">VehiCROSS</option>
-</optgroup>
-
-  
-<optgroup label="Jaguar">
-  <option value="e-pace">E-Pace</option>
-  <option value="f-type">F-Type</option>
-  <option value="i-pace">I-Pace</option>
-  <option value="s-type">S-Type</option>
-  <option value="xe">XE</option>
-  <option value="xf">XF</option>
-  <option value="xj">XJ</option>
-  <option value="xk">XK</option>
-</optgroup>
-
-<optgroup label="Jeep">
-  <option value="cherokee">Cherokee</option>
-  <option value="compass">Compass</option>
-  <option value="grand-cherokee">Grand Cherokee</option>
-  <option value="gladiator">Gladiator</option>
-  <option value="liberty">Liberty</option>
-  <option value="patriot">Patriot</option>
-  <option value="renegade">Renegade</option>
-  <option value="wrangler">Wrangler</option>
-</optgroup>
-
-<optgroup label="Kia">
-  <option value="carnival">Carnival</option>
-  <option value="ceed">Ceed</option>
-  <option value="cerato">Cerato</option>
-  <option value="k5">K5</option>
-  <option value="mohave">Mohave</option>
-  <option value="niro">Niro</option>
-  <option value="optima">Optima</option>
-  <option value="picanto">Picanto</option>
-  <option value="rio">Rio</option>
-  <option value="seltos">Seltos</option>
-  <option value="sorento">Sorento</option>
-  <option value="sportage">Sportage</option>
-  <option value="stinger">Stinger</option>
-  <option value="telluride">Telluride</option>
-  <option value="sonet">Sonet</option>
-  <option value="k900">K900</option>
-</optgroup>
-
-<optgroup label="Lada">
-  <option value="niva">Niva</option>
-  <option value="granta">Granta</option>
-  <option value="vesta">Vesta</option>
-  <option value="xray">XRAY</option>
-  <option value="largus">Largus</option>
-</optgroup>
-
-<optgroup label="Lamborghini">
-  <option value="aventador">Aventador</option>
-  <option value="countach">Countach</option>
-  <option value="huracan">Huracan</option>
-  <option value="gallardo">Gallardo</option>
-  <option value="urus">Urus</option>
-  <option value="veneno">Veneno</option>
-  <option value="sian">Sian</option>
-  <option value="estoque">Estoques</option>
-</optgroup>
-
-  <optgroup label="Lancia">
-  <option value="beta">Beta</option>
-  <option value="dedra">Dedra</option>
-  <option value="delta">Delta</option>
-  <option value="flavia">Flavia</option>
-  <option value="fulvia">Fulvia</option>
-  <option value="kappa">Kappa</option>
-  <option value="lybra">Lybra</option>
-  <option value="musa">Musa</option>
-  <option value="thema">Thema</option>
-  <option value="ypsilon">Ypsilon</option>
-</optgroup>
-
-<optgroup label="Land Rover">
-  <option value="defender">Defender</option>
-  <option value="discovery">Discovery</option>
-  <option value="discovery-sport">Discovery Sport</option>
-  <option value="range-rover">Range Rover</option>
-  <option value="range-rover-evoque">Range Rover Evoque</option>
-  <option value="range-rover-sport">Range Rover Sport</option>
-  <option value="range-rover-velar">Range Rover Velar</option>
-</optgroup>
-
-<optgroup label="Lexus">
-  <option value="ct">CT</option>
-  <option value="es">ES</option>
-  <option value="gx">GX</option>
-  <option value="is">IS</option>
-  <option value="lc">LC</option>
-  <option value="lx">LX</option>
-  <option value="nx">NX</option>
-  <option value="rc">RC</option>
-  <option value="rx">RX</option>
-  <option value="ux">UX</option>
-</optgroup>
-
-<optgroup label="Maserati">
-  <option value="ghibli">Ghibli</option>
-  <option value="gran-cabrio">GranCabrio</option>
-  <option value="gran-turismo">GranTurismo</option>
-  <option value="levante">Levante</option>
-  <option value="mc20">MC20</option>
-</optgroup>
-
-<optgroup label="Mazda">
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="cx-3">CX-3</option>
-  <option value="cx-30">CX-30</option>
-  <option value="cx-5">CX-5</option>
-  <option value="cx-60">CX-60</option>
-  <option value="cx-7">CX-7</option>
-  <option value="cx-9">CX-9</option>
-  <option value="mx-5">MX-5</option>
-  <option value="rx-7">RX-7</option>
-  <option value="rx-8">RX-8</option>
-</optgroup>
-
-  <optgroup label="McLaren">
-  <option value="540c">540C</option>
-  <option value="570s">570S</option>
-  <option value="600lt">600LT</option>
-  <option value="620r">620R</option>
-  <option value="675lt">675LT</option>
-  <option value="720s">720S</option>
-  <option value="artura">Artura</option>
-  <option value="elva">Elva</option>
-  <option value="p1">P1</option>
-  <option value="senna">Senna</option>
-  <option value="speedtail">Speedtail</option>
-</optgroup>
-
-<optgroup label="Mercedes">
-  <option value="a-class">A-Class</option>
-  <option value="b-class">B-Class</option>
-  <option value="c-class">C-Class</option>
-  <option value="cla">CLA</option>
-  <option value="cls">CLS</option>
-  <option value="e-class">E-Class</option>
-  <option value="eqb">EQB</option>
-  <option value="eqc">EQC</option>
-  <option value="eqe">EQE</option>
-  <option value="eqs">EQS</option>
-  <option value="glc">GLC</option>
-  <option value="gle">GLE</option>
-  <option value="gls">GLS</option>
-  <option value="g-class">G-Class</option>
-  <option value="s-class">S-Class</option>
-  <option value="sl">SL</option>
-  <option value="slc">SLC</option>
-  <option value="sprinter">Sprinter</option>
-  <option value="v-class">V-Class</option>
-</optgroup>
-
-<optgroup label="MG">
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="hs">HS</option>
-  <option value="zs">ZS</option>
-  <option value="zs-ev">ZS EV</option>
-  <option value="ehs">EHS</option>
-</optgroup>
-
-<optgroup label="Mini">
-  <option value="clubman">Clubman</option>
-  <option value="cooper">Cooper</option>
-  <option value="countryman">Countryman</option>
-  <option value="john-cooper-works">John Cooper Works</option>
-  <option value="paceman">Paceman</option>
-  <option value="one">One</option>
-  <option value="roadster">Roadster</option>
-</optgroup>
-
-<optgroup label="Mitsubishi">
-  <option value="asx">ASX</option>
-  <option value="eclipse-cross">Eclipse Cross</option>
-  <option value="galant">Galant</option>
-  <option value="lancer">Lancer</option>
-  <option value="mirage">Mirage</option>
-  <option value="outlander">Outlander</option>
-  <option value="pajero">Pajero</option>
-  <option value="space-star">Space Star</option>
-  <option value="triton">Triton</option>
-</optgroup>
-
-  <optgroup label="NIO">
-  <option value="es6">ES6</option>
-  <option value="es8">ES8</option>
-  <option value="et5">ET5</option>
-  <option value="et7">ET7</option>
-</optgroup>
-
-<optgroup label="Nissan">
-  <option value="200sx">200SX</option>
-  <option value="240sx">240SX</option>
-  <option value="300zx">300ZX</option>
-  <option value="370z">370Z</option>
-  <option value="altima">Altima</option>
-  <option value="armada">Armada</option>
-  <option value="juke">Juke</option>
-  <option value="kicks">Kicks</option>
-  <option value="leaf">Leaf</option>
-  <option value="maxima">Maxima</option>
-  <option value="micra">Micra</option>
-  <option value="murano">Murano</option>
-  <option value="pathfinder">Pathfinder</option>
-  <option value="pixxo">Pixxo</option>
-  <option value="primera">Primera</option>
-  <option value="qashqai">Qashqai</option>
-  <option value="rogue">Rogue</option>
-  <option value="sentra">Sentra</option>
-  <option value="skyline">Skyline</option>
-  <option value="versa">Versa</option>
-  <option value="x-trail">X-Trail</option>
-</optgroup>
-
-<optgroup label="Opel">
-  <option value="adam">Adam</option>
-  <option value="antara">Antara</option>
-  <option value="astra">Astra</option>
-  <option value="calibra">Calibra</option>
-  <option value="corsa">Corsa</option>
-  <option value="crossland">Crossland</option>
-  <option value="frontera">Frontera</option>
-  <option value="insignia">Insignia</option>
-  <option value="meriva">Meriva</option>
-  <option value="mokka">Mokka</option>
-  <option value="mokkam-e">Mokka-e</option>
-  <option value="vectra">Vectra</option>
-  <option value="zafira">Zafira</option>
-</optgroup>
-
-<optgroup label="Peugeot">
-  <option value="1007">1007</option>
-  <option value="106">106</option>
-  <option value="107">107</option>
-  <option value="108">108</option>
-  <option value="2008">2008</option>
-  <option value="205">205</option>
-  <option value="206">206</option>
-  <option value="207">207</option>
-  <option value="208">208</option>
-  <option value="3008">3008</option>
-  <option value="306">306</option>
-  <option value="307">307</option>
-  <option value="308">308</option>
-  <option value="405">405</option>
-  <option value="406">406</option>
-  <option value="407">407</option>
-  <option value="508">508</option>
-  <option value="5008">5008</option>
-  <option value="expert">Expert</option>
-  <option value="partner">Partner</option>
-  <option value="rcz">RCZ</option>
-</optgroup>
-
-<optgroup label="Plymouth">
-  <option value="barracuda">Barracuda</option>
-  <option value="belvedere">Belvedere</option>
-  <option value="bird">Bird</option>
-  <option value="breeze">Breeze</option>
-  <option value="cruiser">Cruiser</option>
-  <option value="fury">Fury</option>
-  <option value="grand-fury">Grand Fury</option>
-  <option value="horizon">Horizon</option>
-  <option value="neon">Neon</option>
-  <option value="prowler">Prowler</option>
-  <option value="sundance">Sundance</option>
-  <option value="valiant">Valiant</option>
-  <option value="voyager">Voyager</option>
-</optgroup>
-
-  <optgroup label="Polestar">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="5">5</option>
-  <option value="precept">Precept</option>
-</optgroup>
-
-<optgroup label="Pontiac">
-  <option value="aztek">Aztek</option>
-  <option value="bonneville">Bonneville</option>
-  <option value="firebird">Firebird</option>
-  <option value="g6">G6</option>
-  <option value="gto">GTO</option>
-  <option value="grand-am">Grand Am</option>
-  <option value="grand-prix">Grand Prix</option>
-  <option value="lemans">LeMans</option>
-  <option value="montana">Montana</option>
-  <option value="solstice">Solstice</option>
-  <option value="sunfire">Sunfire</option>
-  <option value="trans-am">Trans Am</option>
-</optgroup>
-
-<optgroup label="Porsche">
-  <option value="718-cayman">718 Cayman</option>
-  <option value="718-boxster">718 Boxster</option>
-  <option value="911">911</option>
-  <option value="924">924</option>
-  <option value="928">928</option>
-  <option value="944">944</option>
-  <option value="959">959</option>
-  <option value="968">968</option>
-  <option value="cayenne">Cayenne</option>
-  <option value="macan">Macan</option>
-  <option value="panamera">Panamera</option>
-  <option value="taycan">Taycan</option>
-</optgroup>
-
-<optgroup label="Proton">
-  <option value="persona">Persona</option>
-  <option value="saga">Saga</option>
-  <option value="x70">X70</option>
-</optgroup>
-
-<optgroup label="Renault">
-  <option value="clio">Clio</option>
-  <option value="duster">Duster</option>
-  <option value="elogue">Elogue</option>
-  <option value="kangoo">Kangoo</option>
-  <option value="captur">Captur</option>
-  <option value="megane">Megane</option>
-  <option value="trafic">Trafic</option>
-  <option value="twingo">Twingo</option>
-  <option value="zoe">Zoe</option>
-  <option value="laguna">Laguna</option>
-  <option value="scenic">Scenic</option>
-</optgroup>
-
-  <optgroup label="Rivian">
-  <option value="r1t">R1T</option>
-  <option value="r1s">R1S</option>
-</optgroup>
-
-<optgroup label="Rolls-Royce">
-  <option value="phantom">Phantom</option>
-  <option value="ghost">Ghost</option>
-  <option value="wraith">Wraith</option>
-  <option value="dawn">Dawn</option>
-  <option value="cullinan">Cullinan</option>
-  <option value="spectre">Spectre</option>
-</optgroup>
-
-<optgroup label="Rover">
-  <option value="25">25</option>
-  <option value="45">45</option>
-  <option value="75">75</option>
-  <option value="200">200</option>
-  <option value="400">400</option>
-  <option value="600">600</option>
-  <option value="800">800</option>
-  <option value="streetwise">Streetwise</option>
-</optgroup>
-
-<optgroup label="Saab">
-  <option value="9-3">9-3</option>
-  <option value="9-5">9-5</option>
-  <option value="900">900</option>
-  <option value="9000">9000</option>
-</optgroup>
-
-<optgroup label="SEAT">
-  <option value="arona">Arona</option>
-  <option value="ateca">Ateca</option>
-  <option value="ibiza">Ibiza</option>
-  <option value="leon">Leon</option>
-  <option value="mii">Mii</option>
-  <option value="tarraco">Tarraco</option>
-</optgroup>
-
-  <optgroup label="Seres">
-  <option value="seres-3">Seres 3</option>
-  <option value="seres-5">Seres 5</option>
-</optgroup>
-
-<optgroup label="Skoda">
-  <option value="fabia">Fabia</option>
-  <option value="kamiq">Kamiq</option>
-  <option value="karoq">Karoq</option>
-  <option value="kodiaq">Kodiaq</option>
-  <option value="octavia">Octavia</option>
-  <option value="rapid">Rapid</option>
-  <option value="roomster">Roomster</option>
-  <option value="superb">Superb</option>
-  <option value="yeti">Yeti</option>
-</optgroup>
-
-<optgroup label="Smart">
-  <option value="fortwo">Fortwo</option>
-  <option value="forfour">Forfour</option>
-  <option value="roadster">Roadster</option>
-</optgroup>
-
-<optgroup label="SsangYong">
-  <option value="actyon">Actyon</option>
-  <option value="korando">Korando</option>
-  <option value="musso">Musso</option>
-  <option value="tivoli">Tivoli</option>
-  <option value="rexton">Rexton</option>
-  <option value="stavic">Stavic</option>
-</optgroup>
-
-<optgroup label="Subaru">
-  <option value="ascent">Ascent</option>
-  <option value="brz">BRZ</option>
-  <option value="crosstrek">Crosstrek</option>
-  <option value="forester">Forester</option>
-  <option value="impreza">Impreza</option>
-  <option value="legacy">Legacy</option>
-  <option value="outback">Outback</option>
-  <option value="tribeca">Tribeca</option>
-  <option value="wrx">WRX</option>
-</optgroup>
-
-  <optgroup label="Suzuki">
-  <option value="alto">Alto</option>
-  <option value="baleno">Baleno</option>
-  <option value="cultus">Cultus</option>
-  <option value="ciaz">Ciaz</option>
-  <option value="ertiga">Ertiga</option>
-  <option value="jimny">Jimny</option>
-  <option value="kizashi">Kizashi</option>
-  <option value="swift">Swift</option>
-  <option value="vitara">Vitara</option>
-  <option value="wagon-r">Wagon R</option>
-</optgroup>
-
-<optgroup label="Tata">
-  <option value="nexon">Nexon</option>
-  <option value="harrier">Harrier</option>
-  <option value="altroz">Altroz</option>
-  <option value="tigor">Tigor</option>
-  <option value="punch">Punch</option>
-  <option value="indica">Indica</option>
-  <option value="safari">Safari</option>
-  <option value="bolt">Bolt</option>
-</optgroup>
-
-<optgroup label="Tesla">
-  <option value="model-s">Model S</option>
-  <option value="model-3">Model 3</option>
-  <option value="model-x">Model X</option>
-  <option value="model-y">Model Y</option>
-  <option value="roadster">Roadster</option>
-  <option value="cybertruck">Cybertruck</option>
-</optgroup>
-
-<optgroup label="Tofaş">
-  <option value="doğan">Doğan</option>
-  <option value="şahin">Şahin</option>
-  <option value="kartal">Kartal</option>
-  <option value="tempra">Tempra</option>
-  <option value="murat-131">Murat 131</option>
-  <option value="serçe">Serçe</option>
-</optgroup>
-
-<optgroup label="Togg">
-  <option value="t10x">T10X</option>
-</optgroup>
-
-  <optgroup label="Toyota">
-  <option value="auris">Auris</option>
-  <option value="c-hr">C-HR</option>
-  <option value="corolla">Corolla</option>
-  <option value="hilux">Hilux</option>
-  <option value="highlander">Highlander</option>
-  <option value="land-cruiser">Land Cruiser</option>
-  <option value="prius">Prius</option>
-  <option value="rav4">RAV4</option>
-  <option value="supra">Supra</option>
-  <option value="yaris">Yaris</option>
-  <option value="mirai">Mirai</option>
-</optgroup>
-
-<optgroup label="Volkswagen">
-  <option value="arteon">Arteon</option>
-  <option value="beetle">Beetle</option>
-  <option value="golf">Golf</option>
-  <option value="jetta">Jetta</option>
-  <option value="passat">Passat</option>
-  <option value="polo">Polo</option>
-  <option value="tiguan">Tiguan</option>
-  <option value="touareg">Touareg</option>
-  <option value="up">up!</option>
-</optgroup>
-
-<optgroup label="Volvo">
-  <option value="s60">S60</option>
-  <option value="s90">S90</option>
-  <option value="v40">V40</option>
-  <option value="v60">V60</option>
-  <option value="v90">V90</option>
-  <option value="xc40">XC40</option>
-  <option value="xc60">XC60</option>
-  <option value="xc90">XC90</option>
-</optgroup>
-
-<optgroup label="VinFast">
-  <option value="vf-e34">VF e34</option>
-  <option value="vf-8">VF 8</option>
-  <option value="vf-9">VF 9</option>
-</optgroup>
-
-<optgroup label="ZAZ">
-  <option value="vida">Vida</option>
-  <option value="sens">Sens</option>
-  <option value="forza">Forza</option>
-</optgroup>
-
-<optgroup label="Zastava">
-  <option value="101">101</option>
-  <option value="128">128</option>
-  <option value="yugo">Yugo</option>
-</optgroup>
+</select>
 </div>
 <div>
 <label for="adYear" class="block text-sm font-medium text-gray-700 mb-1">Yıl</label>
@@ -3015,13 +812,110 @@ Hemen İlan Ver
 document.addEventListener('DOMContentLoaded', function() {
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
+const adminPanelBtn = document.getElementById('adminPanelBtn');
+// Hide admin panel button for non-admin users
+if (!isAdmin()) {
+adminPanelBtn.style.display = 'none';
+}
 mobileMenuBtn.addEventListener('click', function() {
 mobileMenu.classList.toggle('hidden');
 });
+function isAdmin() {
+// This is a simple example. In real application, you should check user role from backend
+const adminEmail = 'admin@otopazar.com';
+const currentUser = localStorage.getItem('currentUser');
+return currentUser === adminEmail;
+}
 });
 </script>
 <script id="modalScript">
 document.addEventListener('DOMContentLoaded', function() {
+// Contact button click handler
+const contactBtn = document.querySelector('a[href="/iletisim"]');
+contactBtn.addEventListener('click', function(e) {
+e.preventDefault();
+showContactModal();
+});
+function showContactModal() {
+const modal = document.createElement('div');
+modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+modal.innerHTML = `
+<div class="bg-white rounded-lg max-w-2xl w-full p-6 relative">
+<button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" onclick="this.parentElement.parentElement.remove()">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+<h2 class="text-2xl font-bold text-gray-900 mb-6">İletişim</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">İletişim Bilgileri</h3>
+<ul class="space-y-4">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Bağdat Caddesi No:123, Kadıköy, İstanbul</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span>+90 (212) 456 78 90</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span>info@otopazar.com</span>
+</li>
+</ul>
+<div class="mt-6">
+<h4 class="font-medium mb-2">Bizi Takip Edin</h4>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:border-primary">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:border-primary">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full hover:border-primary">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Bize Ulaşın</h3>
+<form>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+<input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">E-posta</label>
+<input type="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Mesaj</label>
+<textarea rows="4" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+Gönder
+</button>
+</form>
+</div>
+</div>
+</div>
+`;
+document.body.appendChild(modal);
+}
 // Login Modal
 const loginBtn = document.getElementById('loginBtn');
 const loginModal = document.getElementById('loginModal');
@@ -3081,6 +975,37 @@ postAdModal.classList.add('hidden');
 </script>
 <script id="formValidationScript">
 document.addEventListener('DOMContentLoaded', function() {
+// Auto-approval system
+function handleRegistration(event) {
+event.preventDefault();
+const form = event.target;
+const formData = new FormData(form);
+// Simulate verification process
+setTimeout(() => {
+const verificationModal = document.createElement('div');
+verificationModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+verificationModal.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-green-100 rounded-full">
+<i class="ri-check-line ri-2x text-green-500"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">Hesabınız Onaylandı!</h3>
+<p class="text-gray-600 mb-4">Üyelik işleminiz başarıyla tamamlandı. Şimdi giriş yapabilirsiniz.</p>
+<button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition">Tamam</button>
+</div>
+</div>
+`;
+document.body.appendChild(verificationModal);
+verificationModal.querySelector('button').addEventListener('click', () => {
+verificationModal.remove();
+document.getElementById('registerModal').classList.add('hidden');
+document.getElementById('loginModal').classList.remove('hidden');
+});
+}, 1500);
+});
+const registerForm = document.querySelector('#registerModal form');
+registerForm.addEventListener('submit', handleRegistration);
 // Register form validation
 const registerForm = document.querySelector('#registerModal form');
 const registerButton = document.getElementById('registerButton');
@@ -3097,13 +1022,142 @@ registerForm.addEventListener('input', validateRegisterForm);
 // Brand-Model relationship for search and post ad forms
 const brandSelects = document.querySelectorAll('#brand, #adBrand');
 const modelSelects = document.querySelectorAll('#model, #adModel');
-const modelsByBrand = {
-'audi': ['A3', 'A4', 'A6', 'Q5', 'Q7'],
-'bmw': ['1 Serisi', '3 Serisi', '5 Serisi', 'X3', 'X5'],
-'mercedes': ['A Serisi', 'C Serisi', 'E Serisi', 'GLC', 'GLE'],
-'volkswagen': ['Golf', 'Passat', 'Tiguan', 'Polo', 'Arteon'],
-'renault': ['Clio', 'Megane', 'Kadjar', 'Captur', 'Talisman']
+const carBrands = {
+'alfa-romeo': {
+name: 'Alfa Romeo',
+icon: 'ri-car-fill',
+models: ['Giulia', 'Stelvio', 'Tonale', 'Giulietta', 'Mito'].sort()
+},
+'audi': {
+name: 'Audi',
+icon: 'ri-audi-fill',
+models: ['A1', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q5', 'Q7', 'Q8', 'e-tron', 'TT', 'R8'].sort()
+},
+'bmw': {
+name: 'BMW',
+icon: 'ri-bmw-fill',
+models: ['1 Serisi', '2 Serisi', '3 Serisi', '4 Serisi', '5 Serisi', '6 Serisi', '7 Serisi', '8 Serisi', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z4', 'i3', 'i4', 'iX'].sort()
+},
+'citroen': {
+name: 'Citroën',
+icon: 'ri-car-fill',
+models: ['C3', 'C4', 'C5', 'Berlingo', 'SpaceTourer'].sort()
+},
+'dacia': {
+name: 'Dacia',
+icon: 'ri-car-fill',
+models: ['Sandero', 'Duster', 'Logan', 'Jogger', 'Spring'].sort()
+},
+'fiat': {
+name: 'Fiat',
+icon: 'ri-car-fill',
+models: ['500', 'Panda', 'Tipo', 'Egea', 'Doblo'].sort()
+},
+'ford': {
+name: 'Ford',
+icon: 'ri-car-fill',
+models: ['Fiesta', 'Focus', 'Puma', 'Kuga', 'Mustang', 'Ranger', 'Transit'].sort()
+},
+'honda': {
+name: 'Honda',
+icon: 'ri-car-fill',
+models: ['Civic', 'CR-V', 'HR-V', 'Jazz', 'e'].sort()
+},
+'hyundai': {
+name: 'Hyundai',
+icon: 'ri-car-fill',
+models: ['i10', 'i20', 'i30', 'Kona', 'Tucson', 'Santa Fe', 'IONIQ'].sort()
+},
+'kia': {
+name: 'Kia',
+icon: 'ri-car-fill',
+models: ['Picanto', 'Rio', 'Ceed', 'XCeed', 'Sportage', 'Sorento', 'EV6'].sort()
+},
+'mercedes': {
+name: 'Mercedes-Benz',
+icon: 'ri-mercedes-fill',
+models: ['A-Serisi', 'B-Serisi', 'C-Serisi', 'E-Serisi', 'S-Serisi', 'CLA', 'CLS', 'GLA', 'GLB', 'GLC', 'GLE', 'GLS', 'EQA', 'EQB', 'EQC', 'EQE', 'EQS'].sort()
+},
+'nissan': {
+name: 'Nissan',
+icon: 'ri-car-fill',
+models: ['Micra', 'Juke', 'Qashqai', 'X-Trail', 'Leaf'].sort()
+},
+'opel': {
+name: 'Opel',
+icon: 'ri-car-fill',
+models: ['Corsa', 'Astra', 'Crossland', 'Grandland', 'Mokka'].sort()
+},
+'peugeot': {
+name: 'Peugeot',
+icon: 'ri-car-fill',
+models: ['208', '2008', '308', '3008', '5008', 'Partner'].sort()
+},
+'renault': {
+name: 'Renault',
+icon: 'ri-car-fill',
+models: ['Clio', 'Captur', 'Megane', 'Arkana', 'Kadjar', 'Koleos', 'Zoe'].sort()
+},
+'seat': {
+name: 'SEAT',
+icon: 'ri-car-fill',
+models: ['Ibiza', 'Leon', 'Arona', 'Ateca', 'Tarraco'].sort()
+},
+'skoda': {
+name: 'Škoda',
+icon: 'ri-car-fill',
+models: ['Fabia', 'Scala', 'Octavia', 'Superb', 'Kamiq', 'Karoq', 'Kodiaq', 'Enyaq'].sort()
+},
+'toyota': {
+name: 'Toyota',
+icon: 'ri-car-fill',
+models: ['Yaris', 'Corolla', 'C-HR', 'RAV4', 'Camry', 'Hilux', 'Land Cruiser'].sort()
+},
+'volkswagen': {
+name: 'Volkswagen',
+icon: 'ri-volkswagen-fill',
+models: ['Polo', 'Golf', 'T-Cross', 'T-Roc', 'Tiguan', 'Passat', 'Arteon', 'Touareg', 'ID.3', 'ID.4', 'ID.5'].sort()
+},
+'volvo': {
+name: 'Volvo',
+icon: 'ri-car-fill',
+models: ['XC40', 'XC60', 'XC90', 'S60', 'S90', 'V60', 'V90', 'C40'].sort()
+}
 };
+const carTypes = [
+'Sedan',
+'Hatchback',
+'Station Wagon',
+'SUV',
+'Crossover',
+'MPV',
+'Coupe',
+'Cabrio',
+'Pickup',
+'Van'
+].sort();
+// Update brand select options
+function updateBrandSelect(selectElement) {
+selectElement.innerHTML = '<option value="">Tüm Markalar</option>';
+Object.entries(carBrands).forEach(([key, brand]) => {
+const option = document.createElement('option');
+option.value = key;
+option.innerHTML = `<i class="${brand.icon} mr-2"></i> ${brand.name}`;
+selectElement.appendChild(option);
+});
+}
+// Update model select options based on selected brand
+function updateModelSelect(brandValue, modelSelect) {
+modelSelect.innerHTML = '<option value="">Tüm Modeller</option>';
+if (brandValue && carBrands[brandValue]) {
+carBrands[brandValue].models.forEach(model => {
+const option = document.createElement('option');
+option.value = model.toLowerCase().replace(' ', '-');
+option.textContent = model;
+modelSelect.appendChild(option);
+});
+}
+}
 brandSelects.forEach((brandSelect, index) => {
 brandSelect.addEventListener('change', function() {
 const selectedBrand = this.value;
@@ -3137,6 +1191,507 @@ icon.classList.add('ri-heart-line');
 }
 });
 });
+});
+</script>
+<!-- Admin Panel Modal -->
+<div id="adminModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="absolute inset-0 flex">
+<!-- Sidebar -->
+<div class="w-64 bg-gray-900 p-4">
+<div class="flex items-center justify-between mb-8">
+<span class="text-white text-lg font-semibold">Admin Panel</span>
+<button id="closeAdminModal" class="text-white hover:text-gray-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+<nav class="space-y-2">
+<button class="w-full flex items-center text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg admin-nav-btn active" data-target="dashboard">
+<i class="ri-dashboard-line mr-3"></i>
+Dashboard
+</button>
+<button class="w-full flex items-center text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg admin-nav-btn" data-target="users">
+<i class="ri-user-line mr-3"></i>
+Kullanıcılar
+</button>
+<button class="w-full flex items-center text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg admin-nav-btn" data-target="listings">
+<i class="ri-file-list-line mr-3"></i>
+İlanlar
+</button>
+<button class="w-full flex items-center text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg admin-nav-btn" data-target="reports">
+<i class="ri-bar-chart-line mr-3"></i>
+Raporlar
+</button>
+<button class="w-full flex items-center text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg admin-nav-btn" data-target="settings">
+<i class="ri-settings-line mr-3"></i>
+Ayarlar
+</button>
+</nav>
+</div>
+<!-- Content Area -->
+<div class="flex-1 bg-white overflow-auto">
+<!-- Dashboard -->
+<div id="dashboard" class="admin-content p-6 block">
+<h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+<i class="ri-user-line ri-2x"></i>
+</div>
+<div>
+<h3 class="text-sm text-gray-500">Toplam Kullanıcı</h3>
+<p class="text-2xl font-bold">1,234</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+<i class="ri-file-list-line ri-2x"></i>
+</div>
+<div>
+<h3 class="text-sm text-gray-500">Aktif İlanlar</h3>
+<p class="text-2xl font-bold">856</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+<i class="ri-exchange-dollar-line ri-2x"></i>
+</div>
+<div>
+<h3 class="text-sm text-gray-500">Aylık Gelir</h3>
+<p class="text-2xl font-bold">₺12,450</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+<i class="ri-eye-line ri-2x"></i>
+</div>
+<div>
+<h3 class="text-sm text-gray-500">Günlük Ziyaret</h3>
+<p class="text-2xl font-bold">5,678</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<h3 class="text-lg font-semibold mb-4">Son İşlemler</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+<i class="ri-user-add-line text-gray-600"></i>
+</div>
+<div>
+<p class="font-medium">Yeni Üyelik</p>
+<p class="text-sm text-gray-500">Ahmet Yılmaz</p>
+</div>
+</div>
+<span class="text-sm text-gray-500">2 dk önce</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+<i class="ri-file-add-line text-gray-600"></i>
+</div>
+<div>
+<p class="font-medium">Yeni İlan</p>
+<p class="text-sm text-gray-500">2023 BMW 320i</p>
+</div>
+</div>
+<span class="text-sm text-gray-500">15 dk önce</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+<i class="ri-money-dollar-circle-line text-gray-600"></i>
+</div>
+<div>
+<p class="font-medium">Yeni Ödeme</p>
+<p class="text-sm text-gray-500">Premium Üyelik</p>
+</div>
+</div>
+<span class="text-sm text-gray-500">45 dk önce</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<h3 class="text-lg font-semibold mb-4">Popüler İlanlar</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20silver%20BMW%203%20Series%20sedan%2C%20front%20view%2C%20clean%20background%2C%20showroom%20quality&width=80&height=60&seq=8&orientation=landscape" alt="BMW" class="w-20 h-15 object-cover rounded mr-3">
+<div>
+<p class="font-medium">BMW 320i M Sport</p>
+<p class="text-sm text-gray-500">2.150.000 ₺</p>
+</div>
+</div>
+<span class="text-sm text-primary">2,345 görüntülenme</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20white%20Mercedes%20C-Class%20sedan%2C%20front%20view%2C%20clean%20background%2C%20showroom%20quality&width=80&height=60&seq=9&orientation=landscape" alt="Mercedes" class="w-20 h-15 object-cover rounded mr-3">
+<div>
+<p class="font-medium">Mercedes C180 AMG</p>
+<p class="text-sm text-gray-500">2.850.000 ₺</p>
+</div>
+</div>
+<span class="text-sm text-primary">1,987 görüntülenme</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20black%20Audi%20A4%20sedan%2C%20front%20view%2C%20clean%20background%2C%20showroom%20quality&width=80&height=60&seq=10&orientation=landscape" alt="Audi" class="w-20 h-15 object-cover rounded mr-3">
+<div>
+<p class="font-medium">Audi A4 2.0 TDI</p>
+<p class="text-sm text-gray-500">2.450.000 ₺</p>
+</div>
+</div>
+<span class="text-sm text-primary">1,756 görüntülenme</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Users -->
+<div id="users" class="admin-content p-6 hidden">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Kullanıcılar</h2>
+<div class="flex space-x-2">
+<div class="relative">
+<input type="text" placeholder="Kullanıcı ara..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+Yeni Kullanıcı
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kullanıcı</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-posta</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kayıt Tarihi</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+<i class="ri-user-line text-gray-600"></i>
+</div>
+<div>
+<p class="font-medium">Ahmet Yılmaz</p>
+<p class="text-sm text-gray-500">+90 532 123 4567</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+ahmet.yilmaz@email.com
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Aktif</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+27.06.2025
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<div class="flex space-x-2">
+<button class="text-blue-600 hover:text-blue-800">Düzenle</button>
+<button class="text-red-600 hover:text-red-800">Sil</button>
+</div>
+</td>
+</tr>
+<!-- More users... -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Listings -->
+<div id="listings" class="admin-content p-6 hidden">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">İlanlar</h2>
+<div class="flex space-x-2">
+<div class="relative">
+<input type="text" placeholder="İlan ara..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+Yeni İlan
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İlan</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fiyat</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Yayın Tarihi</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20a%20silver%20BMW%203%20Series%20sedan%2C%20front%20view%2C%20clean%20background%2C%20showroom%20quality&width=80&height=60&seq=11&orientation=landscape" alt="BMW" class="w-20 h-15 object-cover rounded mr-3">
+<div>
+<p class="font-medium">BMW 320i M Sport</p>
+<p class="text-sm text-gray-500">İstanbul, Kadıköy</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+2.150.000 ₺
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Aktif</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+27.06.2025
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<div class="flex space-x-2">
+<button class="text-blue-600 hover:text-blue-800">Düzenle</button>
+<button class="text-red-600 hover:text-red-800">Sil</button>
+</div>
+</td>
+</tr>
+<!-- More listings... -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Reports -->
+<div id="reports" class="admin-content p-6 hidden">
+<h2 class="text-2xl font-bold mb-6">Raporlar</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<h3 class="text-lg font-semibold mb-4">Satış İstatistikleri</h3>
+<div id="salesChart" class="h-80"></div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+<h3 class="text-lg font-semibold mb-4">Ziyaretçi Analizi</h3>
+<div id="visitorsChart" class="h-80"></div>
+</div>
+</div>
+</div>
+<!-- Settings -->
+<div id="settings" class="admin-content p-6 hidden">
+<h2 class="text-2xl font-bold mb-6">Ayarlar</h2>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+<div class="p-6">
+<h3 class="text-lg font-semibold mb-4">Genel Ayarlar</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Site Adı</label>
+<input type="text" value="OtoPazar" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İletişim E-posta</label>
+<input type="email" value="info@otopazar.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İlan Süresi (Gün)</label>
+<input type="number" value="90" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Premium İlan Ücreti (₺)</label>
+<input type="number" value="250" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div class="mt-6">
+<button type="submit" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition">
+Ayarları Kaydet
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script id="adminPanelScript">
+document.addEventListener('DOMContentLoaded', function() {
+const adminPanelBtn = document.getElementById('adminPanelBtn');
+const adminModal = document.getElementById('adminModal');
+const closeAdminModal = document.getElementById('closeAdminModal');
+const adminNavBtns = document.querySelectorAll('.admin-nav-btn');
+const adminContents = document.querySelectorAll('.admin-content');
+// Admin Panel Toggle
+adminPanelBtn.addEventListener('click', function() {
+adminModal.classList.remove('hidden');
+// Initialize charts when reports tab is active
+if (document.getElementById('reports').classList.contains('block')) {
+initializeCharts();
+}
+});
+closeAdminModal.addEventListener('click', function() {
+adminModal.classList.add('hidden');
+});
+// Navigation
+adminNavBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+const target = this.dataset.target;
+// Update navigation buttons
+adminNavBtns.forEach(b => b.classList.remove('bg-gray-800'));
+this.classList.add('bg-gray-800');
+// Update content visibility
+adminContents.forEach(content => {
+content.classList.add('hidden');
+content.classList.remove('block');
+});
+document.getElementById(target).classList.remove('hidden');
+document.getElementById(target).classList.add('block');
+// Initialize charts when reports tab is clicked
+if (target === 'reports') {
+initializeCharts();
+}
+});
+});
+// Charts Initialization
+function initializeCharts() {
+// Sales Chart
+const salesChart = echarts.init(document.getElementById('salesChart'));
+const salesOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+borderColor: '#e5e7eb',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+xAxis: {
+type: 'category',
+data: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz'],
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+}
+},
+series: [{
+data: [150, 230, 224, 218, 135, 147],
+type: 'line',
+smooth: true,
+color: 'rgba(87, 181, 231, 1)',
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.3)'
+}, {
+offset: 1,
+color: 'rgba(87, 181, 231, 0.1)'
+}])
+}
+}]
+};
+salesChart.setOption(salesOption);
+// Visitors Chart
+const visitorsChart = echarts.init(document.getElementById('visitorsChart'));
+const visitorsOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+borderColor: '#e5e7eb',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+xAxis: {
+type: 'category',
+data: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+}
+},
+series: [{
+data: [820, 932, 901, 934, 1290, 1330, 1320],
+type: 'line',
+smooth: true,
+color: 'rgba(141, 211, 199, 1)',
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+offset: 0,
+color: 'rgba(141, 211, 199, 0.3)'
+}, {
+offset: 1,
+color: 'rgba(141, 211, 199, 0.1)'
+}])
+}
+}]
+};
+visitorsChart.setOption(visitorsOption);
+// Handle window resize
+window.addEventListener('resize', function() {
+salesChart.resize();
+visitorsChart.resize();
+});
+}
 });
 </script>
 </body>

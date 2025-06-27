@@ -1686,39 +1686,5 @@ color: 'rgba(141, 211, 199, 0.1)'
 }]
 };
 visitorsChart.setOption(visitorsOption);
-// Handle window resize
-window.addEventListener('resize', function() {
-salesChart.resize();
-visitorsChart.resize();
-});
-}
-});
-</script>
-<script>
-  function showAdminPanel() {
-    document.querySelectorAll('.admin-content').forEach(el => {
-      el.classList.remove('hidden');
-      el.style.display = ''; // style display'ini sıfırla, varsa inline engellemesini kaldırır
-    });
-  }
-
-  function hideAdminPanel() {
-    document.querySelectorAll('.admin-content').forEach(el => {
-      el.classList.add('hidden');
-      el.style.display = 'none'; // inline stil ile de gizle
-    });
-  }
-
-  function toggleAdminPanel() {
-    if (location.hash === '#admin') {
-      showAdminPanel();
-    } else {
-      hideAdminPanel();
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', toggleAdminPanel);
-  window.addEventListener('hashchange', toggleAdminPanel);
-</script>
 </body>
 </html>
